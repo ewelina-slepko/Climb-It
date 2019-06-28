@@ -1,12 +1,14 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import ButtonAppBar from './components/layouts/ButtonAppBar';
+import AppBar from './components/layouts/AppBar';
+import Dashboard from './components/dashboard/Dashboard';
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <ButtonAppBar />
+        <AppBar />
+        <Dashboard />
       </div>
     </BrowserRouter>
   );

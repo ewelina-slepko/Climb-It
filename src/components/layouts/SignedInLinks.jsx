@@ -10,8 +10,8 @@ const SignedInLinks = () => {
     return (
         <>
             {[<NavLink to='/newroute' className={classes.link}>New Route</NavLink>,
-            <NavLink to='/routeslist' className={classes.link}>Routes List</NavLink>].map((text, index) => (
-                <ListItem button key={text}>
+            <NavLink to='/listofroutes' className={classes.link}>List of Routes</NavLink>].map((text, index) => (
+                <ListItem button key={index}>
                     <ListItemText primary={text} />
                 </ListItem>
             ))}
@@ -31,7 +31,5 @@ const useStyles = makeStyles(theme => ({
         color: '#000'
     }
 }));
-
-
 
 export default SignedInLinks;
