@@ -41,7 +41,7 @@ const PersistentDrawerLeft = () => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        <Link to='/' className={classes.link}><Dashboard /></Link>
+                        CLIMB IT!
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -74,6 +74,13 @@ const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
+    },
+    appBar: {
+        backgroundColor: '#24292e',
+        transition: theme.transitions.create(['margin', 'width'], {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
     },
     appBarShift: {
         width: `calc(100% - ${drawerWidth}px)`,
