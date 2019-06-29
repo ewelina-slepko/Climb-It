@@ -4,8 +4,8 @@ import { NavLink } from 'react-router-dom'
 const SignedOutLinks = () => (
     //wrzucić do formularza
     <>
-        <NavLink to='/newroute'>Login</NavLink>
-        <NavLink to='/newroute'>Sign Up</NavLink>
+        <NavLink to='/login'>Login</NavLink>
+        <NavLink to='/signup'>Sign Up</NavLink>
     </>
 )
 
