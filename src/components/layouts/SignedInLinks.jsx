@@ -5,20 +5,27 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import { makeStyles } from '@material-ui/core/styles';
 
+const arr = [
+    { text: 'Chart', path: '/' },
+    { text: 'New Route', path: '/newroute' },
+    { text: 'List of Routes', path: '/listofroutes' }
+];
+
 const SignedInLinks = () => {
     const classes = useStyles();
     return (
         <>
-            {[<NavLink to='/newroute' className={classes.link}>New Route</NavLink>,
-            <NavLink to='/listofroutes' className={classes.link}>List of Routes</NavLink>].map((text, index) => (
-                <ListItem button key={index}>
-                    <ListItemText primary={text} />
+            {arr.map((obj, index) => (
+                <ListItem component={NavLink} to={obj.path} className={classes.link} button key={index}>
+                    <ListItemText>
+                        {obj.text}
+                    </ListItemText>
                 </ListItem>
             ))}
             <Divider />
-            <ListItem button>
+            <ListItem component={NavLink} to='/logout' className={classes.link} button key='logout'>
                 <ListItemText>
-                    <NavLink to='/logout' className={classes.link}>Log out</NavLink>
+                    Log out
                 </ListItemText>
             </ListItem>
         </>
@@ -28,7 +35,7 @@ const SignedInLinks = () => {
 const useStyles = makeStyles(theme => ({
     link: {
         textDecoration: 'none',
-        color: '#000'
+        color: '#000',
     }
 }));
 
