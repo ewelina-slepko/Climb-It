@@ -5,6 +5,7 @@ import CreateNewRoute from '../ClimbingRoutes/CreateNewRoute';
 import RoutesList from '../ClimbingRoutes/RouteList';
 import RouteDetails from '../ClimbingRoutes/RouteDetails';
 import SignIn from '../auth/SignIn';
+import SignUp from '../auth/SignUp';
 
 class Dashboard extends React.Component {
     render() {
@@ -15,6 +16,7 @@ class Dashboard extends React.Component {
                 <Route path="/listofroutes" component={RoutesList} />
                 <Route path="/project/:id" component={RouteDetails} />
                 <Route path="/signin/" component={SignIn} />
+                <Route path="/signup/" component={SignUp} />
             </Switch>
         )
     }
