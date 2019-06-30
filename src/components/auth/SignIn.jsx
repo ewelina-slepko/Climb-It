@@ -4,20 +4,22 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-const SignIn = (props) => {
+const SignIn = () => {
     const classes = useStyles();
     const [values, setValues] = React.useState({
         name: '',
+        password: ''
     });
 
     const handleChange = name => event => {
+        event.preventDefault();
         setValues({ ...values, [name]: event.target.value });
-        console.log(event.target.value)
+        console.log(values)
     };
 
     return (
         <div className={classes.container}>
-            <form noValidate autoComplete="off" id="myform" onSubmit={props.handleChange}>
+            <form noValidate autoComplete="off" onSubmit={e => e.preventDefault() || alert(JSON.stringify(values))}>
                 <TextField
                     required
                     id="standard-name"
@@ -35,8 +37,9 @@ const SignIn = (props) => {
                     type="password"
                     autoComplete="current-password"
                     margin="normal"
+                    onChange={handleChange('password')}
                 />
-                <Button variant="contained" color="primary" className={classes.button} type="submit" form="myform">
+                <Button variant="contained" color="primary" className={classes.button} type="submit" label="Login" onSubmit={handleChange('name', 'password')}>
                     Sign In
                 </Button>
             </form>
