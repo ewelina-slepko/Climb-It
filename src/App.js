@@ -6,12 +6,13 @@ import Dashboard from './components/dashboard/Dashboard';
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      <div>
         <AppBar />
         <Dashboard />
       </div>
     </BrowserRouter>
   );
 }
+
 
 export default App;

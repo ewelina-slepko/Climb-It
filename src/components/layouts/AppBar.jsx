@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-import Dashboard from '../dashboard/Dashboard';
 import SignedInLinks from './SignedInLinks';
 
 import clsx from 'clsx';

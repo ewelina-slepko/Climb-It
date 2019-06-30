@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import CreateNewRoute from '../ClimbingRoutes/CreateNewRoute';
 import RoutesList from '../ClimbingRoutes/RouteList';
 import RouteDetails from '../ClimbingRoutes/RouteDetails';
+import SignIn from '../auth/SignIn';
 
 class Dashboard extends React.Component {
     render() {
@@ -13,9 +14,11 @@ class Dashboard extends React.Component {
                 <Route path="/newroute" component={CreateNewRoute} />
                 <Route path="/listofroutes" component={RoutesList} />
                 <Route path="/project/:id" component={RouteDetails} />
+                <Route path="/signin/" component={SignIn} />
             </Switch>
         )
     }
 }
+
 
 export default Dashboard;
