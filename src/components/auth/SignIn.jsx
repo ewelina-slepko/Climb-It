@@ -3,6 +3,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { NavLink } from 'react-router-dom';
 
 const SignIn = () => {
     const classes = useStyles();
@@ -22,7 +23,7 @@ const SignIn = () => {
             <form noValidate autoComplete="off" onSubmit={e => e.preventDefault() || alert(JSON.stringify(values))}>
                 <TextField
                     required
-                    id="standard-name"
+                    id="mylogin"
                     label="Login"
                     className={classes.textField}
                     margin="normal"
@@ -31,7 +32,7 @@ const SignIn = () => {
                 />
                 <TextField
                     required
-                    id="standard-password-input"
+                    id="mypassword"
                     label="Password"
                     className={classes.textField}
                     type="password"
@@ -39,9 +40,16 @@ const SignIn = () => {
                     margin="normal"
                     onChange={handleChange('password')}
                 />
-                <Button variant="contained" color="primary" className={classes.button} type="submit" label="Login" onSubmit={handleChange('name', 'password')}>
-                    Sign In
+                <div className={classes.btnWrapper}>
+                    <Button variant="contained"
+                        color="primary"
+                        type="submit"
+                        label="Login"
+                        onSubmit={handleChange('name', 'password')}>
+                        Sign In
                 </Button>
+                    <NavLink to="/signup" className={classes.signUplink}>Sign Up!</NavLink>
+                </div>
             </form>
         </div>
 
@@ -69,12 +77,21 @@ const useStyles = makeStyles(theme => ({
     menu: {
         width: 200,
     },
-    button: {
+    link: {
         margin: '50px 0 0 6px',
+        maxWidth: 40,
     },
     input: {
         display: 'none',
     },
+    signUplink: {
+        marginLeft: 10,
+        textDecoration: 'none',
+        color: 'gray'
+    },
+    btnWrapper: {
+        marginTop: 50
+    }
 }));
 
 export default SignIn;

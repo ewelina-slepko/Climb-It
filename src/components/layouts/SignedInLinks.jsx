@@ -20,7 +20,7 @@ const SignedInLinks = () => {
                 </ListItem>
             ))}
             <Divider />
-            <ListItem component={Link} to='/logout' button key='logout'>
+            <ListItem component={Link} to='/signin' button key='logout'>
                 <ListItemText>
                     Log out
                 </ListItemText>

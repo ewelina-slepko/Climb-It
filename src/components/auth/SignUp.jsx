@@ -24,7 +24,7 @@ const SignUp = () => {
             <form noValidate autoComplete="off" onSubmit={e => e.preventDefault() || alert(JSON.stringify(values))}>
                 <TextField
                     required
-                    id="standard-name"
+                    id="login"
                     label="Login"
                     className={classes.textField}
                     margin="normal"
@@ -33,7 +33,7 @@ const SignUp = () => {
                 />
                 <TextField
                     required
-                    id="standard-name"
+                    id="email"
                     label="E-mail"
                     className={classes.textField}
                     margin="normal"
@@ -42,7 +42,7 @@ const SignUp = () => {
                 />
                 <TextField
                     required
-                    id="standard-name"
+                    id="confirmation"
                     label="Potwierdź adres e-mail"
                     className={classes.textField}
                     margin="normal"
@@ -51,7 +51,7 @@ const SignUp = () => {
                 />
                 <TextField
                     required
-                    id="standard-password-input"
+                    id="password"
                     label="Password"
                     className={classes.textField}
                     type="password"
