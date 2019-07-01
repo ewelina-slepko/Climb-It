@@ -6,6 +6,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
+import AppBar from '../layouts/AppBar';
 
 const grades = [
     {
@@ -63,10 +64,12 @@ const CreateNewRoute = () => {
 
     return (
         <div>
+            <AppBar />
             <form className={classes.root} noValidate autoComplete="off" onSubmit={e => e.preventDefault() || alert(JSON.stringify(values))}>
                 <h1 className={clsx(classes.margin, classes.textField)}>Create New Route</h1>
                 <TextField
                     id="date"
+                    variant="outlined"
                     className={clsx(classes.margin, classes.textFieldSelect)}
                     label="Date"
                     value={values.Date}
@@ -155,7 +158,7 @@ const CreateNewRoute = () => {
                 <Button
                     variant="contained"
                     color="primary"
-                    className={classes.margin}
+                    className={classes.btnPosition}
                     type="submit"
                     label="Login"
                     onSubmit={handleChange('name', 'password')}
@@ -184,6 +187,9 @@ const useStyles = makeStyles(theme => ({
     textFieldSelect: {
         flexBasis: 205,
     },
+    btnPosition: {
+        margin: '30px 20px 30px auto'
+    }
 }));
 
 export default CreateNewRoute;

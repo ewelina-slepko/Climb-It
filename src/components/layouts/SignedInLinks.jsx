@@ -5,7 +5,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 
 const arr = [
-    { text: 'Chart', path: '/' },
     { text: 'New Route', path: '/newroute' },
     { text: 'List of Routes', path: '/listofroutes' }
 ];
