@@ -49,6 +49,7 @@ const grades = [
 const CreateNewRoute = () => {
     const classes = useStyles();
     const [values, setValues] = React.useState({
+        Date: '',
         Location: '',
         RockName: '',
         RouteName: '',
@@ -64,6 +65,18 @@ const CreateNewRoute = () => {
         <div>
             <form className={classes.root} noValidate autoComplete="off" onSubmit={e => e.preventDefault() || alert(JSON.stringify(values))}>
                 <h1 className={clsx(classes.margin, classes.textField)}>Create New Route</h1>
+                <TextField
+                    id="date"
+                    className={clsx(classes.margin, classes.textFieldSelect)}
+                    label="Date"
+                    value={values.Date}
+                    onChange={handleChange('Date')}
+                    type="date"
+                    defaultValue="rrrr-mm-dd"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                />
                 <TextField
                     id="outlined-simple-start-adornment"
                     className={clsx(classes.margin, classes.textField)}
@@ -99,7 +112,7 @@ const CreateNewRoute = () => {
                 />
                 <TextField
                     select
-                    className={clsx(classes.margin, classes.textField)}
+                    className={clsx(classes.margin, classes.textFieldSelect)}
                     variant="outlined"
                     label="Grading system"
                     value={values.GradingSystem}
@@ -116,7 +129,7 @@ const CreateNewRoute = () => {
                 </TextField>
                 <TextField
                     id="outlined-simple-start-adornment"
-                    className={clsx(classes.margin, classes.textField)}
+                    className={clsx(classes.margin, classes.textFieldSelect)}
                     variant="outlined"
                     label="Difficulty"
                     value={values.Difficulty}
@@ -147,7 +160,7 @@ const CreateNewRoute = () => {
                     label="Login"
                     onSubmit={handleChange('name', 'password')}
                 >
-                    Sign Up
+                    Add Route
                 </Button>
             </form>
         </div>
@@ -163,10 +176,13 @@ const useStyles = makeStyles(theme => ({
         maxWidth: '500px'
     },
     margin: {
-        margin: '20px'
+        margin: '30px 20px 30px 20px'
     },
     textField: {
         flexBasis: 450,
+    },
+    textFieldSelect: {
+        flexBasis: 205,
     },
 }));
 
