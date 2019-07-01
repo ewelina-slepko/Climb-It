@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import Button from '@material-ui/core/Button';
 
 const grades = [
     {
@@ -48,11 +49,12 @@ const grades = [
 const CreateNewRoute = () => {
     const classes = useStyles();
     const [values, setValues] = React.useState({
-        amount: '',
-        password: '',
-        weight: '',
-        weightRange: '',
-        showPassword: false,
+        Location: '',
+        RockName: '',
+        RouteName: '',
+        GradingSystem: '',
+        Difficulty: '',
+        Description: ''
     });
     const handleChange = prop => event => {
         setValues({ ...values, [prop]: event.target.value });
@@ -67,6 +69,8 @@ const CreateNewRoute = () => {
                     className={clsx(classes.margin, classes.textField)}
                     variant="outlined"
                     label="Location (city)"
+                    value={values.Location}
+                    onChange={handleChange('Location')}
                     InputProps={{
                         startAdornment: <InputAdornment position="start"></InputAdornment>,
                     }}
@@ -76,6 +80,8 @@ const CreateNewRoute = () => {
                     className={clsx(classes.margin, classes.textField)}
                     variant="outlined"
                     label="Rock name"
+                    value={values.RockName}
+                    onChange={handleChange('RockName')}
                     InputProps={{
                         startAdornment: <InputAdornment position="start"></InputAdornment>,
                     }}
@@ -85,6 +91,8 @@ const CreateNewRoute = () => {
                     className={clsx(classes.margin, classes.textField)}
                     variant="outlined"
                     label="Route name"
+                    value={values.RouteName}
+                    onChange={handleChange('RouteName')}
                     InputProps={{
                         startAdornment: <InputAdornment position="start"></InputAdornment>,
                     }}
@@ -94,8 +102,8 @@ const CreateNewRoute = () => {
                     className={clsx(classes.margin, classes.textField)}
                     variant="outlined"
                     label="Grading system"
-                    value={values.weightRange}
-                    onChange={handleChange('weightRange')}
+                    value={values.GradingSystem}
+                    onChange={handleChange('GradingSystem')}
                     InputProps={{
                         startAdornment: <InputAdornment position="start"></InputAdornment>,
                     }}
@@ -111,6 +119,8 @@ const CreateNewRoute = () => {
                     className={clsx(classes.margin, classes.textField)}
                     variant="outlined"
                     label="Difficulty"
+                    value={values.Difficulty}
+                    onChange={handleChange('Difficulty')}
                     InputProps={{
                         startAdornment: <InputAdornment position="start"></InputAdornment>,
                     }}
@@ -118,6 +128,8 @@ const CreateNewRoute = () => {
                 <TextField
                     id="outlined-multiline-static"
                     label="Description"
+                    value={values.Description}
+                    onChange={handleChange('Description')}
                     multiline
                     rows="5"
                     className={clsx(classes.margin, classes.textField)}
@@ -127,6 +139,16 @@ const CreateNewRoute = () => {
                         startAdornment: <InputAdornment position="start"></InputAdornment>,
                     }}
                 />
+                <Button
+                    variant="contained"
+                    color="primary"
+                    className={classes.margin}
+                    type="submit"
+                    label="Login"
+                    onSubmit={handleChange('name', 'password')}
+                >
+                    Sign Up
+                </Button>
             </form>
         </div>
     )
