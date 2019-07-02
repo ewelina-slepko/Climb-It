@@ -1,14 +1,18 @@
 import React from 'react';
-import RouteSummary from './RouteSummary'
 import AppBar from '../layouts/AppBar';
+import RouteSummary from './RouteSummary';
 
-const RoutesList = () => (
+const RoutesList = ({ projects }) => (
     <>
         <AppBar />
-        <RouteSummary />
-        <RouteSummary />
-        <RouteSummary />
+        {projects && projects.map(project => {
+            return (
+                <RouteSummary project={project} key={project.id} />
+            )
+        })}
     </>
 )
+
+
 
 export default RoutesList;

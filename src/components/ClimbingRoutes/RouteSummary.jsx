@@ -1,13 +1,13 @@
 import React from 'react'
 import AppBar from '../layouts/AppBar';
 
-const ProjectSummary = () => (
+const ProjectSummary = ({ project }) => (
     <>
         <AppBar />
         <div>
-            <h1>Nazwa drogi</h1>
-            <h3>Wycena</h3>
-            <h4>Data</h4>
+            <h1>{project.date}</h1>
+            <h3>{project.location}</h3>
+            <h4>{project.rockName}</h4>
         </div>
     </>
 )
