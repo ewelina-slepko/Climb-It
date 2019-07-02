@@ -8,6 +8,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import AppBar from '../layouts/AppBar';
 
+import { connect } from 'react-redux';
+import { createNewRoute } from '../../store/actions/projectActions';
+
+
 const grades = [
     {
         value: 'Kurtyka',
@@ -235,4 +239,10 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default CreateNewRoute;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createNewRoute: (project) => dispatch(createNewRoute(project))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(CreateNewRoute);
