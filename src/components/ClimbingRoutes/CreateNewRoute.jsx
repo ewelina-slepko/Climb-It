@@ -46,6 +46,28 @@ const grades = [
         label: 'Brazilian',
     },
 ];
+const climbingStyles = [
+    {
+        value: 'OS (on sight)',
+        label: 'OS (on sight)',
+    },
+    {
+        value: 'Flash',
+        label: 'Flash',
+    },
+    {
+        value: 'RP (rot punkt)',
+        label: 'RP (rot punkt)',
+    },
+    {
+        value: 'PP ( pink point)',
+        label: 'PP ( pink point)',
+    },
+    {
+        value: 'TR ( top rope)',
+        label: 'TR ( top rope)',
+    },
+]
 
 const CreateNewRoute = () => {
     const classes = useStyles();
@@ -56,6 +78,7 @@ const CreateNewRoute = () => {
         RouteName: '',
         GradingSystem: '',
         Difficulty: '',
+        climbingStyle: '',
         Description: ''
     });
     const handleChange = prop => event => {
@@ -70,7 +93,7 @@ const CreateNewRoute = () => {
                 <TextField
                     id="date"
                     variant="outlined"
-                    className={clsx(classes.margin, classes.textFieldSelect)}
+                    className={clsx(classes.margin, classes.dateFieldSelect)}
                     label="Date"
                     value={values.Date}
                     onChange={handleChange('Date')}
@@ -113,6 +136,23 @@ const CreateNewRoute = () => {
                         startAdornment: <InputAdornment position="start"></InputAdornment>,
                     }}
                 />
+                <TextField
+                    select
+                    className={clsx(classes.margin, classes.textFieldSelect)}
+                    variant="outlined"
+                    label="Climbing style"
+                    value={values.climbingStyle}
+                    onChange={handleChange('climbingStyle')}
+                    InputProps={{
+                        startAdornment: <InputAdornment position="start"></InputAdornment>,
+                    }}
+                >
+                    {climbingStyles.map(option => (
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
+                    ))}
+                </TextField>
                 <TextField
                     select
                     className={clsx(classes.margin, classes.textFieldSelect)}
@@ -184,8 +224,11 @@ const useStyles = makeStyles(theme => ({
     textField: {
         flexBasis: 450,
     },
-    textFieldSelect: {
+    dateFieldSelect: {
         flexBasis: 205,
+    },
+    textFieldSelect: {
+        flexBasis: 125,
     },
     btnPosition: {
         margin: '30px 20px 30px auto'
