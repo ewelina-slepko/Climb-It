@@ -2,7 +2,6 @@ import React from 'react';
 
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
@@ -73,7 +72,7 @@ const climbingStyles = [
     },
 ]
 
-const CreateNewRoute = () => {
+const CreateNewRoute = (props) => {
     const classes = useStyles();
     const [values, setValues] = React.useState({
         Date: '',
@@ -92,7 +91,7 @@ const CreateNewRoute = () => {
     return (
         <div>
             <AppBar />
-            <form className={classes.root} noValidate autoComplete="off" onSubmit={e => e.preventDefault() || alert(JSON.stringify(values))}>
+            <form className={classes.root} noValidate autoComplete="off" onSubmit={e => e.preventDefault() || props.createNewRoute(values)}>
                 <h1 className={clsx(classes.margin, classes.textField)}>Create New Route</h1>
                 <TextField
                     id="date"
@@ -102,7 +101,6 @@ const CreateNewRoute = () => {
                     value={values.Date}
                     onChange={handleChange('Date')}
                     type="date"
-                    defaultValue="rrrr-mm-dd"
                     InputLabelProps={{
                         shrink: true,
                     }}
@@ -114,9 +112,7 @@ const CreateNewRoute = () => {
                     label="Location (city)"
                     value={values.Location}
                     onChange={handleChange('Location')}
-                    InputProps={{
-                        startAdornment: <InputAdornment position="start"></InputAdornment>,
-                    }}
+
                 />
                 <TextField
                     id="outlined-simple-start-adornment"
@@ -125,9 +121,7 @@ const CreateNewRoute = () => {
                     label="Rock name"
                     value={values.RockName}
                     onChange={handleChange('RockName')}
-                    InputProps={{
-                        startAdornment: <InputAdornment position="start"></InputAdornment>,
-                    }}
+
                 />
                 <TextField
                     id="outlined-simple-start-adornment"
@@ -136,9 +130,7 @@ const CreateNewRoute = () => {
                     label="Route name"
                     value={values.RouteName}
                     onChange={handleChange('RouteName')}
-                    InputProps={{
-                        startAdornment: <InputAdornment position="start"></InputAdornment>,
-                    }}
+
                 />
                 <TextField
                     select
@@ -147,9 +139,7 @@ const CreateNewRoute = () => {
                     label="Climbing style"
                     value={values.climbingStyle}
                     onChange={handleChange('climbingStyle')}
-                    InputProps={{
-                        startAdornment: <InputAdornment position="start"></InputAdornment>,
-                    }}
+
                 >
                     {climbingStyles.map(option => (
                         <MenuItem key={option.value} value={option.value}>
@@ -164,9 +154,7 @@ const CreateNewRoute = () => {
                     label="Grading system"
                     value={values.GradingSystem}
                     onChange={handleChange('GradingSystem')}
-                    InputProps={{
-                        startAdornment: <InputAdornment position="start"></InputAdornment>,
-                    }}
+
                 >
                     {grades.map(option => (
                         <MenuItem key={option.value} value={option.value}>
@@ -181,9 +169,7 @@ const CreateNewRoute = () => {
                     label="Difficulty"
                     value={values.Difficulty}
                     onChange={handleChange('Difficulty')}
-                    InputProps={{
-                        startAdornment: <InputAdornment position="start"></InputAdornment>,
-                    }}
+
                 />
                 <TextField
                     id="outlined-multiline-static"
@@ -195,9 +181,7 @@ const CreateNewRoute = () => {
                     className={clsx(classes.margin, classes.textField)}
                     margin="normal"
                     variant="outlined"
-                    InputProps={{
-                        startAdornment: <InputAdornment position="start"></InputAdornment>,
-                    }}
+
                 />
                 <Button
                     variant="contained"
