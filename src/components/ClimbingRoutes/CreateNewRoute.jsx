@@ -75,14 +75,14 @@ const climbingStyles = [
 const CreateNewRoute = (props) => {
     const classes = useStyles();
     const [values, setValues] = React.useState({
-        Date: '',
-        Location: '',
-        RockName: '',
-        RouteName: '',
-        GradingSystem: '',
-        Difficulty: '',
+        date: '',
+        location: '',
+        rockName: '',
+        routeName: '',
+        gradingSystem: '',
+        difficulty: '',
         climbingStyle: '',
-        Description: ''
+        description: ''
     });
     const handleChange = prop => event => {
         setValues({ ...values, [prop]: event.target.value });
@@ -98,8 +98,8 @@ const CreateNewRoute = (props) => {
                     variant="outlined"
                     className={clsx(classes.margin, classes.dateFieldSelect)}
                     label="Date"
-                    value={values.Date}
-                    onChange={handleChange('Date')}
+                    value={values.date}
+                    onChange={handleChange('date')}
                     type="date"
                     InputLabelProps={{
                         shrink: true,
@@ -110,8 +110,8 @@ const CreateNewRoute = (props) => {
                     className={clsx(classes.margin, classes.textField)}
                     variant="outlined"
                     label="Location (city)"
-                    value={values.Location}
-                    onChange={handleChange('Location')}
+                    value={values.location}
+                    onChange={handleChange('location')}
 
                 />
                 <TextField
@@ -119,8 +119,8 @@ const CreateNewRoute = (props) => {
                     className={clsx(classes.margin, classes.textField)}
                     variant="outlined"
                     label="Rock name"
-                    value={values.RockName}
-                    onChange={handleChange('RockName')}
+                    value={values.rockName}
+                    onChange={handleChange('rockName')}
 
                 />
                 <TextField
@@ -128,8 +128,8 @@ const CreateNewRoute = (props) => {
                     className={clsx(classes.margin, classes.textField)}
                     variant="outlined"
                     label="Route name"
-                    value={values.RouteName}
-                    onChange={handleChange('RouteName')}
+                    value={values.routeName}
+                    onChange={handleChange('routeName')}
 
                 />
                 <TextField
@@ -152,8 +152,8 @@ const CreateNewRoute = (props) => {
                     className={clsx(classes.margin, classes.textFieldSelect)}
                     variant="outlined"
                     label="Grading system"
-                    value={values.GradingSystem}
-                    onChange={handleChange('GradingSystem')}
+                    value={values.gradingSystem}
+                    onChange={handleChange('gradingSystem')}
 
                 >
                     {grades.map(option => (
@@ -167,15 +167,15 @@ const CreateNewRoute = (props) => {
                     className={clsx(classes.margin, classes.textFieldSelect)}
                     variant="outlined"
                     label="Difficulty"
-                    value={values.Difficulty}
-                    onChange={handleChange('Difficulty')}
+                    value={values.difficulty}
+                    onChange={handleChange('difficulty')}
 
                 />
                 <TextField
                     id="outlined-multiline-static"
                     label="Description"
-                    value={values.Description}
-                    onChange={handleChange('Description')}
+                    value={values.description}
+                    onChange={handleChange('description')}
                     multiline
                     rows="5"
                     className={clsx(classes.margin, classes.textField)}
