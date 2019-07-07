@@ -3,6 +3,8 @@ export const createNewRoute = (project) => {
         const firestore = getFirestore();
         firestore.collection('projects').add({
             ...project,
+            Id: 12345,
+            createdAT: new Date()
         }).then(() => {
             dispatch({ type: 'CREATE_ROUTE', project })
         }).catch((err) => {

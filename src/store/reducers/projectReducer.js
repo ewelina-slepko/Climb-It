@@ -1,9 +1,9 @@
 const initState = {
-    projects: [
-        { id: '1', date: 'rrrr-mm-dd', location: 'Mirów', rockName: 'Dupa Słonia' },
-        { id: '1', date: 'rrrr-mm-dd', location: 'Mirów', rockName: 'Dupa Słonia' },
-        { id: '1', date: 'rrrr-mm-dd', location: 'Mirów', rockName: 'Dupa Słonia' },
-    ]
+    // projects: [
+    //     { id: '1', date: 'rrrr-mm-dd', location: 'Mirów', rockName: 'Dupa Słonia' },
+    //     { id: '2', date: 'rrrr-mm-dd', location: 'Mirów', rockName: 'Dupa Słonia' },
+    //     { id: '3', date: 'rrrr-mm-dd', location: 'Mirów', rockName: 'Dupa Słonia' },
+    // ]
 };
 
 
