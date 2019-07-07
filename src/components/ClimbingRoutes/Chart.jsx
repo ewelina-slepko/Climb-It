@@ -1,7 +1,11 @@
 import React from 'react';
+import AppBar from '../layouts/AppBar';
 
 const Chart = () => (
-    <div className="Chart"> <p>Progress Chart</p></div>
+    <>
+        <AppBar />
+        <div className="Chart"> <p>Progress Chart</p></div>
+    </>
 )
 
 export default Chart;
