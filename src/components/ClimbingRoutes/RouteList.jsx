@@ -6,7 +6,10 @@ const RoutesList = ({ projects }) => (
     <>
         <AppBar />
         {projects && projects.map(project => {
+            console.log(project.id)
+            console.log(project)
             return (
+
                 <RouteSummary key={project.id} project={project} />
             )
         })}

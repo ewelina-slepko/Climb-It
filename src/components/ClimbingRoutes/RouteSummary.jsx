@@ -1,21 +1,20 @@
 import React from 'react'
-import AppBar from '../layouts/AppBar';
 
 const ProjectSummary = ({ project }) => (
     <>
-        <AppBar />
-
-        <ul id={project.rockName}>
-            <li>{project.date}</li>
-            <li>{project.location}</li>
-            <li>{project.rockName}</li>
-            <li>{project.routeName}</li>
-            <li>{project.gradingSystem}</li>
-            <li>{project.difficulty}</li>
-            <li>{project.climbingStyle}</li>
-            <li>{project.description}</li>
-        </ul>
+        <div>
+            <h1> {project.rockName}</h1>
+            <h2> {project.location}</h2>
+            <p> Date: {project.date}</p>
+            <p> Route Name: {project.routeName}</p>
+            <p> Climbing style: {project.climbingStyle}</p>
+            <p> Grading system: {project.gradingSystem}</p>
+            <p> Difficulty: {project.difficulty}</p>
+            <p> Description: {project.description}</p>
+        </div>
+        <br />
     </>
 )
+
 
 export default ProjectSummary;
