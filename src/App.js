@@ -7,7 +7,7 @@ import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
 import CreateNewRoute from './components/ClimbingRoutes/CreateNewRoute';
 import Chart from './components/ClimbingRoutes/Chart';
-import RouteDetails from './components/ClimbingRoutes/RouteDetails';
+import RouteSummary from './components/ClimbingRoutes/RouteSummary';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         <Route path="/listofroutes" component={Dashboard} />
         <Route path="/newroute" component={CreateNewRoute} exact />
         <Route path="/home" component={Chart} />
-        <Route path="/project/:id" component={RouteDetails} />
+        {/* <Route path="/project/" component={RouteSummary} /> */}
       </Switch>
     </BrowserRouter>
   );
