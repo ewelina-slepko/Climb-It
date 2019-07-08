@@ -8,16 +8,16 @@ import { compose } from 'redux';
 class Dashboard extends React.Component {
     render() {
         const { projects } = this.props;
+        console.log(projects)
         return (
             <>
                 <AppBar />
-                <RoutesList projects={projects} />
+                {projects && <RoutesList projects={projects} />}
             </>
         )
     }
 }
 const mapStateToProps = (state) => {
-    // console.log(state)
     return {
         projects: state.firestore.ordered.projects
     }
