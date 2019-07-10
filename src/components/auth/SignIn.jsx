@@ -1,14 +1,17 @@
 import React from 'react'
 
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import { NavLink } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles'
+import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
+import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { signIn } from '../../store/actions/authActions'
 
-const SignIn = () => {
+const SignIn = (props) => {
+    const { authError } = props
     const classes = useStyles();
     const [values, setValues] = React.useState({
-        name: '',
+        email: '',
         password: ''
     });
 
@@ -18,9 +21,14 @@ const SignIn = () => {
         console.log(values)
     };
 
+    const onSubmit = e => {
+        e.preventDefault();
+        props.signIn(values)
+    }
+
     return (
         <div className={classes.container}>
-            <form noValidate autoComplete="off" onSubmit={e => e.preventDefault() || alert(JSON.stringify(values))}>
+            <form noValidate autoComplete="off" onSubmit={onSubmit}>
                 <TextField
                     required
                     id="mylogin"
@@ -28,7 +36,7 @@ const SignIn = () => {
                     className={classes.textField}
                     margin="normal"
                     value={values.name}
-                    onChange={handleChange('name')}
+                    onChange={handleChange('email')}
                 />
                 <TextField
                     required
@@ -40,6 +48,7 @@ const SignIn = () => {
                     margin="normal"
                     onChange={handleChange('password')}
                 />
+                <div className={classes.errorMessage}>{authError ? <p>{authError}</p> : null}</div>
                 <div className={classes.btnWrapper}>
                     <Button variant="contained"
                         color="primary"
@@ -91,7 +100,22 @@ const useStyles = makeStyles(theme => ({
     },
     btnWrapper: {
         marginTop: 50
+    },
+    errorMessage: {
+        color: 'red'
     }
 }));
 
-export default SignIn;
+const mapStateToProps = (state) => {
+    return {
+        authError: state.auth.authError
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        signIn: (creds) => dispatch(signIn(creds))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
