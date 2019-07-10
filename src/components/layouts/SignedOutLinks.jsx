@@ -1,11 +1,21 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 const SignedOutLinks = () => (
-    //wrzucić do formularza
     <>
-        <NavLink to='/signin'>Login</NavLink>
-        <NavLink to='/signup'>Sign Up</NavLink>
+        <ListItem component={Link} to='/signin' button key='signin'>
+            <ListItemText>
+                Sign In
+                </ListItemText>
+        </ListItem>
+
+        <ListItem component={Link} to='/signup' button key='signup'>
+            <ListItemText>
+                Sign up
+                </ListItemText>
+        </ListItem>
     </>
 )
 

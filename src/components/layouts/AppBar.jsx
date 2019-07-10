@@ -1,5 +1,6 @@
 import React from 'react';
 import SignedInLinks from './SignedInLinks';
+import SignedOutLinks from './SignedOutLinks';
 
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -8,7 +9,9 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { Drawer, CssBaseline, AppBar, Toolbar, List, Typography, Divider, IconButton } from "@material-ui/core";
 
-const PersistentDrawerLeft = () => {
+import { connect } from 'react-redux'
+
+const PersistentDrawerLeft = (props) => {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -59,6 +62,9 @@ const PersistentDrawerLeft = () => {
                 <List onClick={handleDrawerClose}>
                     <SignedInLinks />
                 </List>
+                <List onClick={handleDrawerClose}>
+                    <SignedOutLinks />
+                </List>
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.drawerHeader} />
@@ -105,5 +111,11 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
 
-export default PersistentDrawerLeft;
+    }
+}
+
+export default connect(mapStateToProps)(PersistentDrawerLeft);
