@@ -7,7 +7,6 @@ import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
 import CreateNewRoute from './components/ClimbingRoutes/CreateNewRoute';
 import Chart from './components/ClimbingRoutes/Chart';
-import RouteSummary from './components/ClimbingRoutes/RouteSummary';
 
 function App() {
   return (
