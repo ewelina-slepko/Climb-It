@@ -10,11 +10,12 @@ const Chart = () => {
         <>
             <AppBar />
 
-            <div className={classes.notification}>
+            <div className={classes.container}>
                 <h1 className={classes.text}>Add your climbing achievements to see the progress chart!</h1>
-                <img src={image} className={classes.picture} />
-                <Link to="/newroute" className={classes.link}>Add new route</Link>
-
+                <div className={classes.mediaWrapper}>
+                    <img src={image} className={classes.picture} />
+                    <Link to="/newroute" className={classes.link}>Add new route</Link>
+                </div>
             </div>
 
         </>
@@ -22,13 +23,17 @@ const Chart = () => {
 }
 
 const useStyles = makeStyles(theme => ({
-    notification: {
+    container: {
         display: 'flex',
-        position: 'relative',
         flexDirection: 'column',
         margin: '0 auto',
         marginTop: 40,
         width: '70%',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    mediaWrapper: {
+        display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
     },
@@ -48,12 +53,12 @@ const useStyles = makeStyles(theme => ({
         color: '#fff',
         backgroundColor: '#858282',
         fontWeight: 'bold',
-        marginTop: 40,
+
         padding: 10,
-        borderRadius: 10,
+        borderRadius: 20,
         textDecoration: 'none',
         textTransform: 'uppercase',
-        opacity: '.7',
+        opacity: '.5',
         transition: '.3s',
         "&:hover": {
             letterSpacing: 1,
@@ -66,7 +71,7 @@ const useStyles = makeStyles(theme => ({
         width: 400,
         maxWidth: 300,
         maxHeight: 300,
-        margin: 30,
+        margin: 40,
     },
 
 }));
