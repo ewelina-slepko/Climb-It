@@ -18,7 +18,6 @@ function App() {
         <Route path="/listofroutes" component={Dashboard} />
         <Route path="/newroute" component={CreateNewRoute} exact />
         <Route path="/home" component={Chart} />
-        {/* <Route path="/project/" component={RouteSummary} /> */}
       </Switch>
     </BrowserRouter>
   );

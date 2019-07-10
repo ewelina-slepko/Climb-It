@@ -6,7 +6,8 @@ import Divider from '@material-ui/core/Divider';
 
 const arr = [
     { text: 'New Route', path: '/newroute' },
-    { text: 'List of Routes', path: '/listofroutes' }
+    { text: 'List of Routes', path: '/listofroutes' },
+    { text: 'Progress Chart', path: '/home' }
 ];
 
 const SignedInLinks = () => {
