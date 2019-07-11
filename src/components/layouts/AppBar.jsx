@@ -15,7 +15,8 @@ const PersistentDrawerLeft = (props) => {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
-
+    const { auth } = props;
+    const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />
     function handleDrawerOpen() {
         setOpen(true);
     }
@@ -60,10 +61,7 @@ const PersistentDrawerLeft = (props) => {
                 </div>
                 <Divider />
                 <List onClick={handleDrawerClose}>
-                    <SignedInLinks />
-                </List>
-                <List onClick={handleDrawerClose}>
-                    <SignedOutLinks />
+                    {links}
                 </List>
             </Drawer>
             <main className={classes.content}>
@@ -114,7 +112,7 @@ const useStyles = makeStyles(theme => ({
 const mapStateToProps = (state) => {
     console.log(state)
     return {
-
+        auth: state.firebase.auth
     }
 }
 
