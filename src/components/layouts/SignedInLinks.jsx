@@ -1,8 +1,10 @@
-import React from 'react';
+import React from 'react'
 import { Link } from 'react-router-dom'
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
+import ListItem from '@material-ui/core/ListItem'
+import ListItemText from '@material-ui/core/ListItemText'
+import Divider from '@material-ui/core/Divider'
+import { connect } from 'react-redux'
+import { signOut } from '../../store/actions/authActions'
 
 const arr = [
     { text: 'New Route', path: '/newroute' },
@@ -10,7 +12,7 @@ const arr = [
     { text: 'Progress Chart', path: '/home' }
 ];
 
-const SignedInLinks = () => {
+const SignedInLinks = (props) => {
     return (
         <>
             {arr.map((obj, index) => (
@@ -21,7 +23,7 @@ const SignedInLinks = () => {
                 </ListItem>
             ))}
             <Divider />
-            <ListItem component={Link} to='/signin' button key='logout'>
+            <ListItem component={Link} to='/signin' button key='logout' onClick={props.signOut}>
                 <ListItemText>
                     Log out
                 </ListItemText>
@@ -30,4 +32,10 @@ const SignedInLinks = () => {
     );
 }
 
-export default SignedInLinks;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        signOut: () => dispatch(signOut())
+    }
+}
+
+export default connect(null, mapDispatchToProps)(SignedInLinks);
