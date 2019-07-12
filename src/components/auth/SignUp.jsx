@@ -6,14 +6,15 @@ import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
+import { signUp } from '../../store/actions/authActions'
+
 const SignUp = (props) => {
-    const { auth } = props
+    const { auth, authError } = props
     const classes = useStyles();
     const [values, setValues] = React.useState({
-        name: '',
         email: '',
-        emailConfirmed: '',
-        password: ''
+        password: '',
+        login: '',
     });
 
     const handleChange = name => event => {
@@ -21,19 +22,14 @@ const SignUp = (props) => {
         setValues({ ...values, [name]: event.target.value });
         console.log(values)
     };
+    const onSubmit = e => {
+        e.preventDefault();
+        props.signUp(values)
+    }
     if (auth.uid) return <Redirect to="/home" />
     return (
         <div className={classes.container}>
-            <form noValidate autoComplete="off" onSubmit={e => e.preventDefault() || alert(JSON.stringify(values))}>
-                <TextField
-                    required
-                    id="login"
-                    label="Login"
-                    className={classes.textField}
-                    margin="normal"
-                    value={values.name}
-                    onChange={handleChange('name')}
-                />
+            <form noValidate autoComplete="off" onSubmit={onSubmit}>
                 <TextField
                     required
                     id="email"
@@ -42,15 +38,6 @@ const SignUp = (props) => {
                     margin="normal"
                     value={values.email}
                     onChange={handleChange('email')}
-                />
-                <TextField
-                    required
-                    id="confirmation"
-                    label="Potwierdź adres e-mail"
-                    className={classes.textField}
-                    margin="normal"
-                    value={values.emailConfirmed}
-                    onChange={handleChange('emailConfirmed')}
                 />
                 <TextField
                     required
@@ -63,6 +50,16 @@ const SignUp = (props) => {
                     value={values.password}
                     onChange={handleChange('password')}
                 />
+                <TextField
+                    required
+                    id="login"
+                    label="Login"
+                    className={classes.textField}
+                    margin="normal"
+                    value={values.login}
+                    onChange={handleChange('login')}
+                />
+                <div className={classes.errorMessage}>{authError ? <p>{authError}</p> : null}</div>
                 <Button variant="contained" color="primary" className={classes.button} type="submit" label="Login" onSubmit={handleChange('name', 'password')}>
                     Sign Up
                 </Button>
@@ -99,12 +96,22 @@ const useStyles = makeStyles(theme => ({
     input: {
         display: 'none',
     },
+    errorMessage: {
+        color: 'red'
+    }
 }));
 
 const mapStateToProps = (state) => {
     return {
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        authError: state.auth.authError
     }
 }
 
-export default connect(mapStateToProps)(SignUp);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        signUp: (newUser) => dispatch(signUp(newUser))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

@@ -33,10 +33,10 @@ const SignIn = (props) => {
                 <TextField
                     required
                     id="mylogin"
-                    label="Login"
+                    label="E-mail"
                     className={classes.textField}
                     margin="normal"
-                    value={values.name}
+                    value={values.email}
                     onChange={handleChange('email')}
                 />
                 <TextField
