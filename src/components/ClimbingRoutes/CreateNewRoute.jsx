@@ -6,9 +6,9 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import AppBar from '../layouts/AppBar';
-
 import { connect } from 'react-redux';
 import { createNewRoute } from '../../store/actions/projectActions';
+import { Redirect } from 'react-router-dom'
 
 
 const grades = [
@@ -87,7 +87,8 @@ const CreateNewRoute = (props) => {
     const handleChange = prop => event => {
         setValues({ ...values, [prop]: event.target.value });
     };
-
+    const { auth } = props
+    if (!auth.uid) return <Redirect to="/signin" />
     return (
         <div>
             <AppBar />
@@ -223,10 +224,16 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth
+    }
+}
+
 const mapDispatchToProps = (dispatch) => {
     return {
         createNewRoute: (project) => dispatch(createNewRoute(project))
     }
 }
 
-export default connect(null, mapDispatchToProps)(CreateNewRoute);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateNewRoute);

@@ -4,8 +4,15 @@ import image from '../images/climb_hard.png';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom'
 
-const Chart = () => {
+import { connect } from 'react-redux';
+import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
+import { Redirect } from 'react-router-dom'
+
+const Chart = (props) => {
+    const { auth } = props;
     const classes = useStyles();
+    if (!auth.uid) return <Redirect to="/signin" />
     return (
         <>
             <AppBar />
@@ -20,6 +27,12 @@ const Chart = () => {
 
         </>
     )
+}
+
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth
+    }
 }
 
 const useStyles = makeStyles(theme => ({
@@ -76,4 +89,9 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-export default Chart;
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        { collection: 'projects' }
+    ])
+)(Chart);

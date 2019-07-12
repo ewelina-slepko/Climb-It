@@ -4,22 +4,25 @@ import RoutesList from '../ClimbingRoutes/RouteList';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+import { Redirect } from 'react-router-dom'
 
 class Dashboard extends React.Component {
     render() {
-        const { projects } = this.props;
-        console.log(projects)
+        const { projects, auth } = this.props;
+
+        if (!auth.uid) return <Redirect to="/signin" />
         return (
             <>
                 <AppBar />
-                {projects && <RoutesList projects={projects} />}
+                {projects && <RoutesList />}
             </>
         )
     }
 }
 const mapStateToProps = (state) => {
     return {
-        projects: state.firestore.ordered.projects
+        projects: state.firestore.ordered.projects,
+        auth: state.firebase.auth
     }
 }
 

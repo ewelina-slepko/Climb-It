@@ -1,15 +1,20 @@
 import React from 'react';
 import MaterialTable from 'material-table';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
+import { Redirect } from 'react-router-dom'
 
-
-const RoutesList = ({ projects }) => {
-    const [state, setState] = React.useState({
+const RoutesList = (props) => {
+    const { auth, projects } = props
+    const [state] = React.useState({
         columns: [
             { title: 'Date', field: 'date' },
             { title: 'Route name', field: 'routeName' },
             { title: 'Difficulty', field: 'difficulty' },
         ],
+
         data: projects.map(project => {
             return {
                 date: <span>{project.date}</span>,
@@ -23,6 +28,8 @@ const RoutesList = ({ projects }) => {
             }
         }),
     });
+
+    if (!auth.uid) return <Redirect to="/signin" />
     return (
         <>
             <MaterialTable
@@ -97,4 +104,17 @@ const styles = {
     color: '#575757'
 }
 
-export default RoutesList;
+const mapStateToProps = (state) => {
+    return {
+        projects: state.firestore.ordered.projects,
+        auth: state.firebase.auth
+    }
+}
+
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        { collection: 'projects' }
+    ])
+)(RoutesList);
+
