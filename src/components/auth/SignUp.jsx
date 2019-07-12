@@ -3,8 +3,11 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
-const SignUp = () => {
+const SignUp = (props) => {
+    const { auth } = props
     const classes = useStyles();
     const [values, setValues] = React.useState({
         name: '',
@@ -18,7 +21,7 @@ const SignUp = () => {
         setValues({ ...values, [name]: event.target.value });
         console.log(values)
     };
-
+    if (auth.uid) return <Redirect to="/home" />
     return (
         <div className={classes.container}>
             <form noValidate autoComplete="off" onSubmit={e => e.preventDefault() || alert(JSON.stringify(values))}>
@@ -98,4 +101,10 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default SignUp;
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth
+    }
+}
+
+export default connect(mapStateToProps)(SignUp);

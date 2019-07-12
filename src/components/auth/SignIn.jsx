@@ -6,9 +6,10 @@ import Button from '@material-ui/core/Button'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signIn } from '../../store/actions/authActions'
+import { Redirect } from 'react-router-dom'
 
 const SignIn = (props) => {
-    const { authError } = props
+    const { authError, auth } = props
     const classes = useStyles();
     const [values, setValues] = React.useState({
         email: '',
@@ -25,7 +26,7 @@ const SignIn = (props) => {
         e.preventDefault();
         props.signIn(values)
     }
-
+    if (auth.uid) return <Redirect to="/home" />
     return (
         <div className={classes.container}>
             <form noValidate autoComplete="off" onSubmit={onSubmit}>
@@ -108,13 +109,14 @@ const useStyles = makeStyles(theme => ({
 
 const mapStateToProps = (state) => {
     return {
-        authError: state.auth.authError
+        authError: state.auth.authError,
+        auth: state.firebase.auth
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        signIn: (creds) => dispatch(signIn(creds))
+        signIn: (creds) => dispatch(signIn(creds)),
     }
 }
 
