@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './../../styles/style.css'
 import { makeStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
@@ -29,7 +29,7 @@ const SignIn = (props) => {
     if (auth.uid) return <Redirect to="/home" />
     return (
         <div className={classes.container}>
-            <form noValidate autoComplete="off" onSubmit={onSubmit}>
+            <form className={classes.formWrapper} noValidate autoComplete="off" onSubmit={onSubmit}>
                 <TextField
                     required
                     id="mylogin"
@@ -74,7 +74,13 @@ const useStyles = makeStyles(theme => ({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: 100,
+        padding: '130px 50px',
+
+    },
+    formWrapper: {
+        backgroundColor: 'rgb(255, 255, 255, .9)',
+        padding: '50px 20px',
+        borderRadius: 5
     },
     textField: {
         marginLeft: theme.spacing(1),

@@ -1,12 +1,12 @@
-import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
 import { Route, Switch, Redirect } from 'react-router-dom'
 
-import Dashboard from './components/dashboard/Dashboard';
-import SignIn from './components/auth/SignIn';
-import SignUp from './components/auth/SignUp';
-import CreateNewRoute from './components/ClimbingRoutes/CreateNewRoute';
-import Chart from './components/ClimbingRoutes/Chart';
+import Dashboard from './components/dashboard/Dashboard'
+import SignIn from './components/auth/SignIn'
+import SignUp from './components/auth/SignUp'
+import CreateNewRoute from './components/ClimbingRoutes/CreateNewRoute'
+import Chart from './components/ClimbingRoutes/Chart'
 
 function App() {
   return (

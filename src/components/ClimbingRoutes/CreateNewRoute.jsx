@@ -205,7 +205,8 @@ const useStyles = makeStyles(theme => ({
         margin: '0 auto',
         display: 'flex',
         flexWrap: 'wrap',
-        maxWidth: '500px'
+        maxWidth: '500px',
+        backgroundColor: 'rgb(255, 255, 255, .2)',
     },
     margin: {
         margin: '30px 20px 30px 20px'

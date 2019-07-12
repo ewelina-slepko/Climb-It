@@ -29,7 +29,7 @@ const SignUp = (props) => {
     if (auth.uid) return <Redirect to="/home" />
     return (
         <div className={classes.container}>
-            <form noValidate autoComplete="off" onSubmit={onSubmit}>
+            <form className={classes.formWrapper} noValidate autoComplete="off" onSubmit={onSubmit}>
                 <TextField
                     required
                     id="email"
@@ -98,7 +98,12 @@ const useStyles = makeStyles(theme => ({
     },
     errorMessage: {
         color: 'red'
-    }
+    },
+    formWrapper: {
+        backgroundColor: 'rgb(255, 255, 255, .9)',
+        padding: '50px 20px',
+        borderRadius: 5
+    },
 }));
 
 const mapStateToProps = (state) => {
