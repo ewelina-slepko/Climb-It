@@ -15,7 +15,7 @@ const PersistentDrawerLeft = (props) => {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
-    const { auth } = props;
+    const { auth, profile } = props;
     const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />
     function handleDrawerOpen() {
         setOpen(true);
@@ -43,7 +43,7 @@ const PersistentDrawerLeft = (props) => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        CLIMB IT!
+                        <p className={classes.title}>climb it, {profile.login}!</p>
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -106,13 +106,17 @@ const useStyles = makeStyles(theme => ({
         textDecoration: 'none',
         color: '#fff',
         textTransform: 'upperCase',
+    },
+    title: {
+        textTransform: 'uppercase'
     }
 }));
 
 const mapStateToProps = (state) => {
     console.log(state)
     return {
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        profile: state.firebase.profile
     }
 }
 

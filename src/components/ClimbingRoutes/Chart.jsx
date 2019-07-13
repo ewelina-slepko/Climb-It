@@ -14,18 +14,17 @@ const Chart = (props) => {
     const classes = useStyles();
     if (!auth.uid) return <Redirect to="/signin" />
     return (
-        <>
+        <div className={classes.container}>
             <AppBar />
 
-            <div className={classes.container}>
+            <div className={classes.wrapper}>
                 <h1 className={classes.text}>Add your climbing achievements to see the progress chart!</h1>
                 <div className={classes.mediaWrapper}>
                     <img src={image} className={classes.picture} />
                     <Link to="/newroute" className={classes.link}>Add new route</Link>
                 </div>
             </div>
-
-        </>
+        </div>
     )
 }
 
@@ -37,6 +36,11 @@ const mapStateToProps = (state) => {
 
 const useStyles = makeStyles(theme => ({
     container: {
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgb(255, 255, 255)',
+    },
+    wrapper: {
         display: 'flex',
         flexDirection: 'column',
         margin: '0 auto',

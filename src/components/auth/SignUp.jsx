@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { NavLink } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -60,9 +60,12 @@ const SignUp = (props) => {
                     onChange={handleChange('login')}
                 />
                 <div className={classes.errorMessage}>{authError ? <p>{authError}</p> : null}</div>
-                <Button variant="contained" color="primary" className={classes.button} type="submit" label="Login" onSubmit={handleChange('name', 'password')}>
-                    Sign Up
-                </Button>
+                <div className={classes.btnWrapper}>
+                    <Button variant="contained" color="primary" className={classes.button} type="submit" label="Login" onSubmit={handleChange('name', 'password')}>
+                        Sign Up
+                </Button >
+                    <NavLink to="/signin" className={classes.signInlink}>Sign In!</NavLink>
+                </div>
             </form>
         </div>
 
@@ -90,9 +93,6 @@ const useStyles = makeStyles(theme => ({
     menu: {
         width: 200,
     },
-    button: {
-        margin: '50px 0 0 6px',
-    },
     input: {
         display: 'none',
     },
@@ -103,6 +103,14 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: 'rgb(255, 255, 255, .9)',
         padding: '50px 20px',
         borderRadius: 5
+    },
+    btnWrapper: {
+        marginTop: 50
+    },
+    signInlink: {
+        marginLeft: 10,
+        textDecoration: 'none',
+        color: 'gray'
     },
 }));
 

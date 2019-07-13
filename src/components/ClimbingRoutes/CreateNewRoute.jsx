@@ -90,7 +90,7 @@ const CreateNewRoute = (props) => {
     const { auth } = props
     if (!auth.uid) return <Redirect to="/signin" />
     return (
-        <div>
+        <div className={classes.container}>
             <AppBar />
             <form className={classes.root} noValidate autoComplete="off" onSubmit={e => e.preventDefault() || props.createNewRoute(values)}>
                 <h1 className={clsx(classes.margin, classes.textField)}>Create New Route</h1>
@@ -201,12 +201,17 @@ const CreateNewRoute = (props) => {
 
 
 const useStyles = makeStyles(theme => ({
+    container: {
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgb(255, 255, 255)',
+    },
     root: {
         margin: '0 auto',
         display: 'flex',
         flexWrap: 'wrap',
         maxWidth: '500px',
-        backgroundColor: 'rgb(255, 255, 255, .2)',
+        
     },
     margin: {
         margin: '30px 20px 30px 20px'
