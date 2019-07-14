@@ -96,7 +96,6 @@ const CreateNewRoute = (props) => {
                 <h1 className={clsx(classes.margin, classes.textField)}>Create New Route</h1>
                 <TextField
                     id="date"
-                    variant="outlined"
                     className={clsx(classes.margin, classes.dateFieldSelect)}
                     label="Date"
                     value={values.date}
@@ -105,42 +104,51 @@ const CreateNewRoute = (props) => {
                     InputLabelProps={{
                         shrink: true,
                     }}
+                    variant="outlined"
                 />
                 <TextField
                     id="outlined-simple-start-adornment"
                     className={clsx(classes.margin, classes.textField)}
-                    variant="outlined"
                     label="Location (city)"
                     value={values.location}
                     onChange={handleChange('location')}
-
+                    variant="outlined"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
                 />
                 <TextField
                     id="outlined-simple-start-adornment"
                     className={clsx(classes.margin, classes.textField)}
-                    variant="outlined"
                     label="Rock name"
                     value={values.rockName}
                     onChange={handleChange('rockName')}
-
+                    variant="outlined"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
                 />
                 <TextField
                     id="outlined-simple-start-adornment"
                     className={clsx(classes.margin, classes.textField)}
-                    variant="outlined"
                     label="Route name"
                     value={values.routeName}
                     onChange={handleChange('routeName')}
-
+                    variant="outlined"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
                 />
                 <TextField
                     select
-                    className={clsx(classes.margin, classes.textFieldSelect)}
-                    variant="outlined"
+                    className={clsx(classes.marginSelect, classes.textFieldSelect)}
                     label="Climbing style"
                     value={values.climbingStyle}
                     onChange={handleChange('climbingStyle')}
-
+                    variant="outlined"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
                 >
                     {climbingStyles.map(option => (
                         <MenuItem key={option.value} value={option.value}>
@@ -150,12 +158,14 @@ const CreateNewRoute = (props) => {
                 </TextField>
                 <TextField
                     select
-                    className={clsx(classes.margin, classes.textFieldSelect)}
-                    variant="outlined"
+                    className={clsx(classes.marginSelect, classes.textFieldSelect)}
                     label="Grading system"
                     value={values.gradingSystem}
                     onChange={handleChange('gradingSystem')}
-
+                    variant="outlined"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
                 >
                     {grades.map(option => (
                         <MenuItem key={option.value} value={option.value}>
@@ -165,12 +175,14 @@ const CreateNewRoute = (props) => {
                 </TextField>
                 <TextField
                     id="outlined-simple-start-adornment"
-                    className={clsx(classes.margin, classes.textFieldSelect)}
-                    variant="outlined"
+                    className={clsx(classes.marginSelect, classes.textFieldSelect)}
                     label="Difficulty"
                     value={values.difficulty}
                     onChange={handleChange('difficulty')}
-
+                    variant="outlined"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
                 />
                 <TextField
                     id="outlined-multiline-static"
@@ -182,7 +194,9 @@ const CreateNewRoute = (props) => {
                     className={clsx(classes.margin, classes.textField)}
                     margin="normal"
                     variant="outlined"
-
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
                 />
                 <Button
                     variant="contained"
@@ -204,26 +218,42 @@ const useStyles = makeStyles(theme => ({
     container: {
         width: '100%',
         height: '100%',
-        backgroundColor: 'rgb(255, 255, 255)',
     },
     root: {
         margin: '0 auto',
         display: 'flex',
         flexWrap: 'wrap',
         maxWidth: '500px',
-        
     },
     margin: {
-        margin: '30px 20px 30px 20px'
+        margin: '15px 30px'
     },
     textField: {
         flexBasis: 450,
+        '& fieldset': {
+            borderRadius: 10,
+            borderWidth: 2,
+            borderColor: '#dadada !important',
+        },
     },
     dateFieldSelect: {
         flexBasis: 205,
+        '& fieldset': {
+            borderRadius: 10,
+            borderWidth: 2,
+            borderColor: '#dadada !important',
+        },
     },
     textFieldSelect: {
         flexBasis: 125,
+        '& fieldset': {
+            borderRadius: 10,
+            borderWidth: 2,
+            borderColor: '#dadada !important',
+        },
+    },
+    marginSelect: {
+        margin: '15px 5px 15px 30px'
     },
     btnPosition: {
         margin: '30px 20px 30px auto'
