@@ -8,6 +8,7 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signIn } from '../../store/actions/authActions'
 import { Redirect } from 'react-router-dom'
+import { textAlign } from '@material-ui/system';
 
 const SignIn = (props) => {
     const { authError, auth } = props
@@ -60,18 +61,28 @@ const SignIn = (props) => {
                     />
                     <div className={classes.errorMessage}>{authError ? <p>{authError}</p> : null}</div>
                     <div className={classes.btnWrapper}>
-                        <Button variant="contained"
+                        <Button
+                            style={{
+                                backgroundColor: "#39a83b",
+                                padding: '10px',
+                                borderRadius: 30,
+                            }}
+                            fullWidth={true}
+                            variant="contained"
                             color="primary"
                             type="submit"
                             label="Login"
                             onSubmit={handleChange('name', 'password')}>
                             Sign In
                 </Button>
+                    </div>
+                    <div className={classes.linkWrapper}>
                         <NavLink to="/signup" className={classes.signUplink}>Sign Up!</NavLink>
                     </div>
+
                 </form>
             </div>
-        </div>
+        </div >
     )
 }
 
@@ -103,11 +114,10 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: 'rgb(255, 255, 255, .8)',
         marginTop: 50,
         padding: '50px 20px',
-        borderRadius: 5
+        borderRadius: 5,
+        textAlign: 'center'
     },
     textField: {
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
         width: 250,
         '& fieldset': {
             borderRadius: 30,
@@ -117,7 +127,6 @@ const useStyles = makeStyles(theme => ({
     },
     floatingLabelFocusStyle: {
         paddingLeft: 20,
-        textAlign: 'center',
         color: '#626363 !important'
     },
     dense: {
@@ -134,12 +143,15 @@ const useStyles = makeStyles(theme => ({
         display: 'none',
     },
     signUplink: {
-        marginLeft: 10,
         textDecoration: 'none',
-        color: 'gray'
+        color: '#626363',
+        fontSize: 14
     },
     btnWrapper: {
-        marginTop: 50
+        marginTop: 20
+    },
+    linkWrapper: {
+        paddingTop: 10,
     },
     errorMessage: {
         color: 'red'

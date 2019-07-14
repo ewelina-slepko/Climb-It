@@ -1,13 +1,13 @@
 import React from 'react';
 
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
-import Button from '@material-ui/core/Button';
-import AppBar from '../layouts/AppBar';
-import { connect } from 'react-redux';
-import { createNewRoute } from '../../store/actions/projectActions';
+import { makeStyles } from '@material-ui/core/styles'
+import TextField from '@material-ui/core/TextField'
+import MenuItem from '@material-ui/core/MenuItem'
+import Button from '@material-ui/core/Button'
+import AppBar from '../layouts/AppBar'
+import { connect } from 'react-redux'
+import { createNewRoute } from '../../store/actions/projectActions'
 import { Redirect } from 'react-router-dom'
 
 
@@ -74,6 +74,7 @@ const climbingStyles = [
 
 const CreateNewRoute = (props) => {
     const classes = useStyles();
+
     const [values, setValues] = React.useState({
         date: '',
         location: '',
@@ -202,6 +203,9 @@ const CreateNewRoute = (props) => {
                     }}
                 />
                 <Button
+                    style={{
+                        backgroundColor: "#39a83b",
+                    }}
                     variant="contained"
                     color="primary"
                     className={classes.btnPosition}

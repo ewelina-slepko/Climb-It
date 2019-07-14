@@ -75,11 +75,27 @@ const SignUp = (props) => {
                     />
                     <div className={classes.errorMessage}>{authError ? <p>{authError}</p> : null}</div>
                     <div className={classes.btnWrapper}>
-                        <Button variant="contained" color="primary" className={classes.button} type="submit" label="Login" onSubmit={handleChange('name', 'password')}>
+                        <Button
+                            style={{
+                                backgroundColor: "#39a83b",
+                                padding: '10px',
+                                borderRadius: 30,
+                            }}
+                            fullWidth={true}
+                            variant="contained"
+                            color="primary"
+                            className={classes.button}
+                            type="submit"
+                            label="Login"
+                            onSubmit={handleChange('name', 'password')}>
                             Sign Up
                 </Button >
+                    </div>
+                    <div className={classes.linkWrapper}>
                         <NavLink to="/signin" className={classes.signInlink}>Sign In!</NavLink>
                     </div>
+
+
                 </form>
             </div>
         </div>
@@ -113,11 +129,10 @@ const useStyles = makeStyles(theme => ({
     formWrapper: {
         backgroundColor: 'rgb(255, 255, 255, .8)',
         padding: '50px 20px',
-        borderRadius: 5
+        borderRadius: 5,
+        textAlign: 'center'
     },
     textField: {
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
         width: 250,
         '& fieldset': {
             borderRadius: 30,
@@ -143,12 +158,15 @@ const useStyles = makeStyles(theme => ({
         color: 'red'
     },
     btnWrapper: {
-        marginTop: 50
+        marginTop: 20
+    },
+    linkWrapper: {
+        paddingTop: 10,
     },
     signInlink: {
-        marginLeft: 10,
         textDecoration: 'none',
-        color: 'gray',
+        color: '#626363',
+        fontSize: 14
     },
 }));
 
