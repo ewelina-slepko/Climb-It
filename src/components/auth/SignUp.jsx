@@ -41,6 +41,9 @@ const SignUp = (props) => {
                         value={values.email}
                         onChange={handleChange('email')}
                         variant="outlined"
+                        InputLabelProps={{
+                            className: classes.floatingLabelFocusStyle
+                        }}
                     />
                     <TextField
                         required
@@ -53,6 +56,9 @@ const SignUp = (props) => {
                         value={values.password}
                         onChange={handleChange('password')}
                         variant="outlined"
+                        InputLabelProps={{
+                            className: classes.floatingLabelFocusStyle
+                        }}
                     />
                     <TextField
                         required
@@ -63,6 +69,9 @@ const SignUp = (props) => {
                         value={values.login}
                         onChange={handleChange('login')}
                         variant="outlined"
+                        InputLabelProps={{
+                            className: classes.floatingLabelFocusStyle
+                        }}
                     />
                     <div className={classes.errorMessage}>{authError ? <p>{authError}</p> : null}</div>
                     <div className={classes.btnWrapper}>
@@ -115,6 +124,11 @@ const useStyles = makeStyles(theme => ({
             borderWidth: 1,
             borderColor: '#48ca4a !important',
         },
+    },
+    floatingLabelFocusStyle: {
+        paddingLeft: 20,
+        textAlign: 'center',
+        color: '#626363 !important'
     },
     dense: {
         marginTop: 16,

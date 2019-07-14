@@ -103,6 +103,7 @@ const CreateNewRoute = (props) => {
                     type="date"
                     InputLabelProps={{
                         shrink: true,
+                        className: classes.floatingLabelFocusStyle
                     }}
                     variant="outlined"
                 />
@@ -114,7 +115,7 @@ const CreateNewRoute = (props) => {
                     onChange={handleChange('location')}
                     variant="outlined"
                     InputLabelProps={{
-                        shrink: true,
+                        className: classes.floatingLabelFocusStyle
                     }}
                 />
                 <TextField
@@ -125,7 +126,7 @@ const CreateNewRoute = (props) => {
                     onChange={handleChange('rockName')}
                     variant="outlined"
                     InputLabelProps={{
-                        shrink: true,
+                        className: classes.floatingLabelFocusStyle
                     }}
                 />
                 <TextField
@@ -136,7 +137,7 @@ const CreateNewRoute = (props) => {
                     onChange={handleChange('routeName')}
                     variant="outlined"
                     InputLabelProps={{
-                        shrink: true,
+                        className: classes.floatingLabelFocusStyle
                     }}
                 />
                 <TextField
@@ -148,6 +149,7 @@ const CreateNewRoute = (props) => {
                     variant="outlined"
                     InputLabelProps={{
                         shrink: true,
+                        className: classes.floatingLabelFocusStyle
                     }}
                 >
                     {climbingStyles.map(option => (
@@ -165,6 +167,7 @@ const CreateNewRoute = (props) => {
                     variant="outlined"
                     InputLabelProps={{
                         shrink: true,
+                        className: classes.floatingLabelFocusStyle
                     }}
                 >
                     {grades.map(option => (
@@ -181,7 +184,7 @@ const CreateNewRoute = (props) => {
                     onChange={handleChange('difficulty')}
                     variant="outlined"
                     InputLabelProps={{
-                        shrink: true,
+                        className: classes.floatingLabelFocusStyle
                     }}
                 />
                 <TextField
@@ -195,7 +198,7 @@ const CreateNewRoute = (props) => {
                     margin="normal"
                     variant="outlined"
                     InputLabelProps={{
-                        shrink: true,
+                        className: classes.floatingLabelFocusStyle
                     }}
                 />
                 <Button
@@ -232,28 +235,33 @@ const useStyles = makeStyles(theme => ({
         flexBasis: 450,
         '& fieldset': {
             borderRadius: 10,
-            borderWidth: 2,
-            borderColor: '#dadada !important',
+            borderWidth: 1,
+            borderColor: '#48ca4a !important',
         },
     },
     dateFieldSelect: {
         flexBasis: 205,
         '& fieldset': {
             borderRadius: 10,
-            borderWidth: 2,
-            borderColor: '#dadada !important',
+            borderWidth: 1,
+            borderColor: '#48ca4a !important',
         },
     },
     textFieldSelect: {
         flexBasis: 125,
         '& fieldset': {
             borderRadius: 10,
-            borderWidth: 2,
-            borderColor: '#dadada !important',
+            borderWidth: 1,
+            borderColor: '#48ca4a !important',
         },
     },
     marginSelect: {
         margin: '15px 5px 15px 30px'
+    },
+    floatingLabelFocusStyle: {
+        paddingLeft: 5,
+        textAlign: 'center',
+        color: '#626363 !important'
     },
     btnPosition: {
         margin: '30px 20px 30px auto'
