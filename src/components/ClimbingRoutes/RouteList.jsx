@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Redirect } from 'react-router-dom'
+import { letterSpacing } from '@material-ui/system';
 
 const RoutesList = (props) => {
     const { auth, projects } = props
@@ -73,27 +74,18 @@ const RoutesList = (props) => {
 
                 detailPanel={rowData => {
                     return (
-                        <div
-                            style={{
-                                fontSize: 16,
-                                backgroundColor: '#fff',
-                                display: 'flex',
-                                flexDirection: 'row',
-                                alignItem: 'center',
-                                justifyContent: 'center',
-                                margin: 40
-                            }}
+                        <div className={classes.details}
                         >
                             <ul
                             >
-                                <li style={styles} >Date: {rowData.date}</li>
-                                <li style={styles}>Location: {rowData.location}</li>
-                                <li style={styles}>Rock name: {rowData.rockName}</li>
-                                <li style={styles}>Route name: {rowData.routeName}</li>
-                                <li style={styles}>Climbing style: {rowData.climbingStyle}</li>
-                                <li style={styles}>Grading system: {rowData.gradingSystem}</li>
-                                <li style={styles}>Difficulty: {rowData.difficulty}</li>
-                                <li style={styles}>Description: {rowData.description}</li>
+                                <li className={classes.detailsList} >Date: <p className={classes.detailsListValue}>{rowData.date}</p></li>
+                                <li className={classes.detailsList}>Location: <p className={classes.detailsListValue}>{rowData.location}</p></li>
+                                <li className={classes.detailsList}>Rock name: <p className={classes.detailsListValue}>{rowData.rockName}</p></li>
+                                <li className={classes.detailsList}>Route name: <p className={classes.detailsListValue}>{rowData.routeName}</p></li>
+                                <li className={classes.detailsList}>Climbing style: <p className={classes.detailsListValue}>{rowData.climbingStyle}</p></li>
+                                <li className={classes.detailsList}>Grading system: <p className={classes.detailsListValue}>{rowData.gradingSystem}</p></li>
+                                <li className={classes.detailsList}>Difficulty: <p className={classes.detailsListValue}>{rowData.difficulty}</p></li>
+                                <li className={classes.detailsList}>Description: <p className={classes.detailsListValue}>{rowData.description}</p></li>
                             </ul>
                         </div>
                     )
@@ -115,6 +107,27 @@ const useStyles = makeStyles(theme => ({
         color: '#48ca4a',
         fontWeight: 'bold'
     },
+    details: {
+        fontSize: 16,
+        backgroundColor: '#fff',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItem: 'center',
+        justifyContent: 'center',
+        margin: 40,
+    },
+    detailsList: {
+        listStyleType: 'none',
+        padding: 3,
+        color: '#575757',
+        fontSize: 14
+    },
+    detailsListValue: {
+        fontWeight: 'bold',
+        fontSize: 16,
+        paddingBottom: 3
+    }
+
 }))
 
 const mapStateToProps = (state) => {
