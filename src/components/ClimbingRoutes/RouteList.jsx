@@ -1,5 +1,6 @@
 import React from 'react';
 import MaterialTable from 'material-table';
+import { makeStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
@@ -8,8 +9,17 @@ import { Redirect } from 'react-router-dom'
 
 const RoutesList = (props) => {
     const { auth, projects } = props
+    const classes = useStyles();
     const [state] = React.useState({
         columns: [
+            { title: 'Date', field: 'date' },
+            { title: 'Location', field: 'location' },
+            { title: 'Rock Name', field: 'rockName' },
+            { title: 'Route name', field: 'routeName' },
+            { title: 'Difficulty', field: 'difficulty' },
+        ],
+
+        columnsResponsive: [
             { title: 'Date', field: 'date' },
             { title: 'Route name', field: 'routeName' },
             { title: 'Difficulty', field: 'difficulty' },
@@ -23,7 +33,7 @@ const RoutesList = (props) => {
                 routeName: <span>{project.routeName}</span>,
                 climbingStyle: <span>{project.climbingStyle}</span>,
                 gradingSystem: <span>{project.gradingSystem}</span>,
-                difficulty: <span>{project.difficulty}</span>,
+                difficulty: <span className={classes.infoGreen} > {project.difficulty}</span >,
                 description: <span>{project.description}</span>
             }
         }),
@@ -35,8 +45,8 @@ const RoutesList = (props) => {
             <MaterialTable
                 onCellClick={() => { alert("Table Row Clicked!! ") }}
                 component={Link} to="/home"
-                title="List of Routes"
-                columns={state.columns}
+                title="LIST OF ROUTES"
+                columns={window.innerWidth < 992 ? state.columnsResponsive : state.columns}
                 data={state.data}
                 options={{ pageSizeOptions: [10, 20, 30], pageSize: 10 }}
                 editable={{
@@ -60,39 +70,35 @@ const RoutesList = (props) => {
                     //     }),
 
                 }}
-                detailPanel={[
-                    {
-                        icon: 'chevron_right',
-                        tooltip: 'Show Details',
-                        render: rowData => {
-                            return (
-                                <div
-                                    style={{
-                                        fontSize: 16,
-                                        backgroundColor: '#fff',
-                                        display: 'flex',
-                                        flexDirection: 'row',
-                                        alignItem: 'center',
-                                        justifyContent: 'center',
-                                        margin: 40
-                                    }}
-                                >
-                                    <ul
-                                    >
-                                        <li style={styles} >Date: {rowData.date}</li>
-                                        <li style={styles}>Location: {rowData.location}</li>
-                                        <li style={styles}>Rock name: {rowData.rockName}</li>
-                                        <li style={styles}>Route name: {rowData.routeName}</li>
-                                        <li style={styles}>Climbing style: {rowData.climbingStyle}</li>
-                                        <li style={styles}>Grading system: {rowData.gradingSystem}</li>
-                                        <li style={styles}>Difficulty: {rowData.difficulty}</li>
-                                        <li style={styles}>Description: {rowData.description}</li>
-                                    </ul>
-                                </div>
-                            )
-                        },
-                    },
-                ]}
+
+                detailPanel={rowData => {
+                    return (
+                        <div
+                            style={{
+                                fontSize: 16,
+                                backgroundColor: '#fff',
+                                display: 'flex',
+                                flexDirection: 'row',
+                                alignItem: 'center',
+                                justifyContent: 'center',
+                                margin: 40
+                            }}
+                        >
+                            <ul
+                            >
+                                <li style={styles} >Date: {rowData.date}</li>
+                                <li style={styles}>Location: {rowData.location}</li>
+                                <li style={styles}>Rock name: {rowData.rockName}</li>
+                                <li style={styles}>Route name: {rowData.routeName}</li>
+                                <li style={styles}>Climbing style: {rowData.climbingStyle}</li>
+                                <li style={styles}>Grading system: {rowData.gradingSystem}</li>
+                                <li style={styles}>Difficulty: {rowData.difficulty}</li>
+                                <li style={styles}>Description: {rowData.description}</li>
+                            </ul>
+                        </div>
+                    )
+                }}
+                onRowClick={(event, rowData, togglePanel) => togglePanel()}
             />
         </>
     )
@@ -103,6 +109,13 @@ const styles = {
     padding: 3,
     color: '#575757'
 }
+
+const useStyles = makeStyles(theme => ({
+    infoGreen: {
+        color: '#48ca4a',
+        fontWeight: 'bold'
+    },
+}))
 
 const mapStateToProps = (state) => {
     return {

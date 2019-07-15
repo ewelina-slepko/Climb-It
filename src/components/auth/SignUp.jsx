@@ -32,6 +32,7 @@ const SignUp = (props) => {
         <div className={classes.background}>
             <div className={window.innerWidth < 992 ? classes.containerCenter : classes.containerRight}>
                 <form className={classes.formWrapper} noValidate autoComplete="off" onSubmit={onSubmit}>
+                    <h1>CLIMB IT!</h1>
                     <TextField
                         required
                         id="email"
@@ -127,7 +128,7 @@ const useStyles = makeStyles(theme => ({
         margin: '0px 300px 0px auto'
     },
     formWrapper: {
-        backgroundColor: 'rgb(255, 255, 255, .8)',
+        backgroundColor: 'rgb(255, 255, 255, .9)',
         padding: '50px 20px',
         borderRadius: 5,
         textAlign: 'center'

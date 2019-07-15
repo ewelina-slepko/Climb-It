@@ -32,6 +32,7 @@ const SignIn = (props) => {
         <div className={classes.background}>
             <div className={window.innerWidth < 992 ? classes.containerCenter : classes.containerRight}>
                 <form className={classes.formWrapper} noValidate autoComplete="off" onSubmit={onSubmit}>
+                    <h1>CLIMB IT!</h1>
                     <TextField
                         required
                         id="mylogin"
@@ -111,8 +112,8 @@ const useStyles = makeStyles(theme => ({
         margin: '0px 300px 0px auto'
     },
     formWrapper: {
-        backgroundColor: 'rgb(255, 255, 255, .8)',
-        marginTop: 50,
+        backgroundColor: 'rgb(255, 255, 255, .9)',
+        marginTop: 10,
         padding: '50px 20px',
         borderRadius: 5,
         textAlign: 'center'
