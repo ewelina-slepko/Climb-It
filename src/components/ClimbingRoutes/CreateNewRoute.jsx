@@ -8,7 +8,6 @@ import Button from '@material-ui/core/Button'
 import AppBar from '../layouts/AppBar'
 import { connect } from 'react-redux'
 import { createNewRoute } from '../../store/actions/projectActions'
-import { NewRouteConfirmation } from './NewRouteConfirmation'
 import { Redirect } from 'react-router-dom'
 
 
