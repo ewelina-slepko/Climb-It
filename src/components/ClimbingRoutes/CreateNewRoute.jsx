@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button'
 import AppBar from '../layouts/AppBar'
 import { connect } from 'react-redux'
 import { createNewRoute } from '../../store/actions/projectActions'
+import { NewRouteConfirmation } from './NewRouteConfirmation'
 import { Redirect } from 'react-router-dom'
 
 
@@ -88,12 +89,18 @@ const CreateNewRoute = (props) => {
     const handleChange = prop => event => {
         setValues({ ...values, [prop]: event.target.value });
     };
+
+    const onSubmit = e => {
+        e.preventDefault()
+        props.createNewRoute(values)
+        props.history.push('/newroutesuccess')
+    }
     const { auth } = props
     if (!auth.uid) return <Redirect to="/signin" />
     return (
         <div className={classes.container}>
             <AppBar />
-            <form className={classes.root} noValidate autoComplete="off" onSubmit={e => e.preventDefault() || props.createNewRoute(values)}>
+            <form className={classes.root} noValidate autoComplete="off" onSubmit={onSubmit}>
                 <h1 className={clsx(classes.margin, classes.textField)}>Create New Route</h1>
                 <TextField
                     id="date"

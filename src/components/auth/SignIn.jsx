@@ -8,7 +8,6 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signIn } from '../../store/actions/authActions'
 import { Redirect } from 'react-router-dom'
-import { textAlign } from '@material-ui/system';
 
 const SignIn = (props) => {
     const { authError, auth } = props

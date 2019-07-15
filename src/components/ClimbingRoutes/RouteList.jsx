@@ -96,12 +96,6 @@ const RoutesList = (props) => {
     )
 }
 
-const styles = {
-    listStyleType: 'none',
-    padding: 3,
-    color: '#575757'
-}
-
 const useStyles = makeStyles(theme => ({
     infoGreen: {
         color: '#48ca4a',
