@@ -1,17 +1,18 @@
 export const createNewRoute = (project) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
-        // const profile = getState().firebase.profile
-        const userId = getState().firebase.auth.uid
+        const authorId = getState().firebase.auth.uid
         firestore.collection('projects').add({
             ...project,
-            userId: userId,
+            author: authorId,
             createdAT: new Date()
         }).then(() => {
             dispatch({ type: 'CREATE_ROUTE', project })
         }).catch((err) => {
             dispatch({ type: 'CREATE_ROUTE_ERROR', err })
         })
-
     }
 }
+
+// const projects = firestore.collection("projects")
+// const query = projects.where(getState().firebase.auth.uid, "==", authorId)

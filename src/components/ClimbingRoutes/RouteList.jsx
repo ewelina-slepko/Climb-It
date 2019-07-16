@@ -6,11 +6,11 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Redirect } from 'react-router-dom'
-import { letterSpacing } from '@material-ui/system';
 
 const RoutesList = (props) => {
     const { auth, projects } = props
     const classes = useStyles();
+
     const [state] = React.useState({
         columns: [
             { title: 'Date', field: 'date' },
@@ -25,7 +25,6 @@ const RoutesList = (props) => {
             { title: 'Route name', field: 'routeName' },
             { title: 'Difficulty', field: 'difficulty' },
         ],
-
         data: projects.map(project => {
             return {
                 date: <span>{project.date}</span>,
@@ -125,16 +124,31 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const mapStateToProps = (state) => {
+    console.log(state.firebase.auth.uid)
+    console.log(state.firestore.ordered.projects)
     return {
         projects: state.firestore.ordered.projects,
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        userId: state.firebase.auth.uid,
     }
 }
 
 export default compose(
     connect(mapStateToProps),
-    firestoreConnect([
-        { collection: 'projects', orderBy: ['createdAT', 'desc'] }
+    firestoreConnect(props => [
+        {
+            collection: 'projects',
+            orderBy: ['createdAT', 'desc'],
+            where: [['author', '==', props.userId]]
+        }
     ])
 )(RoutesList);
+
+
+
+
+
+
+// var projects = firestore.collection("projects")
+// var query = projects.where(getState().firebase.auth.uid, "==", userId)
 
