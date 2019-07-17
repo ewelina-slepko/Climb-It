@@ -77,7 +77,7 @@ const SignIn = (props) => {
                 </Button>
                     </div>
                     <div className={classes.linkWrapper}>
-                        <NavLink to="/signup" className={classes.signUplink}>Sign Up!</NavLink>
+                        <NavLink to="/signup" className={classes.signUplink}>Register for a new account</NavLink>
                     </div>
 
                 </form>

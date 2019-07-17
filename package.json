@@ -16,7 +16,7 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "redux": "^4.0.1",
-    "redux-firestore": "^0.8.0",
+    "redux-firestore": "^1.0.0-alpha.2",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {

@@ -93,7 +93,7 @@ const SignUp = (props) => {
                 </Button >
                     </div>
                     <div className={classes.linkWrapper}>
-                        <NavLink to="/signin" className={classes.signInlink}>Sign In!</NavLink>
+                        <NavLink to="/signin" className={classes.signInlink}>Login to your account</NavLink>
                     </div>
 
 
