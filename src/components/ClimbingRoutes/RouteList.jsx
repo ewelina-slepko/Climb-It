@@ -135,11 +135,10 @@ const mapStateToProps = (state) => {
 }
 
 export default compose(
-    connect(mapStateToProps),
     firestoreConnect(props => [
         {
             collection: 'projects',
         }
-    ])
+    ]), connect(mapStateToProps)
 )(RoutesList);
 

@@ -74,11 +74,10 @@ const useStyles = makeStyles(theme => ({
         borderRadius: 20,
         textDecoration: 'none',
         textTransform: 'uppercase',
-        opacity: '.5',
+        opacity: '.9',
         transition: '.3s',
         "&:hover": {
             letterSpacing: 1,
-            opacity: '.9'
         },
     },
     picture: {
