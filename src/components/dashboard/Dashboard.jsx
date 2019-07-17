@@ -8,27 +8,36 @@ import { Redirect } from 'react-router-dom'
 
 class Dashboard extends React.Component {
     render() {
-        const { projects, auth } = this.props;
+        const { myProjects, auth } = this.props;
 
         if (!auth.uid) return <Redirect to="/signin" />
         return (
             <>
                 <AppBar />
-                {projects && <RoutesList />}
+                {myProjects && <RoutesList />}
             </>
         )
     }
 }
 const mapStateToProps = (state) => {
+    console.log(state.firebase.auth.uid)
+    console.log(state.firestore.ordered.myProjects)
     return {
         projects: state.firestore.ordered.projects,
-        auth: state.firebase.auth
+        myProjects: state.firestore.ordered.myProjects,
+        auth: state.firebase.auth,
+        userId: state.firebase.auth.uid,
     }
 }
 
 export default compose(
     connect(mapStateToProps),
-    firestoreConnect([
-        { collection: 'projects' }
+    firestoreConnect(props => [
+        {
+            collection: 'projects',
+            storeAs: 'myProjects',
+            where: [['author', '==', props.userId]],
+            orderBy: ['createdAT', 'desc'],
+        }
     ])
 )(Dashboard);

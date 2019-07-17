@@ -8,7 +8,7 @@ import { compose } from 'redux';
 import { Redirect } from 'react-router-dom'
 
 const RoutesList = (props) => {
-    const { auth, projects } = props
+    const { auth, myProjects } = props
     const classes = useStyles();
 
     const [state] = React.useState({
@@ -25,7 +25,7 @@ const RoutesList = (props) => {
             { title: 'Route name', field: 'routeName' },
             { title: 'Difficulty', field: 'difficulty' },
         ],
-        data: projects.map(project => {
+        data: myProjects.map(project => {
             return {
                 date: <span>{project.date}</span>,
                 location: <span>{project.location}</span>,
@@ -128,6 +128,7 @@ const mapStateToProps = (state) => {
     console.log(state.firestore.ordered.projects)
     return {
         projects: state.firestore.ordered.projects,
+        myProjects: state.firestore.ordered.myProjects,
         auth: state.firebase.auth,
         userId: state.firebase.auth.uid,
     }
@@ -138,17 +139,7 @@ export default compose(
     firestoreConnect(props => [
         {
             collection: 'projects',
-            orderBy: ['createdAT', 'desc'],
-            where: [['author', '==', props.userId]]
         }
     ])
 )(RoutesList);
-
-
-
-
-
-
-// var projects = firestore.collection("projects")
-// var query = projects.where(getState().firebase.auth.uid, "==", userId)
 
