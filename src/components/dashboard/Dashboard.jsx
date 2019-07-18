@@ -29,6 +29,7 @@ const mapStateToProps = (state) => {
         userId: state.firebase.auth.uid,
     }
 }
+
 export default compose(
     connect(mapStateToProps),
     firestoreConnect(props => [
@@ -38,7 +39,5 @@ export default compose(
             where: [['author', '==', props.userId]],
             orderBy: ['createdAT', 'desc'],
         }
-    ], connect(mapStateToProps))
+    ])
 )(Dashboard);
-
-
