@@ -1,36 +1,26 @@
 import React from 'react';
 import AppBar from '../layouts/AppBar';
+import { makeStyles } from '@material-ui/core/styles';
 import image from '../images/thumbs_up.png'
-import { Redirect } from 'react-router-dom'
 
-class NewRouteConfirmation extends React.Component {
-    state = {
-        redirect: false
-    }
-    componentDidMount() {
-        this.id = setTimeout(() => this.setState({ redirect: true }), 2000)
-    }
-    componentWillUnmount() {
-        clearTimeout(this.id)
-    }
-    render() {
-        return (
-            this.state.redirect
-                ? <Redirect to="/home" />
-                : <div style={styles.container}>
-                    <AppBar />
 
-                    <div style={styles.wrapper}>
-                        <h1 style={styles.text}>Done!</h1>
-                        <img src={image} style={styles.picture} />
-                    </div>
-                </div>
-        )
-    }
 
+const NewRouteConfirmation = (props) => {
+    const classes = useStyles();
+
+    return (
+        <div className={classes.container}>
+            <AppBar />
+
+            <div className={classes.wrapper}>
+                <h1 className={classes.text}>Done!</h1>
+                <img src={image} className={classes.picture} />
+            </div>
+        </div>
+    )
 }
 
-const styles = {
+const useStyles = makeStyles(theme => ({
     container: {
         width: '100%',
         height: '100%',
@@ -62,6 +52,6 @@ const styles = {
         maxHeight: 200,
         margin: 40,
     },
-};
+}));
 
 export default NewRouteConfirmation;

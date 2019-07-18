@@ -90,7 +90,7 @@ const CreateNewRoute = (props) => {
     };
 
     const onSubmit = e => {
-        // e.preventDefault()
+        e.preventDefault()
         props.createNewRoute(values)
         props.history.push('/newroutesuccess')
     }
