@@ -7,7 +7,9 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 
 const plotOptions = {
-
+    column: {
+        colorByPoint: true
+    }
 }
 
 const MyChart = (props) => {
@@ -59,16 +61,18 @@ const MyChart = (props) => {
             >
                 <Chart />
 
-                <Title>Climbing achievments</Title>
+                <Title>Climbing achievements</Title>
 
                 <Legend />
 
                 <XAxis categories={['IV', 'V', 'VI', 'VI.1', 'VI.2', 'VI.3', 'VI.4', 'VI.5']} />
 
-                <YAxis>
+                <YAxis allowDecimals={false}>
                     <ColumnSeries
                         name='number of routes'
-                        data={[IV.length, V.length, VI.length, VI1.length, VI2.length, VI3.length, VI4.length, VI5.length]} />
+                        data={[IV.length, V.length, VI.length, VI1.length, VI2.length, VI3.length, VI4.length, VI5.length]}
+
+                    />
                 </YAxis>
             </HighchartsChart>
         </div>
