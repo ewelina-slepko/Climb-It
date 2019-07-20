@@ -3,6 +3,7 @@ import AppBar from '../layouts/AppBar';
 import image from '../images/climb_hard.png';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom'
+import ProgressChart from './ProgresChart'
 
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
@@ -16,14 +17,15 @@ const Chart = (props) => {
     return (
         <div className={classes.container}>
             <AppBar />
+            <ProgressChart />
 
-            <div className={classes.wrapper}>
+            {/* <div className={classes.wrapper}>
                 <h1 className={classes.text}>Add your climbing achievements to see the progress chart!</h1>
                 <div className={classes.mediaWrapper}>
                     <img src={image} className={classes.picture} />
                     <Link to="/newroute" className={classes.link}>Add new route</Link>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
