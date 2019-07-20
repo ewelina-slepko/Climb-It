@@ -21,7 +21,6 @@ const SignUp = (props) => {
     const handleChange = name => event => {
         event.preventDefault();
         setValues({ ...values, [name]: event.target.value });
-        console.log(values)
     };
     const onSubmit = e => {
         e.preventDefault();

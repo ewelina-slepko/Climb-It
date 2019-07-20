@@ -1,23 +1,24 @@
-import React from 'react';
-import AppBar from '../layouts/AppBar';
-import image from '../images/climb_hard.png';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react'
+import AppBar from '../layouts/AppBar'
+import image from '../images/climb_hard.png'
+import { makeStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
-import ProgressChart from './ProgresChart'
+import MyChart from './MyChart'
 
-import { connect } from 'react-redux';
-import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from 'redux';
+import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 
 const Chart = (props) => {
-    const { auth } = props;
+    const { auth, myProjects } = props;
     const classes = useStyles();
     if (!auth.uid) return <Redirect to="/signin" />
     return (
         <div className={classes.container}>
             <AppBar />
-            <ProgressChart />
+            {myProjects && <MyChart />}
+
 
             {/* <div className={classes.wrapper}>
                 <h1 className={classes.text}>Add your climbing achievements to see the progress chart!</h1>
@@ -28,12 +29,6 @@ const Chart = (props) => {
             </div> */}
         </div>
     )
-}
-
-const mapStateToProps = (state) => {
-    return {
-        auth: state.firebase.auth
-    }
 }
 
 const useStyles = makeStyles(theme => ({
@@ -93,9 +88,24 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
+const mapStateToProps = (state) => {
+    return {
+        projects: state.firestore.ordered.projects,
+        myProjects: state.firestore.ordered.myProjects,
+        auth: state.firebase.auth,
+        userId: state.firebase.auth.uid,
+    }
+}
+
 export default compose(
     connect(mapStateToProps),
-    firestoreConnect([
-        { collection: 'projects' }
+    firestoreConnect(props => [
+        {
+            collection: 'projects',
+            storeAs: 'myProjects',
+            where: [['author', '==', props.userId]],
+            orderBy: ['createdAT', 'desc'],
+        }
     ])
 )(Chart);
+

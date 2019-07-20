@@ -124,8 +124,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const mapStateToProps = (state) => {
-    console.log(state.firebase.auth.uid)
-    console.log(state.firestore.ordered.projects)
     return {
         projects: state.firestore.ordered.projects,
         myProjects: state.firestore.ordered.myProjects,

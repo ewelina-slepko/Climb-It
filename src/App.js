@@ -6,7 +6,7 @@ import Dashboard from './components/dashboard/Dashboard'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import CreateNewRoute from './components/ClimbingRoutes/CreateNewRoute'
-import Chart from './components/ClimbingRoutes/Chart'
+import Home from './components/ClimbingRoutes/Home'
 import NewRouteConfirmation from './components/ClimbingRoutes/NewRouteConfirmation';
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
         <Route path="/signup/" component={SignUp} />
         <Route path="/listofroutes" component={Dashboard} />
         <Route path="/newroute" component={CreateNewRoute} exact />
-        <Route path="/home" component={Chart} />
+        <Route path="/home" component={Home} />
         <Route path="/newroutesuccess" component={NewRouteConfirmation} />
 
       </Switch>
