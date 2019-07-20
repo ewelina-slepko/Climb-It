@@ -8,7 +8,8 @@ import { compose } from 'redux';
 
 const plotOptions = {
     column: {
-        colorByPoint: true
+        colorByPoint: true,
+        'colors': ['#486B00', '#F7CB15', '#068D9D','#841584','#82204A', '#B76F18',  '#D7263D', '#050517']
     }
 }
 
@@ -62,8 +63,6 @@ const MyChart = (props) => {
                 <Chart />
 
                 <Title>Climbing achievements</Title>
-
-                <Legend />
 
                 <XAxis categories={['IV', 'V', 'VI', 'VI.1', 'VI.2', 'VI.3', 'VI.4', 'VI.5']} />
 

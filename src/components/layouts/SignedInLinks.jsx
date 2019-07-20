@@ -9,7 +9,7 @@ import { signOut } from '../../store/actions/authActions'
 const arr = [
     { text: 'New Route', path: '/newroute' },
     { text: 'List of Routes', path: '/listofroutes' },
-    { text: 'Progress Chart', path: '/home' }
+    { text: 'My Chart', path: '/home' }
 ];
 
 const SignedInLinks = (props) => {

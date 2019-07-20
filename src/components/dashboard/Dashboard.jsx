@@ -36,7 +36,7 @@ export default compose(
         {
             collection: 'projects',
             storeAs: 'myProjects',
-            where: [['author', '==', props.userId]],
+            where: [['author', '==', props.userId || null]],
             orderBy: ['createdAT', 'desc'],
         }
     ])
