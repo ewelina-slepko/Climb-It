@@ -70,30 +70,40 @@ const Statistics = (props) => {
 
     const pieData = [
         {
-            name: 'OS (on sight)',
-            y: OS.length > 0 ? OS.length : null
-        }, {
             name: 'Flash',
             y: Flash.length > 0 ? Flash.length : null
-        }, {
-            name: 'RP (rot punkt)',
-            y: RP.length > 0 ? RP.length : null
         },
         {
-            name: 'TR ( top rope)',
+            name: 'RP',
+            y: RP.length > 0 ? RP.length : null
+        },
+
+        {
+            name: 'OS',
+            y: OS.length > 0 ? OS.length : null
+        },
+        {
+            name: 'TR',
             y: TR.length > 0 ? TR.length : null
         }];
 
     return (
         <div className={window.innerWidth < 692 ? classes.containerMobile : classes.container}>
+            <h1 className={classes.header}>My Statistics</h1>
+            <div className={window.innerWidth < 692 ? classes.chartContainerMobile : classes.chartContainer}>
 
-
-            <div className={classes.barChartContainer}>
-                <h1>Climbing achievements</h1>
                 <HighchartsChart
                     highcharts={Highcharts}
                     plotOptions={plotOptions}
                 >
+                    <PieSeries
+                        name="Total consumption"
+                        size={window.innerWidth < 692 ? 30 : 70}
+                        categories={['IV', 'V', 'VI']}
+                        data={pieData}
+                        showInLegend={true}
+                        center={[180, 20]}
+                    />
                     <Chart />
 
                     <XAxis categories={['IV', 'V', 'VI', 'VI.1', 'VI.2', 'VI.3', 'VI.4', 'VI.5']} />
@@ -108,23 +118,7 @@ const Statistics = (props) => {
             </div>
 
 
-            <div className={classes.pieContainer}>
-                <h1>Climbing Style</h1>
-                <HighchartsChart
-                    highcharts={Highcharts}
-                    plotOptions={plotOptions}
-
-                >
-
-                    <PieSeries
-                        name="Total consumption"
-                        size={window.innerWidth < 692 ? 140 : 300}
-                        categories={['IV', 'V', 'VI']}
-                        data={pieData}
-                        showInLegend={false}
-                    />
-                </HighchartsChart>
-
+            <div className={classes.chartContainer}>
             </div>
         </div>
     );
@@ -132,25 +126,28 @@ const Statistics = (props) => {
 
 const useStyles = makeStyles(theme => ({
     containerMobile: {
-        margin: '0px 20px 60px 20px',
+        margin: '0px 20px 0px 20px',
         textAlign: 'center',
     },
     container: {
-        margin: '0px 200px 60px 200px',
-        textAlign: 'center'
+        margin: '0px 200px 0px 200px',
+        textAlign: 'center',
+        fontSize: 26
     },
     header: {
-        margin: '30px 0px 10px 0px',
-        textTransform: 'uppercase'
+        fontSize: 26,
+        textTransform: 'uppercase',
+        paddingTop: 10,
+        color: '#404040',
     },
-    barChartContainer: {
-        border: 'solid 1px #f5f5f5',
-        padding: '80px 0px'
+    chartContainer: {
+        padding: '80px 0px',
+        textAlign: 'right',
     },
-    pieContainer: {
-        border: 'solid 1px #f5f5f5',
-        padding: '80px 0px'
-    }
+    chartContainerMobile: {
+        padding: '20px 0px',
+        textAlign: 'right',
+    },
 }));
 
 const mapStateToProps = (state) => {
