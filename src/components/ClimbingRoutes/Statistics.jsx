@@ -145,7 +145,7 @@ const useStyles = makeStyles(theme => ({
         textAlign: 'right',
     },
     chartContainerMobile: {
-        padding: '20px 0px',
+        padding: '30px 0px',
         textAlign: 'right',
     },
 }));

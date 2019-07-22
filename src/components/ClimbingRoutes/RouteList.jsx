@@ -74,20 +74,27 @@ const RoutesList = (props) => {
 
                 detailPanel={rowData => {
                     return (
-                        <div className={classes.details}
-                        >
-                            <ul
+                        <>
+                            <div className={classes.details}
                             >
-                                <li className={classes.detailsList} >Date: <p className={classes.detailsListValue}>{rowData.date}</p></li>
-                                <li className={classes.detailsList}>Location: <p className={classes.detailsListValue}>{rowData.location}</p></li>
-                                <li className={classes.detailsList}>Rock name: <p className={classes.detailsListValue}>{rowData.rockName}</p></li>
-                                <li className={classes.detailsList}>Route name: <p className={classes.detailsListValue}>{rowData.routeName}</p></li>
-                                <li className={classes.detailsList}>Climbing style: <p className={classes.detailsListValue}>{rowData.climbingStyle}</p></li>
-                                <li className={classes.detailsList}>Grading system: <p className={classes.detailsListValue}>{rowData.gradingSystem}</p></li>
-                                <li className={classes.detailsList}>Difficulty: <p className={classes.detailsListValue}>{rowData.difficulty}</p></li>
-                                <li className={classes.detailsList}>Description: <p className={classes.detailsListValue}>{rowData.description}</p></li>
-                            </ul>
-                        </div>
+                                <ul>
+                                    <li className={classes.detailsList} >Date: <p className={classes.detailsListValue}>{rowData.date}</p></li>
+                                    <li className={classes.detailsList}>Location: <p className={classes.detailsListValue}>{rowData.location}</p></li>
+                                    <li className={classes.detailsList}>Rock name: <p className={classes.detailsListValue}>{rowData.rockName}</p></li>
+                                    <li className={classes.detailsList}>Route name: <p className={classes.detailsListValue}>{rowData.routeName}</p></li>
+                                </ul>
+
+                                <ul>
+                                    <li className={classes.detailsList}>Climbing style: <p className={classes.detailsListValue}>{rowData.climbingStyle}</p></li>
+                                    <li className={classes.detailsList}>Grading system: <p className={classes.detailsListValue}>{rowData.gradingSystem}</p></li>
+                                    <li className={classes.detailsList}>Difficulty: <p className={classes.detailsListValue}>{rowData.difficulty}</p></li>
+                                </ul>
+                                <ul>
+                                    <li className={classes.detailsList}>Description: <p className={classes.detailsListValue}>{rowData.description}</p></li>
+                                </ul>
+                            </div>
+
+                        </>
                     )
                 }}
                 onRowClick={(event, rowData, togglePanel) => togglePanel()}
@@ -120,7 +127,7 @@ const useStyles = makeStyles(theme => ({
     },
     detailsList: {
         listStyleType: 'none',
-        padding: 3,
+        padding: '2px 20px',
         color: '#575757',
         fontSize: 14
     },
