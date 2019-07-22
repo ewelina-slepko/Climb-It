@@ -13,7 +13,7 @@ const plotOptions = {
     },
     pie: {
         colorByPoint: true,
-        'colors': ['#97AFD5', '#6E809B', '#37404E', '#A9BDDC']
+        'colors': ['#DEDEDE', '#9A9997', '#B3B3B3', '#636261']
     }
 }
 

@@ -42,10 +42,11 @@ const RoutesList = (props) => {
     if (!auth.uid) return <Redirect to="/signin" />
     return (
         <>
+            <h1 className={classes.header}>List of routes</h1>
             <MaterialTable
                 onCellClick={() => { alert("Table Row Clicked!! ") }}
                 component={Link} to="/home"
-                title="LIST OF ROUTES"
+                title=""
                 columns={window.innerWidth < 992 ? state.columnsResponsive : state.columns}
                 data={state.data}
                 options={{ pageSizeOptions: [10, 20, 30], pageSize: 10 }}
@@ -99,6 +100,14 @@ const useStyles = makeStyles(theme => ({
     infoGreen: {
         color: '#48ca4a',
         fontWeight: 'bold'
+    },
+    header: {
+        fontSize: 26,
+        textTransform: 'uppercase',
+        width: '100%',
+        textAlign: 'center',
+        color: '#404040',
+        paddingBottom: 20
     },
     details: {
         fontSize: 16,

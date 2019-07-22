@@ -96,7 +96,7 @@ const CreateNewRoute = (props) => {
         <div className={classes.container}>
             <AppBar />
             <form className={classes.root} noValidate autoComplete="off" onSubmit={onSubmit}>
-                <h1 className={clsx(classes.margin, classes.textField)}>Create New Route</h1>
+                <h1 className={classes.header}>Add New Route</h1>
                 <TextField
                     id="date"
                     className={clsx(classes.margin, classes.dateFieldSelect)}
@@ -227,12 +227,22 @@ const useStyles = makeStyles(theme => ({
     container: {
         width: '100%',
         height: '100%',
+        color: '#404040',
+
     },
     root: {
         margin: '0 auto',
         display: 'flex',
         flexWrap: 'wrap',
         maxWidth: '500px',
+    },
+    header: {
+        fontSize: 26,
+        textTransform: 'uppercase',
+        width: '100%',
+        textAlign: 'center',
+        color: '#404040',
+        paddingBottom: 20
     },
     margin: {
         margin: '15px 30px'
@@ -242,7 +252,7 @@ const useStyles = makeStyles(theme => ({
         '& fieldset': {
             borderRadius: 10,
             borderWidth: 1,
-            borderColor: '#48ca4a !important',
+            borderColor: '#999797 !important',
         },
     },
     dateFieldSelect: {
@@ -250,7 +260,7 @@ const useStyles = makeStyles(theme => ({
         '& fieldset': {
             borderRadius: 10,
             borderWidth: 1,
-            borderColor: '#48ca4a !important',
+            borderColor: '#999797 !important',
         },
     },
     textFieldSelect: {
@@ -258,7 +268,7 @@ const useStyles = makeStyles(theme => ({
         '& fieldset': {
             borderRadius: 10,
             borderWidth: 1,
-            borderColor: '#48ca4a !important',
+            borderColor: '#999797 !important',
         },
     },
     marginSelect: {
