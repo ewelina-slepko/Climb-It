@@ -63,10 +63,6 @@ const climbingStyles = [
         label: 'RP (rot punkt)',
     },
     {
-        value: 'PP ( pink point)',
-        label: 'PP ( pink point)',
-    },
-    {
         value: 'TR ( top rope)',
         label: 'TR ( top rope)',
     },

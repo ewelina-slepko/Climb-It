@@ -1,7 +1,7 @@
 import React from 'react'
 import AppBar from '../layouts/AppBar'
 import { makeStyles } from '@material-ui/core/styles'
-import MyChart from './MyChart'
+import Statistics from './Statistics'
 import ChartInfo from './ChartInfo'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -16,7 +16,7 @@ const Chart = (props) => {
     return (
         <div className={classes.container}>
             <AppBar />
-            {myProjects && (myProjects.length > 0 ? <MyChart /> : <ChartInfo />)}
+            {myProjects && (myProjects.length > 0 ? <Statistics /> : <ChartInfo />)}
 
         </div>
     )

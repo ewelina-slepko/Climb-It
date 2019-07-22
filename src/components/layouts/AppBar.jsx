@@ -76,12 +76,14 @@ const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
+        color: '#cfcfcf'
     },
     appBar: {
         backgroundColor: '#24292e',
         transition: theme.transitions.create(['margin', 'width'], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
+
         }),
     },
     appBarShift: {
@@ -91,16 +93,19 @@ const useStyles = makeStyles(theme => ({
             easing: theme.transitions.easing.easeOut,
             duration: theme.transitions.duration.enteringScreen,
         }),
+
     },
     hide: {
         display: 'none',
     },
     drawerPaper: {
         width: drawerWidth,
+        backgroundColor: '#24292e',
+        color: '#cfcfcf'
     },
     content: {
         flexGrow: 1,
-        padding: '40px'
+        padding: '40px',
     },
     link: {
         textDecoration: 'none',
