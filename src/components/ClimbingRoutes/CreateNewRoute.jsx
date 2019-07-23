@@ -11,44 +11,28 @@ import { createNewRoute } from '../../store/actions/projectActions'
 import { Redirect } from 'react-router-dom'
 
 
-const grades = [
+const climbingType = [
     {
-        value: 'Kurtyka',
-        label: 'Kurtyka',
+        value: 'Sport climbing',
+        label: 'Sport climbing',
     },
     {
-        value: 'YDS',
-        label: 'YDS',
-    },
-    {
-        value: 'British',
-        label: 'British',
-    },
-    {
-        value: 'French',
-        label: 'French',
-    },
-    {
-        value: 'UIAA',
-        label: 'UIAA',
-    },
-    {
-        value: 'Saxon',
-        label: 'Saxon',
-    },
-    {
-        value: 'Ewbank',
-        label: 'Ewbank',
-    },
-    {
-        value: 'Nordic',
-        label: 'Nordic',
-    },
-    {
-        value: 'Brazilian',
-        label: 'Brazilian',
+        value: 'Bouldering',
+        label: 'Bouldering',
     },
 ];
+
+const boulderingStyles = [
+    {
+        value: 'OS (on sight)',
+        label: 'OS (on sight)',
+    },
+    {
+        value: 'RP (red point)',
+        label: 'RP (red point)',
+    },
+]
+
 const climbingStyles = [
     {
         value: 'OS (on sight)',
@@ -59,12 +43,154 @@ const climbingStyles = [
         label: 'Flash',
     },
     {
-        value: 'RP (rot punkt)',
-        label: 'RP (rot punkt)',
+        value: 'RP (red point)',
+        label: 'RP (red point)',
     },
     {
         value: 'TR ( top rope)',
         label: 'TR ( top rope)',
+    },
+]
+
+const sportClimbingDifficulty = [
+    {
+        value: 'IV',
+        label: 'IV',
+    },
+    {
+        value: 'V',
+        label: 'V',
+    },
+    {
+        value: 'VI',
+        label: 'VI',
+    },
+    {
+        value: 'VI.1',
+        label: 'VI.1',
+    },
+    {
+        value: 'VI.2',
+        label: 'VI.2',
+    },
+    {
+        value: 'VI.3',
+        label: 'VI.3',
+    },
+    {
+        value: 'VI.4',
+        label: 'VI.4',
+    },
+    {
+        value: 'VI.5',
+        label: 'VI.5',
+    },
+]
+
+const boulderingDifficulty = [
+    {
+        value: '1',
+        label: '1',
+    },
+    {
+        value: '2',
+        label: '2',
+    },
+    {
+        value: '3',
+        label: '3',
+    },
+    {
+        value: '4',
+        label: '4',
+    },
+    {
+        value: '4+',
+        label: '4+',
+    },
+    {
+        value: '5',
+        label: '5',
+    },
+    {
+        value: '5+',
+        label: '5+',
+    },
+    {
+        value: '6a',
+        label: '6a',
+    },
+    {
+        value: '6a+',
+        label: '6a+',
+    },
+    {
+        value: '6b',
+        label: '6b',
+    },
+    {
+        value: '6b+',
+        label: '6b+',
+    },
+    {
+        value: '6c',
+        label: '6c',
+    },
+    {
+        value: '6c+',
+        label: '6c+',
+    },
+    {
+        value: '7a',
+        label: '7a',
+    },
+    {
+        value: '7a+',
+        label: '7a+',
+    },
+    {
+        value: '7b',
+        label: '7b',
+    },
+    {
+        value: '7b+',
+        label: '7b+',
+    },
+    {
+        value: '7c',
+        label: '7c',
+    },
+    {
+        value: '7c+',
+        label: '7c+',
+    },
+    {
+        value: '8a',
+        label: '8a',
+    },
+    {
+        value: '8a+',
+        label: '8a+',
+    },
+    {
+        value: '8b',
+        label: '8b',
+    },
+    {
+        value: '8b+',
+        label: '8b+',
+    },
+    {
+        value: '8c',
+        label: '8c',
+    },
+    {
+        value: '8c+',
+        label: '8c+',
+    },
+    {
+        value: '9a',
+        label: '9a',
     },
 ]
 
@@ -76,9 +202,10 @@ const CreateNewRoute = (props) => {
         location: '',
         rockName: '',
         routeName: '',
-        gradingSystem: '',
+        climbingType: '',
         difficulty: '',
         climbingStyle: '',
+        boulderingStyle: '',
         description: ''
     });
     const handleChange = prop => event => {
@@ -146,50 +273,118 @@ const CreateNewRoute = (props) => {
                 <TextField
                     select
                     className={clsx(classes.marginSelect, classes.textFieldSelect)}
-                    label="Climbing style"
-                    value={values.climbingStyle}
-                    onChange={handleChange('climbingStyle')}
+                    label="Type of climbing"
+                    value={values.climbingType}
+                    onChange={handleChange('climbingType')}
                     variant="outlined"
                     InputLabelProps={{
                         shrink: true,
                         className: classes.floatingLabelFocusStyle
                     }}
                 >
-                    {climbingStyles.map(option => (
+                    {climbingType.map(option => (
                         <MenuItem key={option.value} value={option.value}>
                             {option.label}
                         </MenuItem>
                     ))}
                 </TextField>
-                <TextField
-                    select
-                    className={clsx(classes.marginSelect, classes.textFieldSelect)}
-                    label="Grading system"
-                    value={values.gradingSystem}
-                    onChange={handleChange('gradingSystem')}
-                    variant="outlined"
-                    InputLabelProps={{
-                        shrink: true,
-                        className: classes.floatingLabelFocusStyle
-                    }}
-                >
-                    {grades.map(option => (
-                        <MenuItem key={option.value} value={option.value}>
-                            {option.label}
-                        </MenuItem>
-                    ))}
-                </TextField>
-                <TextField
-                    id="outlined-simple-start-adornment"
-                    className={clsx(classes.marginSelect, classes.textFieldSelect)}
-                    label="Difficulty"
-                    value={values.difficulty}
-                    onChange={handleChange('difficulty')}
-                    variant="outlined"
-                    InputLabelProps={{
-                        className: classes.floatingLabelFocusStyle
-                    }}
-                />
+
+                {values.climbingType === 'Sport climbing'
+                    ?
+                    <TextField
+                        select
+                        className={clsx(classes.marginSelect, classes.textFieldSelect)}
+                        label="Difficulty"
+                        value={values.difficulty}
+                        onChange={handleChange('difficulty')}
+                        variant="outlined"
+                        InputLabelProps={{
+                            shrink: true,
+                            className: classes.floatingLabelFocusStyle
+                        }}
+                    >
+                        {sportClimbingDifficulty.map(option => (
+                            <MenuItem key={option.value} value={option.value}>
+                                {option.label}
+                            </MenuItem>
+                        ))}
+                    </TextField>
+                    :
+                    null
+                }
+
+                {values.climbingType === 'Bouldering'
+                    ?
+                    <TextField
+                        select
+                        className={clsx(classes.marginSelect, classes.textFieldSelect)}
+                        label="Difficulty"
+                        value={values.difficulty}
+                        onChange={handleChange('difficulty')}
+                        variant="outlined"
+                        InputLabelProps={{
+                            shrink: true,
+                            className: classes.floatingLabelFocusStyle
+                        }}
+                    >
+                        {boulderingDifficulty.map(option => (
+                            <MenuItem key={option.value} value={option.value}>
+                                {option.label}
+                            </MenuItem>
+                        ))}
+                    </TextField>
+                    :
+                    null}
+
+                {values.climbingType === 'Sport climbing'
+                    ?
+                    <TextField
+                        select
+                        className={clsx(classes.marginSelect, classes.textFieldSelect)}
+                        label="Climbing style"
+                        value={values.climbingStyle}
+                        onChange={handleChange('climbingStyle')}
+                        variant="outlined"
+                        InputLabelProps={{
+                            shrink: true,
+                            className: classes.floatingLabelFocusStyle
+                        }}
+                    >
+                        {climbingStyles.map(option => (
+                            <MenuItem key={option.value} value={option.value}>
+                                {option.label}
+                            </MenuItem>
+                        ))}
+                    </TextField>
+                    :
+                    null
+                }
+
+                {values.climbingType === 'Bouldering'
+                    ?
+                    <TextField
+                        select
+                        className={clsx(classes.marginSelect, classes.textFieldSelect)}
+                        label="Climbing style"
+                        value={values.boulderingStyle}
+                        onChange={handleChange('boulderingStyle')}
+                        variant="outlined"
+                        InputLabelProps={{
+                            shrink: true,
+                            className: classes.floatingLabelFocusStyle
+                        }}
+                    >
+                        {boulderingStyles.map(option => (
+                            <MenuItem key={option.value} value={option.value}>
+                                {option.label}
+                            </MenuItem>
+                        ))}
+                    </TextField>
+                    :
+                    null
+                }
+
+
                 <TextField
                     id="outlined-multiline-static"
                     label="Description"

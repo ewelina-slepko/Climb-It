@@ -31,14 +31,14 @@ const RoutesList = (props) => {
                 location: <span>{project.location}</span>,
                 rockName: <span>{project.rockName}</span>,
                 routeName: <span>{project.routeName}</span>,
+                climbingType: <span>{project.climbingType}</span>,
                 climbingStyle: <span>{project.climbingStyle}</span>,
-                gradingSystem: <span>{project.gradingSystem}</span>,
+                boulderingStyle: <span>{project.boulderingStyle}</span>,
                 difficulty: <span className={classes.infoGreen} > {project.difficulty}</span >,
                 description: <span>{project.description}</span>
             }
         }),
     });
-
     if (!auth.uid) return <Redirect to="/signin" />
     return (
         <>
@@ -78,20 +78,22 @@ const RoutesList = (props) => {
                             <div className={classes.details}
                             >
                                 <ul>
-                                    <li className={classes.detailsList} >Date: <p className={classes.detailsListValue}>{rowData.date}</p></li>
+                                    <li className={classes.detailsList}>Date: <p className={classes.detailsListValue}>{rowData.date}</p></li>
                                     <li className={classes.detailsList}>Location: <p className={classes.detailsListValue}>{rowData.location}</p></li>
                                     <li className={classes.detailsList}>Rock name: <p className={classes.detailsListValue}>{rowData.rockName}</p></li>
                                     <li className={classes.detailsList}>Route name: <p className={classes.detailsListValue}>{rowData.routeName}</p></li>
                                 </ul>
 
                                 <ul>
-                                    <li className={classes.detailsList}>Climbing style: <p className={classes.detailsListValue}>{rowData.climbingStyle}</p></li>
-                                    <li className={classes.detailsList}>Grading system: <p className={classes.detailsListValue}>{rowData.gradingSystem}</p></li>
-                                    <li className={classes.detailsList}>Difficulty: <p className={classes.detailsListValue}>{rowData.difficulty}</p></li>
+                                    <li className={classes.detailsList}>Climbing type: <p className={classes.detailsListValue}>{rowData.climbingType}</p></li>
+                                    <li className={classes.detailsList}>Difficulty: <span className={classes.detailsListValue}>{rowData.difficulty}</span> <span className={classes.detailsListValueSmall}>{rowData.climbingStyle}{rowData.boulderingStyle}</span></li>
                                 </ul>
-                                <ul>
-                                    <li className={classes.detailsList}>Description: <p className={classes.detailsListValue}>{rowData.description}</p></li>
-                                </ul>
+
+                            </div>
+                            <div className={classes.containerDescription}>
+                                <div className={classes.detailsDescription}>
+                                    <p className={classes.detailsListValueSmall}>{rowData.description}</p>
+                                </div>
                             </div>
 
                         </>
@@ -118,12 +120,11 @@ const useStyles = makeStyles(theme => ({
     },
     details: {
         fontSize: 16,
-        backgroundColor: '#fff',
         display: 'flex',
         flexDirection: 'row',
         alignItem: 'center',
         justifyContent: 'center',
-        margin: 40,
+        marginTop: 40,
     },
     detailsList: {
         listStyleType: 'none',
@@ -135,6 +136,25 @@ const useStyles = makeStyles(theme => ({
         fontWeight: 'bold',
         fontSize: 16,
         paddingBottom: 3
+    },
+    detailsListValueSmall: {
+        fontSize: 10,
+        paddingBottom: 3,
+        fontStyle: 'italic'
+    },
+    containerDescription: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItem: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        textAlign: 'center',
+        margin: '30px 0px',
+    },
+    detailsDescription: {
+        maxWidth: 260,
+        borderTop: 'solid #f0f0f0 1px',
+        paddingTop: 10
     }
 
 }))
