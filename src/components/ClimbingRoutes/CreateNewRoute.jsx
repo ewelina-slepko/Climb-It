@@ -58,32 +58,88 @@ const sportClimbingDifficulty = [
         label: 'IV',
     },
     {
+        value: 'V-',
+        label: 'V-',
+    },
+    {
         value: 'V',
         label: 'V',
+    },
+    {
+        value: 'V+',
+        label: 'V+',
+    },
+    {
+        value: 'VI-',
+        label: 'VI-',
     },
     {
         value: 'VI',
         label: 'VI',
     },
     {
+        value: 'VI+',
+        label: 'VI+',
+    },
+    {
         value: 'VI.1',
         label: 'VI.1',
+    },
+    {
+        value: 'VI.1+',
+        label: 'VI.1+',
     },
     {
         value: 'VI.2',
         label: 'VI.2',
     },
     {
+        value: 'VI.2+',
+        label: 'VI.2+',
+    },
+    {
         value: 'VI.3',
         label: 'VI.3',
+    },
+    {
+        value: 'VI.3+',
+        label: 'VI.3+',
     },
     {
         value: 'VI.4',
         label: 'VI.4',
     },
     {
+        value: 'VI.4+',
+        label: 'VI.4+',
+    },
+    {
         value: 'VI.5',
         label: 'VI.5',
+    },
+    {
+        value: 'VI.5+',
+        label: 'VI.5+',
+    },
+    {
+        value: 'VI.6',
+        label: 'VI.6',
+    },
+    {
+        value: 'VI.6+',
+        label: 'VI.6+',
+    },
+    {
+        value: 'VI.7',
+        label: 'VI.7',
+    },
+    {
+        value: 'VI.7+',
+        label: 'VI.7+',
+    },
+    {
+        value: 'VI.8',
+        label: 'VI.8',
     },
 ]
 

@@ -5,11 +5,12 @@ import { makeStyles } from '@material-ui/core/styles'
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+import { FileFileDownload } from 'material-ui/svg-icons';
 
 const plotOptions = {
     column: {
         colorByPoint: true,
-        'colors': ['#D0DBCB', '#A1B897', '#638852', '#4D723C', '#3E5B30', '#2E4524', '#1F2E18', '#080C06']
+        'colors': ['#87B068', '#5B9330', '#E1DD73', '#D7D245', '#CDC717', '#CA3330', '#BF0603', '#8B0503']
     },
     pie: {
         colorByPoint: true,
@@ -18,45 +19,30 @@ const plotOptions = {
 }
 
 
+
+
 const Statistics = (props) => {
     const { myProjects } = props;
     const classes = useStyles();
-
-    const difficulties = myProjects.map(project => (
-        project.difficulty
-    ));
 
     const climbingStyles = myProjects.map(project => (
         project.climbingStyle
     ));
 
-    //mapProjectsToData return tablica z ilością trudności
+    const boulderingTypes = myProjects.filter(project => project.climbingType === 'Bouldering')
+    const sportClimbingTypes = myProjects.filter(project => project.climbingType === 'Sport climbing')
 
 
-    const IV = difficulties.filter(IV => (
-        IV === 'IV'
-    ));
-    const V = difficulties.filter(V => (
-        V === 'V'
-    ));
-    const VI = difficulties.filter(VI => (
-        VI === 'VI'
-    ));
-    const VI1 = difficulties.filter(VI1 => (
-        VI1 === 'VI.1'
-    ));
-    const VI2 = difficulties.filter(VI2 => (
-        VI2 === 'VI.2'
-    ));
-    const VI3 = difficulties.filter(VI3 => (
-        VI3 === 'VI.3'
-    ));
-    const VI4 = difficulties.filter(VI4 => (
-        VI4 === 'VI.4'
-    ));
-    const VI5 = difficulties.filter(VI5 => (
-        VI5 === 'VI.5'
-    ));
+    const mapProjectsToData = (types) => {
+        const difficulties = types.map(project => project.difficulty)
+        const categories = [...new Set(difficulties)].sort();
+        const data = categories.map(grade =>
+            difficulties.filter(difficulty => difficulty === grade).length
+        )
+        return { categories, data }
+    }
+    console.log(mapProjectsToData(boulderingTypes))
+    console.log(mapProjectsToData(sportClimbingTypes))
 
 
     const OS = climbingStyles.filter(route => (
@@ -82,95 +68,7 @@ const Statistics = (props) => {
         route === 'RP (rot punkt)'
     ));
 
-    const dif4 = difficulties.filter(dif => (
-        dif === '4'
-    ));
-    const difPlus4 = difficulties.filter(dif => (
-        dif === '4+'
-    ));
-    const dif5 = difficulties.filter(dif => (
-        dif === '5'
-    ));
-    const difPlus5 = difficulties.filter(dif => (
-        dif === '5+'
-    ));
-    const dif6a = difficulties.filter(dif => (
-        dif === '6a'
-    ));
-    const difPlus6a = difficulties.filter(dif => (
-        dif === '6a+'
-    ));
-    const dif6b = difficulties.filter(dif => (
-        dif === '6b'
-    ));
-    const difPlus6b = difficulties.filter(dif => (
-        dif === '6b+'
-    ));
-    const dif6c = difficulties.filter(dif => (
-        dif === '6c'
-    ));
-    const difPlus6c = difficulties.filter(dif => (
-        dif === '6c+'
-    ));
-    const dif7a = difficulties.filter(dif => (
-        dif === '7a'
-    ));
-    const difPlus7a = difficulties.filter(dif => (
-        dif === '7a+'
-    ));
-    const dif7b = difficulties.filter(dif => (
-        dif === '7b'
-    ));
-    const difPlus7b = difficulties.filter(dif => (
-        dif === '7b+'
-    ));
-    const dif7c = difficulties.filter(dif => (
-        dif === '7c'
-    ));
-    const difPlus7c = difficulties.filter(dif => (
-        dif === '7c+'
-    ));
-    const dif8a = difficulties.filter(dif => (
-        dif === '8a'
-    ));
-    const difPlus8a = difficulties.filter(dif => (
-        dif === '8a+'
-    ));
-    const dif8b = difficulties.filter(dif => (
-        dif === '8b'
-    ));
-    const difPlus8b = difficulties.filter(dif => (
-        dif === '8b+'
-    ));
-    const dif8c = difficulties.filter(dif => (
-        dif === '8c'
-    ));
-    const difPlus8c = difficulties.filter(dif => (
-        dif === '8c+'
-    ));
-    const dif9a = difficulties.filter(dif => (
-        dif === '9a'
-    ));
 
-
-    const pieDataSport = [
-        {
-            name: 'Flash',
-            y: Flash.length > 0 ? Flash.length : null
-        },
-        {
-            name: 'RP',
-            y: RP.length > 0 ? RP.length : null
-        },
-
-        {
-            name: 'OS',
-            y: OS.length > 0 ? OS.length : null
-        },
-        {
-            name: 'TR',
-            y: TR.length > 0 ? TR.length : null
-        }];
 
     const pieDataBouldering = [
         {
