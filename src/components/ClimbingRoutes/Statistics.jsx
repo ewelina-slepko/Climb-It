@@ -5,21 +5,19 @@ import { makeStyles } from '@material-ui/core/styles'
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
-import { FileFileDownload } from 'material-ui/svg-icons';
 
 const plotOptions = {
     column: {
         colorByPoint: true,
-        'colors': ['#87B068', '#5B9330', '#E1DD73', '#D7D245', '#CDC717', '#CA3330', '#BF0603', '#8B0503']
+        'colors': ['#87B068', '#87B068', '#87B068', '#D0BF5F', '#D0BF5F', '#D0BF5F', '#823B6E',
+            '#823B6E', '#823B6E', '#CA3330', '#CA3330', '#CA3330', '#08415C', '#08415C', '#08415C', '#666A86', '#666A86', '#666A86', '#000000', '#000000', '#000000',
+        ]
     },
     pie: {
         colorByPoint: true,
         'colors': ['#FBD4A4', '#F9BF77', '#F7A94A', '#864C04']
     }
 }
-
-
-
 
 const Statistics = (props) => {
     const { myProjects } = props;
@@ -33,7 +31,7 @@ const Statistics = (props) => {
     const sportClimbingTypes = myProjects.filter(project => project.climbingType === 'Sport climbing')
 
 
-    const mapProjectsToData = (types) => {
+    function mapProjectsToData(types) {
         const difficulties = types.map(project => project.difficulty)
         const categories = [...new Set(difficulties)].sort();
         const data = categories.map(grade =>
@@ -41,9 +39,8 @@ const Statistics = (props) => {
         )
         return { categories, data }
     }
-    console.log(mapProjectsToData(boulderingTypes))
-    console.log(mapProjectsToData(sportClimbingTypes))
-
+    const boulderingData = mapProjectsToData(boulderingTypes)
+    const sportClimbingData = mapProjectsToData(sportClimbingTypes)
 
     const OS = climbingStyles.filter(route => (
         route === 'OS (on sight)'
@@ -52,10 +49,10 @@ const Statistics = (props) => {
         route === 'Flash'
     ));
     const RP = climbingStyles.filter(route => (
-        route === 'RP (rot punkt)'
+        route === 'RP (red point)'
     ));
     const TR = climbingStyles.filter(route => (
-        route === 'TR ( top rope)'
+        route === 'TR (top rope)'
     ));
 
     const boulderingStyles = myProjects.map(project => (
@@ -65,20 +62,37 @@ const Statistics = (props) => {
         route === 'OS (on sight)'
     ));
     const RPBoulder = boulderingStyles.filter(route => (
-        route === 'RP (rot punkt)'
+        route === 'RP (red point)'
     ));
 
-
-
-    const pieDataBouldering = [
+    const pieDataSport = [
+        {
+            name: 'Flash',
+            y: Flash.length > 0 ? Flash.length : null
+        },
         {
             name: 'RP',
-            y: RPBoulder.length > 0 ? RP.length : null
+            y: RP.length > 0 ? RP.length : null
         },
 
         {
             name: 'OS',
-            y: OSBoulder.length > 0 ? OS.length : null
+            y: OS.length > 0 ? OS.length : null
+        },
+        {
+            name: 'TR',
+            y: TR.length > 0 ? TR.length : null
+        }];
+
+    const pieDataBouldering = [
+        {
+            name: 'RP',
+            y: RPBoulder.length > 0 ? RPBoulder.length : null
+        },
+
+        {
+            name: 'OS',
+            y: OSBoulder.length > 0 ? OSBoulder.length : null
         },
     ]
 
@@ -87,10 +101,7 @@ const Statistics = (props) => {
             <h1 className={classes.header}>My Statistics</h1>
             <div className={window.innerWidth < 692 ? classes.chartContainerMobile : classes.chartContainer}>
 
-
-
                 <div className={classes.sectionOne}>
-
                     <HighchartsChart
                         highcharts={Highcharts}
                         plotOptions={plotOptions}
@@ -98,11 +109,11 @@ const Statistics = (props) => {
                         <Title>Sport climbing achievements</Title>
 
                         <Chart />
-                        <XAxis categories={['IV', 'V', 'VI', 'VI.1', 'VI.2', 'VI.3', 'VI.4', 'VI.5']} />
+                        <XAxis categories={sportClimbingData.categories} />
                         <YAxis allowDecimals={false}>
                             <ColumnSeries
                                 name='number of routes'
-                                data={[IV.length, V.length, VI.length, VI1.length, VI2.length, VI3.length, VI4.length, VI5.length]}
+                                data={sportClimbingData.data}
                             />
                         </YAxis>
                     </HighchartsChart>
@@ -134,18 +145,11 @@ const Statistics = (props) => {
                         <Title>Bouldering achievements</Title>
 
                         <Chart />
-                        <XAxis categories={['4', '4+', '5', '5+',
-                            '6a', '6a+', '6b', '6b+', '6c', '6c+',
-                            '7a', '7a+', '7b', '7b+', '7c', '7c+',
-                            '8a', '8a+', '8b', '8b+', '8c', '8c+', '9a']} />
+                        <XAxis categories={boulderingData.categories} />
                         <YAxis allowDecimals={false}>
                             <ColumnSeries
                                 name='number of routes'
-                                data={[dif4.length, difPlus4.length, dif5.length, difPlus5.length, dif6a.length,
-                                difPlus6a.length, dif6b.length, difPlus6b.length, dif6c.length, difPlus6c.length,
-                                dif7a.length, difPlus7a.length, dif7b.length, difPlus7b.length, dif7c.length,
-                                difPlus7c.length, dif8a.length, difPlus8a.length, dif8b.length, difPlus8b.length,
-                                dif8c.length, difPlus8c.length, dif9a.length]}
+                                data={boulderingData.data}
                             />
                         </YAxis>
 
