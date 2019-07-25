@@ -427,8 +427,6 @@ const CreateNewRoute = (props) => {
                     :
                     null
                 }
-
-
                 <TextField
                     id="outlined-multiline-static"
                     label="Description"
@@ -484,12 +482,12 @@ const useStyles = makeStyles(theme => ({
         paddingBottom: 20
     },
     margin: {
-        margin: '15px 30px'
+        margin: '10px 30px'
     },
     textField: {
         flexBasis: 450,
         '& fieldset': {
-            borderRadius: 10,
+            borderRadius: 12,
             borderWidth: 1,
             borderColor: '#999797 !important',
         },
@@ -497,7 +495,7 @@ const useStyles = makeStyles(theme => ({
     dateFieldSelect: {
         flexBasis: 205,
         '& fieldset': {
-            borderRadius: 10,
+            borderRadius: 12,
             borderWidth: 1,
             borderColor: '#999797 !important',
         },
@@ -505,13 +503,13 @@ const useStyles = makeStyles(theme => ({
     textFieldSelect: {
         flexBasis: 125,
         '& fieldset': {
-            borderRadius: 10,
+            borderRadius: 12,
             borderWidth: 1,
             borderColor: '#999797 !important',
         },
     },
     marginSelect: {
-        margin: '15px 5px 15px 30px'
+        margin: '10px 5px 10px 30px'
     },
     floatingLabelFocusStyle: {
         paddingLeft: 5,

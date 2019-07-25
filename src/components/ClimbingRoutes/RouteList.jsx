@@ -48,7 +48,7 @@ const RoutesList = (props) => {
                 title="List of routes"
                 columns={window.innerWidth < 992 ? state.columnsResponsive : state.columns}
                 data={state.data}
-                options={{ pageSizeOptions: [10, 20, 30], pageSize: 10 }}
+                options={{ pageSizeOptions: [10, 20, 30], pageSize: 10, search: true, sorting: true }}
                 editable={{
                     // onRowUpdate: (newData, oldData) =>
                     //     new Promise(resolve => {

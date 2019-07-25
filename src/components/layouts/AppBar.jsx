@@ -7,13 +7,13 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { Drawer, CssBaseline, AppBar, Toolbar, List, Typography, Divider, IconButton } from "@material-ui/core";
-
+import { Drawer, CssBaseline, AppBar, Toolbar, List, Typography, Divider, IconButton } from "@material-ui/core"
+import { createMuiTheme } from '@material-ui/core/styles';
 import { connect } from 'react-redux'
 
 const PersistentDrawerLeft = (props) => {
     const classes = useStyles();
-    const theme = useTheme();
+    const theme = useTheme()
     const [open, setOpen] = React.useState(false);
     const { auth, profile } = props;
     const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />
@@ -56,7 +56,7 @@ const PersistentDrawerLeft = (props) => {
                 }}>
                 <div>
                     <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                        {theme.direction === 'ltr' ? <ChevronLeftIcon className={classes.icon} /> : <ChevronRightIcon className={classes.icon} />}
                     </IconButton>
                 </div>
                 <Divider />
@@ -72,6 +72,8 @@ const PersistentDrawerLeft = (props) => {
 }
 
 const drawerWidth = 240;
+
+
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -97,6 +99,9 @@ const useStyles = makeStyles(theme => ({
     },
     hide: {
         display: 'none',
+    },
+    icon: {
+        color: '#cfcfcf'
     },
     drawerPaper: {
         width: drawerWidth,
