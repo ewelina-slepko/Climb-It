@@ -11,12 +11,12 @@ const NewRouteConfirmation = (props) => {
     return (
         <div className={classes.container}>
             <AppBar />
-
             <div className={classes.wrapper}>
                 <h1 className={classes.text}>Done!</h1>
                 <img src={image} className={classes.picture} />
             </div>
         </div>
+
     )
 }
 

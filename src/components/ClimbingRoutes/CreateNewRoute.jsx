@@ -1,5 +1,4 @@
 import React from 'react';
-
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
@@ -260,6 +259,7 @@ const CreateNewRoute = (props) => {
         e.preventDefault()
         props.createNewRoute(values)
         props.history.push('/newroutesuccess')
+        window.location.reload()
     }
     const { auth } = props
     if (!auth.uid) return <Redirect to="/signin" />

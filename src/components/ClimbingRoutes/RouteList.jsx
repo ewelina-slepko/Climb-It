@@ -2,6 +2,7 @@ import React from 'react';
 import MaterialTable from 'material-table';
 import { makeStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom';
+import { deleteRoute } from '../../store/actions/projectActions'
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
@@ -27,6 +28,7 @@ const RoutesList = (props) => {
         ],
         data: myProjects.map(project => {
             return {
+                id: <span>{project.id}</span>,
                 date: <span>{project.date}</span>,
                 location: <span>{project.location}</span>,
                 rockName: <span>{project.rockName}</span>,
@@ -48,29 +50,27 @@ const RoutesList = (props) => {
                 title="List of routes"
                 columns={window.innerWidth < 992 ? state.columnsResponsive : state.columns}
                 data={state.data}
-                options={{ pageSizeOptions: [10, 20, 30], pageSize: 10, search: true, sorting: true }}
-                editable={{
-                    // onRowUpdate: (newData, oldData) =>
-                    //     new Promise(resolve => {
-                    //         setTimeout(() => {
-                    //             resolve();
-                    //             const data = [...state.data];
-                    //             data[data.indexOf(oldData)] = newData;
-                    //             setState({ ...state, data });
-                    //         }, 600);
-                    //     }),
-                    // onRowDelete: oldData =>
-                    //     new Promise(resolve => {
-                    //         setTimeout(() => {
-                    //             resolve();
-                    //             const data = [...state.data];
-                    //             data.splice(data.indexOf(oldData), 1);
-                    //             setState({ ...state, data });
-                    //         }, 600);
-                    //     }),
+                options={{ pageSizeOptions: [10, 20, 30], pageSize: 10, search: false, sorting: false }}
+                // editable={{
+                //     onRowDelete: oldData =>
+                //         new Promise(resolve => {
+                //             setTimeout(() => {
+                //                 resolve();
+                //                 console.log(oldData)
+                //             }, 600);
+                //         }),
 
-                }}
-
+                // }}
+                actions={[
+                    {
+                        icon: 'delete_outline',
+                        tooltip: 'Save User',
+                        onClick: (event, rowData) => {
+                            props.deleteRoute(rowData.id.props.children)
+                            setTimeout(function () { window.location.reload() }, 200);
+                        }
+                    }
+                ]}
                 detailPanel={rowData => {
                     return (
                         <>
@@ -158,6 +158,12 @@ const useStyles = makeStyles(theme => ({
 
 }))
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deleteRoute: (project) => dispatch(deleteRoute(project))
+    }
+}
+
 const mapStateToProps = (state) => {
     return {
         projects: state.firestore.ordered.projects,
@@ -172,6 +178,6 @@ export default compose(
         {
             collection: 'projects',
         }
-    ]), connect(mapStateToProps)
+    ]), connect(mapStateToProps, mapDispatchToProps)
 )(RoutesList);
 
