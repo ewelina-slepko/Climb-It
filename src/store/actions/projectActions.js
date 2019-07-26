@@ -5,7 +5,7 @@ export const createNewRoute = (project) => {
         firestore.collection('projects').add({
             ...project,
             author: authorId,
-            createdAT: new Date()
+            createdAT: new Date(),
         }).then(() => {
             dispatch({ type: 'CREATE_ROUTE', project })
         }).catch((err) => {
@@ -14,3 +14,14 @@ export const createNewRoute = (project) => {
     }
 }
 
+export const deleteRoute = (document) => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+        const firestore = getFirestore();
+
+        firestore.collection('projects').doc(document).delete().then(() => {
+            dispatch({ type: 'DELETE_ROUTE', document })
+        }).catch((err) => {
+            dispatch({ type: 'DELETE_ROUTE_ERROR', err })
+        })
+    }
+}

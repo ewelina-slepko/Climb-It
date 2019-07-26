@@ -1,9 +1,5 @@
 const initState = {
-    // projects: [
-    //     { id: '1', date: 'rrrr-mm-dd', location: 'Mirów', rockName: 'Dupa Słonia' },
-    //     { id: '2', date: 'rrrr-mm-dd', location: 'Mirów', rockName: 'Dupa Słonia' },
-    //     { id: '3', date: 'rrrr-mm-dd', location: 'Mirów', rockName: 'Dupa Słonia' },
-    // ]
+
 };
 
 const projectReducer = (state = initState, action) => {
@@ -15,7 +11,7 @@ const projectReducer = (state = initState, action) => {
             console.log('created project error', action.err)
             return state;
         default:
-            return state
+            return state;
     }
 }
 
