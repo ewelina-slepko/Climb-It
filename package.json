@@ -15,6 +15,7 @@
     "react-dom": "^16.8.6",
     "react-highcharts": "^16.0.2",
     "react-jsx-highcharts": "^3.6.0",
+    "react-navigation": "^3.11.1",
     "react-redux": "^5.1.1",
     "react-redux-firebase": "^2.2.4",
     "react-router-dom": "^5.0.1",

@@ -9,8 +9,11 @@ import { compose } from 'redux';
 import { Redirect } from 'react-router-dom'
 
 const RoutesList = (props) => {
-    const { auth, myProjects } = props
+    const { auth, myProjects, history } = props
     const classes = useStyles();
+    const reloadPage = () => {
+        window.location.reload()
+    }
 
     const [state] = React.useState({
         columns: [
@@ -22,9 +25,9 @@ const RoutesList = (props) => {
         ],
 
         columnsResponsive: [
-            { title: 'Date', field: 'date' },
             { title: 'Route name', field: 'routeName' },
             { title: 'Difficulty', field: 'difficulty' },
+            { title: 'style', field: 'climbingStyle' }
         ],
         data: myProjects.map(project => {
             return {
@@ -51,24 +54,15 @@ const RoutesList = (props) => {
                 columns={window.innerWidth < 992 ? state.columnsResponsive : state.columns}
                 data={state.data}
                 options={{ pageSizeOptions: [10, 20, 30], pageSize: 10, search: false, sorting: false }}
-                // editable={{
-                //     onRowDelete: oldData =>
-                //         new Promise(resolve => {
-                //             setTimeout(() => {
-                //                 resolve();
-                //                 console.log(oldData)
-                //             }, 600);
-                //         }),
-
-                // }}
                 actions={[
                     {
                         icon: 'delete_outline',
-                        tooltip: 'Save User',
+                        tooltip: 'Delete project',
                         onClick: (event, rowData) => {
                             props.deleteRoute(rowData.id.props.children)
-                            setTimeout(function () { window.location.reload() }, 200);
+                            setTimeout(reloadPage, 800);
                         }
+
                     }
                 ]}
                 detailPanel={rowData => {
@@ -160,7 +154,7 @@ const useStyles = makeStyles(theme => ({
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        deleteRoute: (project) => dispatch(deleteRoute(project))
+        deleteRoute: (project) => dispatch(deleteRoute(project)),
     }
 }
 
@@ -174,10 +168,11 @@ const mapStateToProps = (state) => {
 }
 
 export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
     firestoreConnect(props => [
         {
-            collection: 'projects',
+            collection: 'myProjects',
         }
-    ]), connect(mapStateToProps, mapDispatchToProps)
+    ]),
 )(RoutesList);
 

@@ -255,11 +255,16 @@ const CreateNewRoute = (props) => {
         setValues({ ...values, [prop]: event.target.value });
     };
 
+    const reloadPage = () => {
+        window.location.reload()
+    }
+
     const onSubmit = e => {
         e.preventDefault()
         props.createNewRoute(values)
         props.history.push('/newroutesuccess')
-        window.location.reload()
+        setTimeout(reloadPage, 800);
+
     }
     const { auth } = props
     if (!auth.uid) return <Redirect to="/signin" />

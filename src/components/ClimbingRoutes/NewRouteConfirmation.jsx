@@ -7,7 +7,6 @@ import image from '../images/thumbs_up.png'
 
 const NewRouteConfirmation = (props) => {
     const classes = useStyles();
-
     return (
         <div className={classes.container}>
             <AppBar />

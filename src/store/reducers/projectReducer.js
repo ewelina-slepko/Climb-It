@@ -1,5 +1,5 @@
 const initState = {
-
+    id: []
 };
 
 const projectReducer = (state = initState, action) => {
