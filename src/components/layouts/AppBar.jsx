@@ -110,7 +110,7 @@ const useStyles = makeStyles(theme => ({
     },
     content: {
         flexGrow: 1,
-        padding: '40px',
+        padding: '28px',
     },
     link: {
         textDecoration: 'none',

@@ -9,10 +9,10 @@ const ChartInfo = (props) => {
     return (
         <div className={classes.container}>
             <div className={classes.wrapper}>
-                <h1 className={classes.text}>Add your climbing achievements to see the progress chart!</h1>
+                <h1 className={classes.text}>Add your climbing achievements to see statistics!</h1>
                 <div className={classes.mediaWrapper}>
                     <img src={image} className={classes.picture} />
-                    <Link to="/newroute" className={classes.link}>Add new route</Link>
+                    <Link to="/newroute" className={classes.link}>Add your first route!</Link>
                 </div>
             </div>
         </div>

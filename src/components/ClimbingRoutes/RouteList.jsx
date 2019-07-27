@@ -65,7 +65,7 @@ const RoutesList = (props) => {
                 <MaterialTable
                     onCellClick={() => { alert("Table Row Clicked!!") }}
                     component={Link} to="/home"
-                    title="List of routes"
+                    title=""
                     columns={window.innerWidth < 992 ? state.columnsResponsive : state.columns}
                     data={state.data}
                     options={{
@@ -165,6 +165,10 @@ const useStyles = makeStyles(theme => ({
         maxWidth: 260,
         borderTop: 'solid #f0f0f0 1px',
         paddingTop: 10
+    },
+    infoGreen: {
+        color: '#1ec74e',
+        fontWeight: 'bold'
     }
 
 }))
