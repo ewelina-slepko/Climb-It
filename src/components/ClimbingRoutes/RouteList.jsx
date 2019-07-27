@@ -7,10 +7,24 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Redirect } from 'react-router-dom'
+import { createMuiTheme } from '@material-ui/core/styles'
+import { ThemeProvider } from "@material-ui/styles";
 
 const RoutesList = (props) => {
-    const { auth, myProjects, history } = props
+    const { auth, myProjects } = props
     const classes = useStyles();
+    const theme = createMuiTheme({
+        overrides: {
+            MuiTableCell: {
+                root: {
+                    padding: 3,
+                    margin: 3,
+                    backgroundColor: '#fcfcfc'
+                },
+            },
+        },
+    });
+
     const reloadPage = () => {
         window.location.reload()
     }
@@ -25,9 +39,9 @@ const RoutesList = (props) => {
         ],
 
         columnsResponsive: [
+            { title: 'Date', field: 'date' },
             { title: 'Route name', field: 'routeName' },
             { title: 'Difficulty', field: 'difficulty' },
-            { title: 'style', field: 'climbingStyle' }
         ],
         data: myProjects.map(project => {
             return {
@@ -47,62 +61,65 @@ const RoutesList = (props) => {
     if (!auth.uid) return <Redirect to="/signin" />
     return (
         <>
-            <MaterialTable
-                onCellClick={() => { alert("Table Row Clicked!!") }}
-                component={Link} to="/home"
-                title="List of routes"
-                columns={window.innerWidth < 992 ? state.columnsResponsive : state.columns}
-                data={state.data}
-                options={{ pageSizeOptions: [10, 20, 30], pageSize: 10, search: false, sorting: false }}
-                actions={[
-                    {
-                        icon: 'delete_outline',
-                        tooltip: 'Delete project',
-                        onClick: (event, rowData) => {
-                            props.deleteRoute(rowData.id.props.children)
-                            setTimeout(reloadPage, 800);
+            <ThemeProvider theme={theme}>
+                <MaterialTable
+                    onCellClick={() => { alert("Table Row Clicked!!") }}
+                    component={Link} to="/home"
+                    title="List of routes"
+                    columns={window.innerWidth < 992 ? state.columnsResponsive : state.columns}
+                    data={state.data}
+                    options={{
+                        pageSizeOptions: [10, 20, 30],
+                        pageSize: 10,
+                        search: false,
+                        sorting: false,
+                    }}
+                    actions={[
+                        {
+                            icon: 'delete_outline',
+                            tooltip: 'Delete project',
+                            onClick: (event, rowData) => {
+                                props.deleteRoute(rowData.id.props.children)
+                                setTimeout(reloadPage, 800);
+                            }
+
                         }
+                    ]}
+                    detailPanel={rowData => {
+                        return (
+                            <>
+                                <div className={classes.details}
+                                >
+                                    <ul>
+                                        <li className={classes.detailsList}>Date: <p className={classes.detailsListValue}>{rowData.date}</p></li>
+                                        <li className={classes.detailsList}>Location: <p className={classes.detailsListValue}>{rowData.location}</p></li>
+                                        <li className={classes.detailsList}>Rock name: <p className={classes.detailsListValue}>{rowData.rockName}</p></li>
+                                        <li className={classes.detailsList}>Route name: <p className={classes.detailsListValue}>{rowData.routeName}</p></li>
+                                    </ul>
 
-                    }
-                ]}
-                detailPanel={rowData => {
-                    return (
-                        <>
-                            <div className={classes.details}
-                            >
-                                <ul>
-                                    <li className={classes.detailsList}>Date: <p className={classes.detailsListValue}>{rowData.date}</p></li>
-                                    <li className={classes.detailsList}>Location: <p className={classes.detailsListValue}>{rowData.location}</p></li>
-                                    <li className={classes.detailsList}>Rock name: <p className={classes.detailsListValue}>{rowData.rockName}</p></li>
-                                    <li className={classes.detailsList}>Route name: <p className={classes.detailsListValue}>{rowData.routeName}</p></li>
-                                </ul>
+                                    <ul>
+                                        <li className={classes.detailsList}>Climbing type: <p className={classes.detailsListValue}>{rowData.climbingType}</p></li>
+                                        <li className={classes.detailsList}>Difficulty: <span className={classes.detailsListValue}>{rowData.difficulty}</span> <span className={classes.detailsListValueSmall}>{rowData.climbingStyle}{rowData.boulderingStyle}</span></li>
+                                    </ul>
 
-                                <ul>
-                                    <li className={classes.detailsList}>Climbing type: <p className={classes.detailsListValue}>{rowData.climbingType}</p></li>
-                                    <li className={classes.detailsList}>Difficulty: <span className={classes.detailsListValue}>{rowData.difficulty}</span> <span className={classes.detailsListValueSmall}>{rowData.climbingStyle}{rowData.boulderingStyle}</span></li>
-                                </ul>
-
-                            </div>
-                            <div className={classes.containerDescription}>
-                                <div className={classes.detailsDescription}>
-                                    <p className={classes.detailsListValueSmall}>{rowData.description}</p>
                                 </div>
-                            </div>
+                                <div className={classes.containerDescription}>
+                                    <div className={classes.detailsDescription}>
+                                        <p className={classes.detailsListValueSmall}>{rowData.description}</p>
+                                    </div>
+                                </div>
 
-                        </>
-                    )
-                }}
-                onRowClick={(event, rowData, togglePanel) => togglePanel()}
-            />
+                            </>
+                        )
+                    }}
+                    onRowClick={(event, rowData, togglePanel) => togglePanel()}
+                />
+            </ThemeProvider>
         </>
     )
 }
 
 const useStyles = makeStyles(theme => ({
-    infoGreen: {
-        color: '#48ca4a',
-        fontWeight: 'bold'
-    },
     header: {
         fontSize: 26,
         textTransform: 'uppercase',
