@@ -1,10 +1,10 @@
-import React from 'react';
-import AppBar from '../layouts/AppBar';
-import RoutesList from '../ClimbingRoutes/RouteList';
+import React from 'react'
+import AppBar from '../layouts/AppBar'
+import RoutesList from '../ClimbingRoutes/RouteList'
 import Info from '../ClimbingRoutes/Info'
-import { connect } from 'react-redux';
-import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from 'redux';
+import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 
 class Dashboard extends React.Component {

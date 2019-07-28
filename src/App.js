@@ -8,7 +8,7 @@ import SignUp from './components/auth/SignUp'
 import CreateNewRoute from './components/ClimbingRoutes/CreateNewRoute'
 import Home from './components/ClimbingRoutes/Home'
 import About from './components/about/About'
-import NewRouteConfirmation from './components/ClimbingRoutes/NewRouteConfirmation';
+import NewRouteConfirmation from './components/ClimbingRoutes/NewRouteConfirmation'
 
 function App() {
   return (

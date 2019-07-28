@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import Background from '../images/climbing_men.jpg'
-import clsx from 'clsx';
+import clsx from 'clsx'
 
 const RouteListInfo = (props) => {
     const classes = useStyles();

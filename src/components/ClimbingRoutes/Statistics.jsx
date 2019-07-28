@@ -2,15 +2,16 @@ import React from 'react'
 import Highcharts from 'highcharts'
 import { HighchartsChart, Chart, PieSeries, withHighcharts, XAxis, YAxis, Title, ColumnSeries } from 'react-jsx-highcharts'
 import { makeStyles } from '@material-ui/core/styles'
-import { connect } from 'react-redux';
-import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from 'redux';
+import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
 
 const plotOptions = {
     column: {
         colorByPoint: true,
         'colors': ['#87B068', '#87B068', '#87B068', '#D0BF5F', '#D0BF5F', '#D0BF5F', '#823B6E',
-            '#823B6E', '#823B6E', '#CA3330', '#CA3330', '#CA3330', '#08415C', '#08415C', '#08415C', '#666A86', '#666A86', '#666A86', '#000000', '#000000', '#000000',
+            '#823B6E', '#823B6E', '#CA3330', '#CA3330', '#CA3330', '#08415C', '#08415C', '#08415C',
+            '#666A86', '#666A86', '#666A86', '#000000', '#000000', '#000000',
         ]
     },
     pie: {
@@ -30,7 +31,6 @@ const Statistics = (props) => {
     const boulderingTypes = myProjects.filter(project => project.climbingType === 'Bouldering')
     const sportClimbingTypes = myProjects.filter(project => project.climbingType === 'Sport climbing')
 
-
     function mapProjectsToData(types) {
         const difficulties = types.map(project => project.difficulty)
         const categories = [...new Set(difficulties)].sort();
@@ -41,7 +41,6 @@ const Statistics = (props) => {
     }
     const boulderingData = mapProjectsToData(boulderingTypes)
     const sportClimbingData = mapProjectsToData(sportClimbingTypes)
-    console.log(sportClimbingData.categories)
 
     const OS = climbingStyles.filter(route => (
         route === 'OS (on sight)'

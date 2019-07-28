@@ -34,7 +34,6 @@ export const signUp = (newUser) => {
                 email: newUser.email,
                 userID: resp.user.uid
             })
-            // .collection('projects').doc(resp.user.uid)
 
         }).then(() => {
             dispatch({ type: 'SIGNUP_SUCCESS' })

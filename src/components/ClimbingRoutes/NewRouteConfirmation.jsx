@@ -1,6 +1,6 @@
-import React from 'react';
-import AppBar from '../layouts/AppBar';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react'
+import AppBar from '../layouts/AppBar'
+import { makeStyles } from '@material-ui/core/styles'
 import image from '../images/thumbs_up.png'
 
 
