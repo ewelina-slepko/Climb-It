@@ -1,11 +1,13 @@
-import React from 'react';
-import clsx from 'clsx';
+import React from 'react'
+import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
 import MenuItem from '@material-ui/core/MenuItem'
 import Button from '@material-ui/core/Button'
 import AppBar from '../layouts/AppBar'
 import Background from '../images/mountains_view.jpg'
+import { createMuiTheme } from '@material-ui/core/styles'
+import { ThemeProvider } from "@material-ui/styles"
 import { connect } from 'react-redux'
 import { createNewRoute } from '../../store/actions/projectActions'
 import { Redirect } from 'react-router-dom'
@@ -240,6 +242,16 @@ const boulderingDifficulty = [
 
 const CreateNewRoute = (props) => {
     const classes = useStyles();
+    const theme = createMuiTheme({
+        overrides: {
+            MuiInputBase: {
+                root: {
+                    backgroundColor: '#fff !important',
+                    borderRadius: 12,
+                },
+            },
+        },
+    });
 
     const [values, setValues] = React.useState({
         date: '',
@@ -265,203 +277,203 @@ const CreateNewRoute = (props) => {
         props.createNewRoute(values)
         props.history.push('/newroutesuccess')
         setTimeout(reloadPage, 800);
-
     }
     const { auth } = props
     if (!auth.uid) return <Redirect to="/signin" />
     return (
-
         <div className={classes.container}>
             <AppBar />
             <div className={window.innerWidth < 992 ? clsx(classes.background, classes.backgroundMobile) : classes.background}>
                 <form className={classes.root} noValidate autoComplete="off" onSubmit={onSubmit}>
                     <h1 className={classes.header}>Add New Route</h1>
-                    <TextField
-                        id="date"
-                        className={clsx(classes.margin, classes.dateFieldSelect)}
-                        label="Date"
-                        value={values.date}
-                        onChange={handleChange('date')}
-                        type="date"
-                        InputLabelProps={{
-                            shrink: true,
-                            className: classes.floatingLabelFocusStyle
-                        }}
-                        variant="outlined"
-                    />
-                    <TextField
-                        id="outlined-simple-start-adornment"
-                        className={clsx(classes.margin, classes.textField)}
-                        label="Location (city)"
-                        value={values.location}
-                        onChange={handleChange('location')}
-                        variant="outlined"
-                        InputLabelProps={{
-                            className: classes.floatingLabelFocusStyle
-                        }}
-                    />
-                    <TextField
-                        id="outlined-simple-start-adornment"
-                        className={clsx(classes.margin, classes.textField)}
-                        label="Rock name"
-                        value={values.rockName}
-                        onChange={handleChange('rockName')}
-                        variant="outlined"
-                        InputLabelProps={{
-                            className: classes.floatingLabelFocusStyle
-                        }}
-                    />
-                    <TextField
-                        id="outlined-simple-start-adornment"
-                        className={clsx(classes.margin, classes.textField)}
-                        label="Route name"
-                        value={values.routeName}
-                        onChange={handleChange('routeName')}
-                        variant="outlined"
-                        InputLabelProps={{
-                            className: classes.floatingLabelFocusStyle
-                        }}
-                    />
-                    <TextField
-                        select
-                        className={clsx(classes.marginSelect, classes.textFieldSelect)}
-                        label="Type of climbing"
-                        value={values.climbingType}
-                        onChange={handleChange('climbingType')}
-                        variant="outlined"
-                        InputLabelProps={{
-                            shrink: true,
-                            className: classes.floatingLabelFocusStyle
-                        }}
-                    >
-                        {climbingType.map(option => (
-                            <MenuItem key={option.value} value={option.value}>
-                                {option.label}
-                            </MenuItem>
-                        ))}
-                    </TextField>
-
-                    {values.climbingType === 'Sport climbing'
-                        ?
+                    <ThemeProvider theme={theme}>
+                        <TextField
+                            id="date"
+                            className={clsx(classes.margin, classes.dateFieldSelect)}
+                            label="Date"
+                            value={values.date}
+                            onChange={handleChange('date')}
+                            type="date"
+                            InputLabelProps={{
+                                shrink: true,
+                                className: classes.floatingLabelFocusStyle
+                            }}
+                            variant="outlined"
+                        />
+                        <TextField
+                            id="outlined-simple-start-adornment"
+                            className={clsx(classes.margin, classes.textField)}
+                            label="Location (city)"
+                            value={values.location}
+                            onChange={handleChange('location')}
+                            variant="outlined"
+                            InputLabelProps={{
+                                className: classes.floatingLabelFocusStyle
+                            }}
+                        />
+                        <TextField
+                            id="outlined-simple-start-adornment"
+                            className={clsx(classes.margin, classes.textField)}
+                            label="Rock name"
+                            value={values.rockName}
+                            onChange={handleChange('rockName')}
+                            variant="outlined"
+                            InputLabelProps={{
+                                className: classes.floatingLabelFocusStyle
+                            }}
+                        />
+                        <TextField
+                            id="outlined-simple-start-adornment"
+                            className={clsx(classes.margin, classes.textField)}
+                            label="Route name"
+                            value={values.routeName}
+                            onChange={handleChange('routeName')}
+                            variant="outlined"
+                            InputLabelProps={{
+                                className: classes.floatingLabelFocusStyle
+                            }}
+                        />
                         <TextField
                             select
                             className={clsx(classes.marginSelect, classes.textFieldSelect)}
-                            label="Difficulty"
-                            value={values.difficulty}
-                            onChange={handleChange('difficulty')}
+                            label="Type of climbing"
+                            value={values.climbingType}
+                            onChange={handleChange('climbingType')}
                             variant="outlined"
                             InputLabelProps={{
                                 shrink: true,
                                 className: classes.floatingLabelFocusStyle
                             }}
                         >
-                            {sportClimbingDifficulty.map(option => (
+                            {climbingType.map(option => (
                                 <MenuItem key={option.value} value={option.value}>
                                     {option.label}
                                 </MenuItem>
                             ))}
                         </TextField>
-                        :
-                        null
-                    }
 
-                    {values.climbingType === 'Bouldering'
-                        ?
+                        {values.climbingType === 'Sport climbing'
+                            ?
+                            <TextField
+                                select
+                                className={clsx(classes.marginSelect, classes.textFieldSelect)}
+                                label="Difficulty"
+                                value={values.difficulty}
+                                onChange={handleChange('difficulty')}
+                                variant="outlined"
+                                InputLabelProps={{
+                                    shrink: true,
+                                    className: classes.floatingLabelFocusStyle
+                                }}
+                            >
+                                {sportClimbingDifficulty.map(option => (
+                                    <MenuItem key={option.value} value={option.value}>
+                                        {option.label}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                            :
+                            null
+                        }
+
+                        {values.climbingType === 'Bouldering'
+                            ?
+                            <TextField
+                                select
+                                className={clsx(classes.marginSelect, classes.textFieldSelect)}
+                                label="Difficulty"
+                                value={values.difficulty}
+                                onChange={handleChange('difficulty')}
+                                variant="outlined"
+                                InputLabelProps={{
+                                    shrink: true,
+                                    className: classes.floatingLabelFocusStyle
+                                }}
+                            >
+                                {boulderingDifficulty.map(option => (
+                                    <MenuItem key={option.value} value={option.value}>
+                                        {option.label}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                            :
+                            null}
+
+                        {values.climbingType === 'Sport climbing'
+                            ?
+                            <TextField
+                                select
+                                className={clsx(classes.marginSelect, classes.textFieldSelect)}
+                                label="Climbing style"
+                                value={values.climbingStyle}
+                                onChange={handleChange('climbingStyle')}
+                                variant="outlined"
+                                InputLabelProps={{
+                                    shrink: true,
+                                    className: classes.floatingLabelFocusStyle
+                                }}
+                            >
+                                {climbingStyles.map(option => (
+                                    <MenuItem key={option.value} value={option.value}>
+                                        {option.label}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                            :
+                            null
+                        }
+
+                        {values.climbingType === 'Bouldering'
+                            ?
+                            <TextField
+                                select
+                                className={clsx(classes.marginSelect, classes.textFieldSelect)}
+                                label="Climbing style"
+                                value={values.boulderingStyle}
+                                onChange={handleChange('boulderingStyle')}
+                                variant="outlined"
+                                InputLabelProps={{
+                                    shrink: true,
+                                    className: classes.floatingLabelFocusStyle
+                                }}
+                            >
+                                {boulderingStyles.map(option => (
+                                    <MenuItem key={option.value} value={option.value}>
+                                        {option.label}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                            :
+                            null
+                        }
                         <TextField
-                            select
-                            className={clsx(classes.marginSelect, classes.textFieldSelect)}
-                            label="Difficulty"
-                            value={values.difficulty}
-                            onChange={handleChange('difficulty')}
+                            id="outlined-multiline-static"
+                            label="Description"
+                            value={values.description}
+                            onChange={handleChange('description')}
+                            multiline
+                            rows="5"
+                            className={clsx(classes.margin, classes.textField)}
+                            margin="normal"
                             variant="outlined"
                             InputLabelProps={{
-                                shrink: true,
                                 className: classes.floatingLabelFocusStyle
                             }}
-                        >
-                            {boulderingDifficulty.map(option => (
-                                <MenuItem key={option.value} value={option.value}>
-                                    {option.label}
-                                </MenuItem>
-                            ))}
-                        </TextField>
-                        :
-                        null}
-
-                    {values.climbingType === 'Sport climbing'
-                        ?
-                        <TextField
-                            select
-                            className={clsx(classes.marginSelect, classes.textFieldSelect)}
-                            label="Climbing style"
-                            value={values.climbingStyle}
-                            onChange={handleChange('climbingStyle')}
-                            variant="outlined"
-                            InputLabelProps={{
-                                shrink: true,
-                                className: classes.floatingLabelFocusStyle
+                        />
+                        <Button
+                            style={{
+                                backgroundColor: "#39a83b",
                             }}
+                            variant="contained"
+                            color="primary"
+                            className={classes.btnPosition}
+                            type="submit"
+                            label="Login"
+                            onSubmit={handleChange('name', 'password')}
                         >
-                            {climbingStyles.map(option => (
-                                <MenuItem key={option.value} value={option.value}>
-                                    {option.label}
-                                </MenuItem>
-                            ))}
-                        </TextField>
-                        :
-                        null
-                    }
-
-                    {values.climbingType === 'Bouldering'
-                        ?
-                        <TextField
-                            select
-                            className={clsx(classes.marginSelect, classes.textFieldSelect)}
-                            label="Climbing style"
-                            value={values.boulderingStyle}
-                            onChange={handleChange('boulderingStyle')}
-                            variant="outlined"
-                            InputLabelProps={{
-                                shrink: true,
-                                className: classes.floatingLabelFocusStyle
-                            }}
-                        >
-                            {boulderingStyles.map(option => (
-                                <MenuItem key={option.value} value={option.value}>
-                                    {option.label}
-                                </MenuItem>
-                            ))}
-                        </TextField>
-                        :
-                        null
-                    }
-                    <TextField
-                        id="outlined-multiline-static"
-                        label="Description"
-                        value={values.description}
-                        onChange={handleChange('description')}
-                        multiline
-                        rows="5"
-                        className={clsx(classes.margin, classes.textField)}
-                        margin="normal"
-                        variant="outlined"
-                        InputLabelProps={{
-                            className: classes.floatingLabelFocusStyle
-                        }}
-                    />
-                    <Button
-                        style={{
-                            backgroundColor: "#39a83b",
-                        }}
-                        variant="contained"
-                        color="primary"
-                        className={classes.btnPosition}
-                        type="submit"
-                        label="Login"
-                        onSubmit={handleChange('name', 'password')}
-                    >
-                        Add Route
+                            Add Route
                 </Button>
+                    </ThemeProvider>
                 </form>
             </div>
         </div>
@@ -499,7 +511,7 @@ const useStyles = makeStyles(theme => ({
         textAlign: 'center',
         color: '#404040',
         paddingBottom: 10,
-        marginTop: 10
+        marginTop: 20
     },
     margin: {
         margin: '10px 30px'
@@ -510,7 +522,6 @@ const useStyles = makeStyles(theme => ({
             borderRadius: 12,
             borderWidth: 1,
             borderColor: '#999797 !important',
-            backgroundColor: '#fff'
         },
     },
     dateFieldSelect: {
@@ -519,7 +530,6 @@ const useStyles = makeStyles(theme => ({
             borderRadius: 12,
             borderWidth: 1,
             borderColor: '#999797 !important',
-            backgroundColor: '#fff'
         },
     },
     textFieldSelect: {
@@ -528,7 +538,6 @@ const useStyles = makeStyles(theme => ({
             borderRadius: 12,
             borderWidth: 1,
             borderColor: '#999797 !important',
-            backgroundColor: '#fff'
         },
     },
     marginSelect: {

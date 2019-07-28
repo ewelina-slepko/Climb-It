@@ -1,11 +1,11 @@
 import React from 'react';
-import MaterialTable from 'material-table';
+import MaterialTable from 'material-table'
 import { makeStyles } from '@material-ui/core/styles'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import { deleteRoute } from '../../store/actions/projectActions'
-import { connect } from 'react-redux';
-import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from 'redux';
+import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import { createMuiTheme } from '@material-ui/core/styles'
 import { ThemeProvider } from "@material-ui/styles"
