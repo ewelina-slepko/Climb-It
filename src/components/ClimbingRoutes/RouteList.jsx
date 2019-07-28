@@ -8,7 +8,7 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Redirect } from 'react-router-dom'
 import { createMuiTheme } from '@material-ui/core/styles'
-import { ThemeProvider } from "@material-ui/styles";
+import { ThemeProvider } from "@material-ui/styles"
 
 const RoutesList = (props) => {
     const { auth, myProjects } = props
@@ -61,6 +61,7 @@ const RoutesList = (props) => {
     if (!auth.uid) return <Redirect to="/signin" />
     return (
         <>
+
             <ThemeProvider theme={theme}>
                 <MaterialTable
                     onCellClick={() => { alert("Table Row Clicked!!") }}
@@ -125,7 +126,7 @@ const useStyles = makeStyles(theme => ({
         textTransform: 'uppercase',
         width: '100%',
         textAlign: 'center',
-        color: '#404040',
+        color: '#000',
         paddingBottom: 20
     },
     details: {
@@ -139,7 +140,7 @@ const useStyles = makeStyles(theme => ({
     detailsList: {
         listStyleType: 'none',
         padding: '2px 20px',
-        color: '#575757',
+        color: '#000',
         fontSize: 14
     },
     detailsListValue: {

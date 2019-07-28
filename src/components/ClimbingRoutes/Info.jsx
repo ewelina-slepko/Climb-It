@@ -10,7 +10,7 @@ const RouteListInfo = (props) => {
         <div className={window.innerWidth < 992 ? clsx(classes.background, classes.backgroundMobile) : classes.background}>
             <div className={window.innerWidth < 992 ? classes.containerCenter : classes.containerRight}>
                 <div className={classes.wrapper}>
-                    <h1 className={classes.text}>Add your climbing achievements to see list of routes</h1>
+                    <h1 className={classes.text}>Add your climbing achievements to see {props.section} {props.sectionStatistics}</h1>
                     <div className={classes.mediaWrapper}>
                         <Link to="/newroute" className={classes.link}>Add your first route!</Link>
                     </div>
@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         flexDirection: 'column',
         margin: '0 auto',
-        marginTop: 30,
+        marginTop: 20,
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center'
@@ -65,7 +65,7 @@ const useStyles = makeStyles(theme => ({
         flex: '1',
         color: '#000',
         textAlign: 'center',
-        paddingTop: 20,
+        paddingTop: 10,
         fontSize: 20,
         letterSpacing: 4,
         textTransform: 'uppercase',
@@ -73,7 +73,6 @@ const useStyles = makeStyles(theme => ({
         maxWidth: 500
     },
     link: {
-
         color: '#fff',
         backgroundColor: '#000',
         fontWeight: 'bold',
@@ -88,15 +87,6 @@ const useStyles = makeStyles(theme => ({
             letterSpacing: 1,
         },
     },
-    picture: {
-        flex: '1',
-        position: 'relative',
-        width: 400,
-        maxWidth: 300,
-        maxHeight: 300,
-        margin: 40,
-    },
-
 }));
 
 export default RouteListInfo;

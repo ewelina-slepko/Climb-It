@@ -1,7 +1,7 @@
 import React from 'react';
 import AppBar from '../layouts/AppBar';
 import RoutesList from '../ClimbingRoutes/RouteList';
-import RouteListInfo from '../ClimbingRoutes/RouteListInfo'
+import Info from '../ClimbingRoutes/Info'
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
@@ -10,12 +10,12 @@ import { Redirect } from 'react-router-dom'
 class Dashboard extends React.Component {
     render() {
         const { myProjects, auth } = this.props;
-
+        const section = 'the list of routes'
         if (!auth.uid) return <Redirect to="/signin" />
         return (
             <>
                 <AppBar />
-                {myProjects && (myProjects.length > 0 ? <RoutesList /> : <RouteListInfo />)}
+                {myProjects && (myProjects.length > 0 ? <RoutesList /> : <Info section={section} />)}
             </>
         )
     }

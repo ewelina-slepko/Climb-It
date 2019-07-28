@@ -8,12 +8,21 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { Drawer, CssBaseline, AppBar, Toolbar, List, Typography, Divider, IconButton } from "@material-ui/core"
+import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme } from '@material-ui/core/styles';
 import { connect } from 'react-redux'
 
 const PersistentDrawerLeft = (props) => {
     const classes = useStyles();
-    const theme = useTheme()
+    const theme = createMuiTheme({
+        overrides: {
+            MuiPaper: {
+                root: {
+                    color: '#000'
+                },
+            },
+        },
+    });
     const [open, setOpen] = React.useState(false);
     const { auth, profile } = props;
     const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />
@@ -26,48 +35,50 @@ const PersistentDrawerLeft = (props) => {
     }
 
     return (
-        <div className={classes.root}>
-            <CssBaseline />
-            <AppBar
-                position="fixed"
-                className={clsx(classes.appBar, {
-                    [classes.appBarShift]: open,
-                })}>
-                <Toolbar>
-                    <IconButton
-                        color="inherit"
-                        aria-label="Open drawer"
-                        onClick={handleDrawerOpen}
-                        edge="start"
-                        className={clsx(classes.menuButton, open && classes.hide)}>
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" noWrap>
-                        <p className={classes.title}>climb it, {profile.login}!</p>
-                    </Typography>
-                </Toolbar>
-            </AppBar>
-            <Drawer
-                variant="persistent"
-                anchor="left"
-                open={open}
-                classes={{
-                    paper: classes.drawerPaper,
-                }}>
-                <div>
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'ltr' ? <ChevronLeftIcon className={classes.icon} /> : <ChevronRightIcon className={classes.icon} />}
-                    </IconButton>
-                </div>
-                <Divider />
-                <List onClick={handleDrawerClose}>
-                    {links}
-                </List>
-            </Drawer>
-            <main className={classes.content}>
-                <div className={classes.drawerHeader} />
-            </main>
-        </div>
+        <ThemeProvider>
+            <div className={classes.root}>
+                <CssBaseline />
+                <AppBar
+                    position="fixed"
+                    className={clsx(classes.appBar, {
+                        [classes.appBarShift]: open,
+                    })}>
+                    <Toolbar>
+                        <IconButton
+                            color="inherit"
+                            aria-label="Open drawer"
+                            onClick={handleDrawerOpen}
+                            edge="start"
+                            className={clsx(classes.menuButton, open && classes.hide)}>
+                            <MenuIcon />
+                        </IconButton>
+                        <Typography variant="h6" noWrap>
+                            <p className={classes.title}>climb it, {profile.login}!</p>
+                        </Typography>
+                    </Toolbar>
+                </AppBar>
+                <Drawer
+                    variant="persistent"
+                    anchor="left"
+                    open={open}
+                    classes={{
+                        paper: classes.drawerPaper,
+                    }}>
+                    <div>
+                        <IconButton onClick={handleDrawerClose}>
+                            {theme.direction === 'ltr' ? <ChevronLeftIcon className={classes.icon} /> : <ChevronRightIcon className={classes.icon} />}
+                        </IconButton>
+                    </div>
+                    <Divider />
+                    <List onClick={handleDrawerClose}>
+                        {links}
+                    </List>
+                </Drawer>
+                <main className={classes.content}>
+                    <div className={classes.drawerHeader} />
+                </main>
+            </div>
+        </ThemeProvider>
     );
 }
 
