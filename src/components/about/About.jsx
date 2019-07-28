@@ -18,7 +18,9 @@ const Contact = () => {
                         property of Climb It, and you will not acquire any rights to the Software. You shall not remove or obscure
                         the Owner's copyright, trademark or other proprietary notices from any of the materials contained in this
                         package or downloaded together with the Software. </p>
-                    <p className={classes.text}>All graphs in application are designed by <span className={classes.emphasizedText}>Freepik.</span></p>
+                    <p className={classes.text}>All graphs in application are designed by
+                    <span><a href="https://www.freepik.com/" className={classes.emphasizedText}> Freepik. </a></span>
+                    </p>
                     <h1 className={classes.header}>Contact</h1>
                     <p className={classes.text}>If you have any questions regarding privacy while using the Application,
                     or have questions about our practices, please contact me via email at <span className={classes.emphasizedText}>slepko.ewelina@gmail.com</span>
@@ -56,7 +58,9 @@ const useStyles = makeStyles(theme => ({
         margin: 10
     },
     emphasizedText: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: '#000',
+        textDecoration: 'none'
     }
 
 }))

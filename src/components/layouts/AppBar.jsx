@@ -43,7 +43,7 @@ const PersistentDrawerLeft = (props) => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        <p className={classes.title}>hello {profile.login}</p>
+                        <p className={classes.title}>hello {profile.login}!</p>
                     </Typography>
                 </Toolbar>
             </AppBar>

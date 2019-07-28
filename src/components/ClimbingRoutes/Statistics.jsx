@@ -41,6 +41,7 @@ const Statistics = (props) => {
     }
     const boulderingData = mapProjectsToData(boulderingTypes)
     const sportClimbingData = mapProjectsToData(sportClimbingTypes)
+    console.log(sportClimbingData.categories)
 
     const OS = climbingStyles.filter(route => (
         route === 'OS (on sight)'
@@ -101,75 +102,76 @@ const Statistics = (props) => {
             <h1 className={classes.header}>My Statistics</h1>
             <div className={window.innerWidth < 692 ? classes.chartContainerMobile : classes.chartContainer}>
 
-                <div className={classes.sectionOne}>
-                    <HighchartsChart
-                        highcharts={Highcharts}
-                        plotOptions={plotOptions}
-                    >
-                        <Title>Sport climbing achievements</Title>
-
-                        <Chart />
-                        <XAxis categories={sportClimbingData.categories} />
-                        <YAxis allowDecimals={false}>
-                            <ColumnSeries
-                                name='number of routes'
-                                data={sportClimbingData.data}
-                            />
-                        </YAxis>
-                    </HighchartsChart>
-
-                    <div className={classes.chartContainer}>
+                {sportClimbingData.categories.length > 0
+                    ? (<div className={classes.sectionOne}>
                         <HighchartsChart
                             highcharts={Highcharts}
                             plotOptions={plotOptions}
                         >
-                            <Title>Climbing style</Title>
-                            <PieSeries
-                                name="Total consumption"
-                                size={window.innerWidth < 692 ? 120 : 260}
-                                data={pieDataSport}
-                                showInLegend={true}
-                            />
+                            <Title>Sport climbing achievements</Title>
+
+                            <Chart />
+                            <XAxis categories={sportClimbingData.categories} />
+                            <YAxis allowDecimals={false}>
+                                <ColumnSeries
+                                    name='number of routes'
+                                    data={sportClimbingData.data}
+                                />
+                            </YAxis>
                         </HighchartsChart>
 
-                    </div>
+                        <div className={classes.chartContainer}>
+                            <HighchartsChart
+                                highcharts={Highcharts}
+                                plotOptions={plotOptions}
+                            >
+                                <Title>Climbing style</Title>
+                                <PieSeries
+                                    name="Total consumption"
+                                    size={window.innerWidth < 692 ? 120 : 260}
+                                    data={pieDataSport}
+                                    showInLegend={true}
+                                />
+                            </HighchartsChart>
+                        </div>)
+                </div>)
+                    : null}
 
-                </div>
-
-                <div className={classes.sectionTwo}>
-
-                    <HighchartsChart
-                        highcharts={Highcharts}
-                        plotOptions={plotOptions}
-                    >
-                        <Title>Bouldering achievements</Title>
-
-                        <Chart />
-                        <XAxis categories={boulderingData.categories} />
-                        <YAxis allowDecimals={false}>
-                            <ColumnSeries
-                                name='number of routes'
-                                data={boulderingData.data}
-                            />
-                        </YAxis>
-
-                    </HighchartsChart>
-
-                    <div className={classes.chartContainer}>
+                {boulderingData.categories.length > 0
+                    ? (<div className={classes.sectionTwo}>
                         <HighchartsChart
                             highcharts={Highcharts}
                             plotOptions={plotOptions}
                         >
-                            <Title>Climbing style</Title>
-                            <PieSeries
-                                name="Total consumption"
-                                size={window.innerWidth < 692 ? 120 : 260}
-                                data={pieDataBouldering}
-                                showInLegend={true}
-                            />
+                            <Title>Bouldering achievements</Title>
+
+                            <Chart />
+                            <XAxis categories={boulderingData.categories} />
+                            <YAxis allowDecimals={false}>
+                                <ColumnSeries
+                                    name='number of routes'
+                                    data={boulderingData.data}
+                                />
+                            </YAxis>
+
                         </HighchartsChart>
-                    </div>
-                </div>
+
+                        <div className={classes.chartContainer}>
+                            <HighchartsChart
+                                highcharts={Highcharts}
+                                plotOptions={plotOptions}
+                            >
+                                <Title>Climbing style</Title>
+                                <PieSeries
+                                    name="Total consumption"
+                                    size={window.innerWidth < 692 ? 120 : 260}
+                                    data={pieDataBouldering}
+                                    showInLegend={true}
+                                />
+                            </HighchartsChart>
+                        </div>
+                    </div>)
+                    : null}
             </div>
         </div>
     );
@@ -188,7 +190,7 @@ const useStyles = makeStyles(theme => ({
     header: {
         fontSize: 26,
         textTransform: 'uppercase',
-        paddingTop: 10,
+        paddingTop: 20,
         color: '#404040',
     },
     sectionOne: {
