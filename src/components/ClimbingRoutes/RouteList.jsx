@@ -17,11 +17,25 @@ const RoutesList = (props) => {
         overrides: {
             MuiTableCell: {
                 root: {
-                    padding: 3,
-                    margin: 3,
-                    backgroundColor: '#fcfcfc'
+                    padding: '5px !important',
+                    margin: 10,
+                    backgroundColor: '#fcfcfc',
+                    fontSize: '0.675rem',
                 },
             },
+            MuiIconButton: {
+                root: {
+
+                    margin: 5,
+                    padding: 0
+                }
+            },
+            MuiIcon: {
+                fontSizeSmall: {
+                    fontSize: '1rem',
+                }
+            }
+
         },
     });
 
