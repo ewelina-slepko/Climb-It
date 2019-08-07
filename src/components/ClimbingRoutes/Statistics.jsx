@@ -132,8 +132,8 @@ const Statistics = (props) => {
                                     showInLegend={true}
                                 />
                             </HighchartsChart>
-                        </div>)
-                </div>)
+                        </div>
+                    </div>)
                     : null}
 
                 {boulderingData.categories.length > 0

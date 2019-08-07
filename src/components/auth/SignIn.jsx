@@ -97,11 +97,11 @@ const useStyles = makeStyles(theme => ({
         margin: '0 auto',
         display: 'flex',
         width: 300,
+        height: '100%',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         padding: '130px 50px',
-
     },
     containerRight: {
         display: 'flex',

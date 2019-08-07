@@ -20,7 +20,7 @@ const RoutesList = (props) => {
                     padding: '5px !important',
                     margin: 10,
                     backgroundColor: '#fcfcfc',
-                    fontSize: '0.675rem',
+                    fontSize: '0.775rem',
                 },
             },
             MuiIconButton: {

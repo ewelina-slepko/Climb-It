@@ -26,8 +26,8 @@ const climbingType = [
 
 const boulderingStyles = [
     {
-        value: 'OS (on sight)',
-        label: 'OS (on sight)',
+        value: 'Flash',
+        label: 'Flash',
     },
     {
         value: 'RP (red point)',
