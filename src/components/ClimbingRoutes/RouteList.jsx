@@ -84,10 +84,11 @@ const RoutesList = (props) => {
                     columns={window.innerWidth < 992 ? state.columnsResponsive : state.columns}
                     data={state.data}
                     options={{
-                        pageSizeOptions: [10, 20, 30],
-                        pageSize: 10,
+                        pageSizeOptions: [15, 30, 45],
+                        pageSize: 15,
                         search: false,
                         sorting: false,
+                        actionsColumnIndex: -1,
                     }}
                     actions={[
                         {
