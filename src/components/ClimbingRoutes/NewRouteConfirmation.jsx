@@ -3,8 +3,6 @@ import AppBar from '../layouts/AppBar'
 import { makeStyles } from '@material-ui/core/styles'
 import image from '../images/thumbs_up.png'
 
-
-
 const NewRouteConfirmation = (props) => {
     const classes = useStyles();
     return (
@@ -15,7 +13,6 @@ const NewRouteConfirmation = (props) => {
                 <img src={image} className={classes.picture} />
             </div>
         </div>
-
     )
 }
 

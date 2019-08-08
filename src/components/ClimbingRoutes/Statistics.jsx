@@ -74,7 +74,6 @@ const Statistics = (props) => {
             name: 'RP',
             y: RP.length > 0 ? RP.length : null
         },
-
         {
             name: 'OS',
             y: OS.length > 0 ? OS.length : null
@@ -89,7 +88,6 @@ const Statistics = (props) => {
             name: 'RP',
             y: RPBoulder.length > 0 ? RPBoulder.length : null
         },
-
         {
             name: 'OS',
             y: OSBoulder.length > 0 ? OSBoulder.length : null
@@ -178,18 +176,18 @@ const Statistics = (props) => {
 
 const useStyles = makeStyles(theme => ({
     containerMobile: {
-        margin: '0px 20px 0px 20px',
+        margin: '0px 20px 50px 20px',
         textAlign: 'center',
     },
     container: {
-        margin: '0px 200px 0px 200px',
+        margin: '0px 200px 100px 200px',
         textAlign: 'center',
         fontSize: 26
     },
     header: {
         fontSize: 26,
         textTransform: 'uppercase',
-        paddingTop: 20,
+        paddingTop: 40,
         color: '#404040',
     },
     sectionOne: {

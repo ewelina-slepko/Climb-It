@@ -335,7 +335,7 @@ const CreateNewRoute = (props) => {
                         />
                         <TextField
                             select
-                            className={clsx(classes.marginSelect, classes.textFieldSelect)}
+                            className={clsx(classes.margin, classes.textField)}
                             label="Type of climbing"
                             value={values.climbingType}
                             onChange={handleChange('climbingType')}
@@ -533,7 +533,7 @@ const useStyles = makeStyles(theme => ({
         },
     },
     textFieldSelect: {
-        flexBasis: 125,
+        flexBasis: 202,
         '& fieldset': {
             borderRadius: 12,
             borderWidth: 1,
@@ -541,7 +541,7 @@ const useStyles = makeStyles(theme => ({
         },
     },
     marginSelect: {
-        margin: '10px 5px 10px 30px'
+        margin: '22px 5px 22px 30px'
     },
     floatingLabelFocusStyle: {
         paddingLeft: 5,
