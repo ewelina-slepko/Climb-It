@@ -1,6 +1,7 @@
 import React from 'react';
 import MaterialTable from 'material-table'
 import { makeStyles } from '@material-ui/core/styles'
+import Modal from '@material-ui/core/Modal';
 import { Link } from 'react-router-dom'
 import { deleteRoute } from '../../store/actions/projectActions'
 import { connect } from 'react-redux'
@@ -10,9 +11,25 @@ import { Redirect } from 'react-router-dom'
 import { createMuiTheme } from '@material-ui/core/styles'
 import { ThemeProvider } from "@material-ui/styles"
 
+function rand() {
+    return Math.round(Math.random() * 20) - 10;
+}
+
+function getModalStyle() {
+    const top = 50 + rand();
+    const left = 50 + rand();
+
+    return {
+        top: `${top}%`,
+        left: `${left}%`,
+        transform: `translate(-${top}%, -${left}%)`,
+    };
+}
+
 const RoutesList = (props) => {
     const { auth, myProjects } = props
     const classes = useStyles();
+
     const theme = createMuiTheme({
         overrides: {
             MuiTableCell: {
@@ -38,6 +55,16 @@ const RoutesList = (props) => {
 
         },
     });
+    const [modalStyle] = React.useState(getModalStyle);
+    const [open, setOpen] = React.useState(false);
+
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     const reloadPage = () => {
         window.location.reload()
@@ -75,7 +102,6 @@ const RoutesList = (props) => {
     if (!auth.uid) return <Redirect to="/signin" />
     return (
         <>
-
             <ThemeProvider theme={theme}>
                 <MaterialTable
                     onCellClick={() => { alert("Table Row Clicked!!") }}
@@ -95,10 +121,10 @@ const RoutesList = (props) => {
                             icon: 'delete_outline',
                             tooltip: 'Delete project',
                             onClick: (event, rowData) => {
-                                props.deleteRoute(rowData.id.props.children)
-                                setTimeout(reloadPage, 800);
+                                handleOpen()
+                                // props.deleteRoute(rowData.id.props.children)
+                                // setTimeout(reloadPage, 800);
                             }
-
                         }
                     ]}
                     detailPanel={rowData => {
@@ -130,7 +156,23 @@ const RoutesList = (props) => {
                     }}
                     onRowClick={(event, rowData, togglePanel) => togglePanel()}
                 />
+                <Modal
+                    aria-labelledby="simple-modal-title"
+                    aria-describedby="simple-modal-description"
+                    open={open}
+                    onClose={handleClose}
+                >
+                    <div style={modalStyle} className={classes.paper}>
+                        <h2 id="simple-modal-title">Delete route</h2>
+                        <p id="simple-modal-description">
+                            Are you sure you want do delete this route?
+          </p>
+                        <button>YES</button>
+                        <button onClick={handleClose}>NO!</button>
+                    </div>
+                </Modal>
             </ThemeProvider>
+
         </>
     )
 }
@@ -185,7 +227,15 @@ const useStyles = makeStyles(theme => ({
     infoGreen: {
         color: '#1ec74e',
         fontWeight: 'bold'
-    }
+    },
+    paper: {
+        position: 'absolute',
+        width: 400,
+        backgroundColor: theme.palette.background.paper,
+        border: '2px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 4),
+    },
 
 }))
 

@@ -8,6 +8,7 @@ import AppBar from '../layouts/AppBar'
 import Background from '../images/mountains_view.jpg'
 import { createMuiTheme } from '@material-ui/core/styles'
 import { ThemeProvider } from "@material-ui/styles"
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { connect } from 'react-redux'
 import { createNewRoute } from '../../store/actions/projectActions'
 import { Redirect } from 'react-router-dom'
@@ -284,169 +285,187 @@ const CreateNewRoute = (props) => {
         <div className={classes.container}>
             <AppBar />
             <div className={window.innerWidth < 992 ? clsx(classes.background, classes.backgroundMobile) : classes.background}>
-                <form className={classes.root} noValidate autoComplete="off" onSubmit={onSubmit}>
+                <ValidatorForm className={classes.root} noValidate autoComplete="off" onSubmit={onSubmit}>
                     <h1 className={classes.header}>Add New Route</h1>
                     <ThemeProvider theme={theme}>
-                        <TextField
+                        <TextValidator
                             id="date"
                             className={clsx(classes.margin, classes.dateFieldSelect)}
                             label="Date"
                             value={values.date}
                             onChange={handleChange('date')}
                             type="date"
+                            validators={['required']}
+                            errorMessages={['this field is required']}
                             InputLabelProps={{
                                 shrink: true,
                                 className: classes.floatingLabelFocusStyle
                             }}
                             variant="outlined"
                         />
-                        <TextField
+                        <TextValidator
                             id="outlined-simple-start-adornment"
                             className={clsx(classes.margin, classes.textField)}
                             label="Location (city)"
                             value={values.location}
                             onChange={handleChange('location')}
-                            variant="outlined"
+                            validators={['required']}
+                            errorMessages={['this field is required']}
                             InputLabelProps={{
                                 className: classes.floatingLabelFocusStyle
                             }}
+                            variant="outlined"
                         />
-                        <TextField
+                        <TextValidator
                             id="outlined-simple-start-adornment"
                             className={clsx(classes.margin, classes.textField)}
                             label="Rock name"
                             value={values.rockName}
                             onChange={handleChange('rockName')}
-                            variant="outlined"
+                            validators={['required']}
+                            errorMessages={['this field is required']}
                             InputLabelProps={{
                                 className: classes.floatingLabelFocusStyle
                             }}
+                            variant="outlined"
                         />
-                        <TextField
+                        <TextValidator
                             id="outlined-simple-start-adornment"
                             className={clsx(classes.margin, classes.textField)}
                             label="Route name"
                             value={values.routeName}
                             onChange={handleChange('routeName')}
-                            variant="outlined"
+                            validators={['required']}
+                            errorMessages={['this field is required']}
                             InputLabelProps={{
                                 className: classes.floatingLabelFocusStyle
                             }}
+                            variant="outlined"
                         />
-                        <TextField
+                        <TextValidator
                             select
                             className={clsx(classes.margin, classes.textField)}
                             label="Type of climbing"
                             value={values.climbingType}
                             onChange={handleChange('climbingType')}
-                            variant="outlined"
+                            validators={['required']}
+                            errorMessages={['this field is required']}
                             InputLabelProps={{
                                 shrink: true,
                                 className: classes.floatingLabelFocusStyle
                             }}
+                            variant="outlined"
                         >
                             {climbingType.map(option => (
                                 <MenuItem key={option.value} value={option.value}>
                                     {option.label}
                                 </MenuItem>
                             ))}
-                        </TextField>
+                        </TextValidator>
 
                         {values.climbingType === 'Sport climbing'
                             ?
-                            <TextField
+                            <TextValidator
                                 select
                                 className={clsx(classes.marginSelect, classes.textFieldSelect)}
                                 label="Difficulty"
                                 value={values.difficulty}
                                 onChange={handleChange('difficulty')}
-                                variant="outlined"
+                                validators={['required']}
+                                errorMessages={['this field is required']}
                                 InputLabelProps={{
                                     shrink: true,
                                     className: classes.floatingLabelFocusStyle
                                 }}
+                                variant="outlined"
                             >
                                 {sportClimbingDifficulty.map(option => (
                                     <MenuItem key={option.value} value={option.value}>
                                         {option.label}
                                     </MenuItem>
                                 ))}
-                            </TextField>
+                            </TextValidator>
                             :
                             null
                         }
 
                         {values.climbingType === 'Bouldering'
                             ?
-                            <TextField
+                            <TextValidator
                                 select
                                 className={clsx(classes.marginSelect, classes.textFieldSelect)}
                                 label="Difficulty"
                                 value={values.difficulty}
                                 onChange={handleChange('difficulty')}
-                                variant="outlined"
+                                validators={['required']}
+                                errorMessages={['this field is required']}
                                 InputLabelProps={{
                                     shrink: true,
                                     className: classes.floatingLabelFocusStyle
                                 }}
+                                variant="outlined"
                             >
                                 {boulderingDifficulty.map(option => (
                                     <MenuItem key={option.value} value={option.value}>
                                         {option.label}
                                     </MenuItem>
                                 ))}
-                            </TextField>
+                            </TextValidator>
                             :
                             null}
 
                         {values.climbingType === 'Sport climbing'
                             ?
-                            <TextField
+                            <TextValidator
                                 select
                                 className={clsx(classes.marginSelect, classes.textFieldSelect)}
                                 label="Climbing style"
                                 value={values.climbingStyle}
                                 onChange={handleChange('climbingStyle')}
-                                variant="outlined"
+                                validators={['required']}
+                                errorMessages={['this field is required']}
                                 InputLabelProps={{
                                     shrink: true,
                                     className: classes.floatingLabelFocusStyle
                                 }}
+                                variant="outlined"
                             >
                                 {climbingStyles.map(option => (
                                     <MenuItem key={option.value} value={option.value}>
                                         {option.label}
                                     </MenuItem>
                                 ))}
-                            </TextField>
+                            </TextValidator>
                             :
                             null
                         }
 
                         {values.climbingType === 'Bouldering'
                             ?
-                            <TextField
+                            <TextValidator
                                 select
                                 className={clsx(classes.marginSelect, classes.textFieldSelect)}
                                 label="Climbing style"
                                 value={values.boulderingStyle}
                                 onChange={handleChange('boulderingStyle')}
-                                variant="outlined"
+                                validators={['required']}
+                                errorMessages={['this field is required']}
                                 InputLabelProps={{
                                     shrink: true,
                                     className: classes.floatingLabelFocusStyle
                                 }}
+                                variant="outlined"
                             >
                                 {boulderingStyles.map(option => (
                                     <MenuItem key={option.value} value={option.value}>
                                         {option.label}
                                     </MenuItem>
                                 ))}
-                            </TextField>
+                            </TextValidator>
                             :
                             null
                         }
-                        <TextField
+                        <TextValidator
                             id="outlined-multiline-static"
                             label="Description"
                             value={values.description}
@@ -455,10 +474,12 @@ const CreateNewRoute = (props) => {
                             rows="5"
                             className={clsx(classes.margin, classes.textField)}
                             margin="normal"
-                            variant="outlined"
+                            validators={['required']}
+                            errorMessages={['this field is required']}
                             InputLabelProps={{
                                 className: classes.floatingLabelFocusStyle
                             }}
+                            variant="outlined"
                         />
                         <Button
                             style={{
@@ -474,7 +495,7 @@ const CreateNewRoute = (props) => {
                             Add Route
                 </Button>
                     </ThemeProvider>
-                </form>
+                </ValidatorForm>
             </div>
         </div>
     )
