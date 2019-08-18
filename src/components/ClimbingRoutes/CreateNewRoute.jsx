@@ -1,7 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
-import TextField from '@material-ui/core/TextField'
 import MenuItem from '@material-ui/core/MenuItem'
 import Button from '@material-ui/core/Button'
 import AppBar from '../layouts/AppBar'
@@ -296,7 +295,7 @@ const CreateNewRoute = (props) => {
                             onChange={handleChange('date')}
                             type="date"
                             validators={['required']}
-                            errorMessages={['this field is required']}
+                            errorMessages={['This field is required!']}
                             InputLabelProps={{
                                 shrink: true,
                                 className: classes.floatingLabelFocusStyle
@@ -310,7 +309,7 @@ const CreateNewRoute = (props) => {
                             value={values.location}
                             onChange={handleChange('location')}
                             validators={['required']}
-                            errorMessages={['this field is required']}
+                            errorMessages={['This field is required!']}
                             InputLabelProps={{
                                 className: classes.floatingLabelFocusStyle
                             }}
@@ -323,7 +322,7 @@ const CreateNewRoute = (props) => {
                             value={values.rockName}
                             onChange={handleChange('rockName')}
                             validators={['required']}
-                            errorMessages={['this field is required']}
+                            errorMessages={['This field is required!']}
                             InputLabelProps={{
                                 className: classes.floatingLabelFocusStyle
                             }}
@@ -336,7 +335,7 @@ const CreateNewRoute = (props) => {
                             value={values.routeName}
                             onChange={handleChange('routeName')}
                             validators={['required']}
-                            errorMessages={['this field is required']}
+                            errorMessages={['This field is required!']}
                             InputLabelProps={{
                                 className: classes.floatingLabelFocusStyle
                             }}
@@ -349,7 +348,7 @@ const CreateNewRoute = (props) => {
                             value={values.climbingType}
                             onChange={handleChange('climbingType')}
                             validators={['required']}
-                            errorMessages={['this field is required']}
+                            errorMessages={['This field is required!']}
                             InputLabelProps={{
                                 shrink: true,
                                 className: classes.floatingLabelFocusStyle
@@ -372,7 +371,7 @@ const CreateNewRoute = (props) => {
                                 value={values.difficulty}
                                 onChange={handleChange('difficulty')}
                                 validators={['required']}
-                                errorMessages={['this field is required']}
+                                errorMessages={['This field is required!']}
                                 InputLabelProps={{
                                     shrink: true,
                                     className: classes.floatingLabelFocusStyle
@@ -398,7 +397,7 @@ const CreateNewRoute = (props) => {
                                 value={values.difficulty}
                                 onChange={handleChange('difficulty')}
                                 validators={['required']}
-                                errorMessages={['this field is required']}
+                                errorMessages={['This field is required!']}
                                 InputLabelProps={{
                                     shrink: true,
                                     className: classes.floatingLabelFocusStyle
@@ -423,7 +422,7 @@ const CreateNewRoute = (props) => {
                                 value={values.climbingStyle}
                                 onChange={handleChange('climbingStyle')}
                                 validators={['required']}
-                                errorMessages={['this field is required']}
+                                errorMessages={['This field is required!']}
                                 InputLabelProps={{
                                     shrink: true,
                                     className: classes.floatingLabelFocusStyle
@@ -449,7 +448,7 @@ const CreateNewRoute = (props) => {
                                 value={values.boulderingStyle}
                                 onChange={handleChange('boulderingStyle')}
                                 validators={['required']}
-                                errorMessages={['this field is required']}
+                                errorMessages={['This field is required!']}
                                 InputLabelProps={{
                                     shrink: true,
                                     className: classes.floatingLabelFocusStyle
@@ -475,7 +474,7 @@ const CreateNewRoute = (props) => {
                             className={clsx(classes.margin, classes.textField)}
                             margin="normal"
                             validators={['required']}
-                            errorMessages={['this field is required']}
+                            errorMessages={['This field is required!']}
                             InputLabelProps={{
                                 className: classes.floatingLabelFocusStyle
                             }}
@@ -500,7 +499,6 @@ const CreateNewRoute = (props) => {
         </div>
     )
 }
-
 
 const useStyles = makeStyles(theme => ({
     background: {

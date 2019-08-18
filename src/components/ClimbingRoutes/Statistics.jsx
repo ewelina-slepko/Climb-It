@@ -96,7 +96,7 @@ const Statistics = (props) => {
 
     return (
         <div className={window.innerWidth < 692 ? classes.containerMobile : classes.container}>
-            <h1 className={classes.header}>My Statistics</h1>
+            <h1 className={classes.header}>Analytics overview</h1>
             <div className={window.innerWidth < 692 ? classes.chartContainerMobile : classes.chartContainer}>
 
                 {sportClimbingData.categories.length > 0

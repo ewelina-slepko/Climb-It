@@ -39,7 +39,6 @@ export default compose(
             storeAs: 'myProjects',
             orderBy: ['date', 'desc'],
             where: [['author', '==', props.userId || null]],
-
         }
     ])
 )(Dashboard);
