@@ -1,7 +1,8 @@
 import React from 'react';
 import MaterialTable from 'material-table'
 import { makeStyles } from '@material-ui/core/styles'
-import Modal from '@material-ui/core/Modal';
+import Modal from '@material-ui/core/Modal'
+import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
 import { deleteRoute } from '../../store/actions/projectActions'
 import { connect } from 'react-redux'
@@ -25,38 +26,38 @@ function getModalStyle() {
         transform: `translate(-${top}%, -${left}%)`,
     };
 }
+const theme = createMuiTheme({
+    overrides: {
+        MuiTableCell: {
+            root: {
+                padding: '5px !important',
+                margin: 10,
+                backgroundColor: '#fcfcfc',
+                fontSize: '0.775rem',
+            },
+        },
+        MuiIconButton: {
+            root: {
+                margin: 5,
+                padding: 0
+            }
+        },
+        MuiIcon: {
+            fontSizeSmall: {
+                fontSize: '1rem',
+            }
+        }
+
+    },
+});
 
 const RoutesList = (props) => {
     const { auth, myProjects } = props
     const classes = useStyles();
 
-    const theme = createMuiTheme({
-        overrides: {
-            MuiTableCell: {
-                root: {
-                    padding: '5px !important',
-                    margin: 10,
-                    backgroundColor: '#fcfcfc',
-                    fontSize: '0.775rem',
-                },
-            },
-            MuiIconButton: {
-                root: {
-
-                    margin: 5,
-                    padding: 0
-                }
-            },
-            MuiIcon: {
-                fontSizeSmall: {
-                    fontSize: '1rem',
-                }
-            }
-
-        },
-    });
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
+    const [currentRow, setCurrentRow] = React.useState(false);
 
     const handleOpen = () => {
         setOpen(true);
@@ -65,6 +66,11 @@ const RoutesList = (props) => {
     const handleClose = () => {
         setOpen(false);
     };
+
+    const handleDelete = () => {
+        props.deleteRoute(currentRow)
+        setTimeout(reloadPage, 800);
+    }
 
     const reloadPage = () => {
         window.location.reload()
@@ -121,9 +127,8 @@ const RoutesList = (props) => {
                             icon: 'delete_outline',
                             tooltip: 'Delete project',
                             onClick: (event, rowData) => {
-                                handleOpen()
-                                // props.deleteRoute(rowData.id.props.children)
-                                // setTimeout(reloadPage, 800);
+                                setCurrentRow(rowData.id.props.children)
+                                handleOpen();
                             }
                         }
                     ]}
@@ -133,15 +138,25 @@ const RoutesList = (props) => {
                                 <div className={classes.details}
                                 >
                                     <ul>
-                                        <li className={classes.detailsList}>Date: <p className={classes.detailsListValue}>{rowData.date}</p></li>
-                                        <li className={classes.detailsList}>Location: <p className={classes.detailsListValue}>{rowData.location}</p></li>
-                                        <li className={classes.detailsList}>Rock name: <p className={classes.detailsListValue}>{rowData.rockName}</p></li>
-                                        <li className={classes.detailsList}>Route name: <p className={classes.detailsListValue}>{rowData.routeName}</p></li>
+                                        <li className={classes.detailsList}>Date:
+                                        <p className={classes.detailsListValue}>{rowData.date}</p></li>
+                                        <li className={classes.detailsList}>Location:
+                                        <p className={classes.detailsListValue}>{rowData.location}</p></li>
+                                        <li className={classes.detailsList}>Rock name:
+                                        <p className={classes.detailsListValue}>{rowData.rockName}</p></li>
+                                        <li className={classes.detailsList}>Route name:
+                                        <p className={classes.detailsListValue}>{rowData.routeName}</p></li>
                                     </ul>
 
                                     <ul>
-                                        <li className={classes.detailsList}>Climbing type: <p className={classes.detailsListValue}>{rowData.climbingType}</p></li>
-                                        <li className={classes.detailsList}>Difficulty: <span className={classes.detailsListValue}>{rowData.difficulty}</span> <span className={classes.detailsListValueSmall}>{rowData.climbingStyle}{rowData.boulderingStyle}</span></li>
+                                        <li className={classes.detailsList}>Climbing type:
+                                        <p className={classes.detailsListValue}>{rowData.climbingType}</p></li>
+                                        <li className={classes.detailsList}>Difficulty:
+                                        <span className={classes.detailsListValue}>{rowData.difficulty}</span>
+                                            <span className={classes.detailsListValueSmall}>
+                                                {rowData.climbingStyle}{rowData.boulderingStyle}
+                                            </span>
+                                        </li>
                                     </ul>
 
                                 </div>
@@ -166,9 +181,23 @@ const RoutesList = (props) => {
                         <h2 id="simple-modal-title">Delete route</h2>
                         <p id="simple-modal-description">
                             Are you sure you want do delete this route?
-          </p>
-                        <button>YES</button>
-                        <button onClick={handleClose}>NO!</button>
+                        </p>
+                        <Button
+                            style={{
+                                backgroundColor: "#adadad",
+                                padding: '3px 30px',
+                                borderRadius: 30,
+                                margin: 5,
+                            }}
+                            onClick={handleDelete}>YES</Button>
+                        <Button
+                            style={{
+                                backgroundColor: "#adadad",
+                                padding: '3px 30px',
+                                borderRadius: 30,
+                                margin: 5,
+                            }}
+                            onClick={handleClose}>NO!</Button>
                     </div>
                 </Modal>
             </ThemeProvider>
