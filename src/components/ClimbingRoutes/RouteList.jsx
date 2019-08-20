@@ -12,18 +12,15 @@ import { Redirect } from 'react-router-dom'
 import { createMuiTheme } from '@material-ui/core/styles'
 import { ThemeProvider } from "@material-ui/styles"
 
-function rand() {
-    return Math.round(Math.random() * 20) - 10;
-}
-
 function getModalStyle() {
-    const top = 50 + rand();
-    const left = 50 + rand();
-
+    const responsiveWidth = window.innerWidth < 992 ? '90%' : '30%'
     return {
-        top: `${top}%`,
-        left: `${left}%`,
-        transform: `translate(-${top}%, -${left}%)`,
+        width: responsiveWidth,
+        textAlign: 'center',
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)'
     };
 }
 const theme = createMuiTheme({
