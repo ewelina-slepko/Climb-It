@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Climb It!",
+  "name": "Climb It!",
   "icons": [
     {
       "src": "climbing192.png",
@@ -14,7 +14,8 @@
     }
   ],
   "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#2f8f31",
-  "background_color": "#ffffff"
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "theme_color": "#2a3036",
+  "background_color": "#5c6063"
 }
