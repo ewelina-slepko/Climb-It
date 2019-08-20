@@ -42,6 +42,7 @@ const SignUp = (props) => {
                         onChange={handleChange('email')}
                         variant="outlined"
                         InputLabelProps={{
+                            shrink: true,
                             className: classes.floatingLabelFocusStyle
                         }}
                     />
@@ -57,6 +58,7 @@ const SignUp = (props) => {
                         onChange={handleChange('password')}
                         variant="outlined"
                         InputLabelProps={{
+                            shrink: true,
                             className: classes.floatingLabelFocusStyle
                         }}
                     />
@@ -70,6 +72,7 @@ const SignUp = (props) => {
                         onChange={handleChange('login')}
                         variant="outlined"
                         InputLabelProps={{
+                            shrink: true,
                             className: classes.floatingLabelFocusStyle
                         }}
                     />
