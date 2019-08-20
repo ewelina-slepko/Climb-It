@@ -58,8 +58,8 @@ const Statistics = (props) => {
     const boulderingStyles = myProjects.map(project => (
         project.boulderingStyle
     ));
-    const OSBoulder = boulderingStyles.filter(route => (
-        route === 'OS (on sight)'
+    const FlashBoulder = boulderingStyles.filter(route => (
+        route === 'Flash'
     ));
     const RPBoulder = boulderingStyles.filter(route => (
         route === 'RP (red point)'
@@ -89,8 +89,8 @@ const Statistics = (props) => {
             y: RPBoulder.length > 0 ? RPBoulder.length : null
         },
         {
-            name: 'OS',
-            y: OSBoulder.length > 0 ? OSBoulder.length : null
+            name: 'Flash',
+            y: FlashBoulder.length > 0 ? FlashBoulder.length : null
         },
     ]
 
