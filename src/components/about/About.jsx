@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
         height: '100vh',
         backgroundImage: `url(${Background})`,
         backgroundSize: 'cover',
-        opacity: '0.9'
+        opacity: '0.9',
     },
     container: {
         backgroundPositionY: '-200px',
@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
         margin: 20
     },
     header: {
-        margin: 10
+        margin: "40px 10px 10px 10px"
     },
     text: {
         textAlign: 'justify',

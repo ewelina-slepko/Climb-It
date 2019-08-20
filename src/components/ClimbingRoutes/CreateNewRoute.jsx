@@ -530,7 +530,7 @@ const useStyles = makeStyles(theme => ({
         textAlign: 'center',
         color: '#404040',
         paddingBottom: 10,
-        marginTop: 20
+        marginTop: 40
     },
     margin: {
         margin: '10px 30px'
@@ -568,7 +568,7 @@ const useStyles = makeStyles(theme => ({
         color: '#626363 !important'
     },
     btnPosition: {
-        margin: '30px 20px 30px auto'
+        margin: '10px 20px 30px auto'
     }
 }));
 

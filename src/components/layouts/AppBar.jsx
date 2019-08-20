@@ -42,7 +42,7 @@ const PersistentDrawerLeft = (props) => {
                         className={clsx(classes.menuButton, open && classes.hide)}>
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap>
+                    <Typography variant="h5" noWrap>
                         <p className={classes.title}>hello {profile.login}!</p>
                     </Typography>
                 </Toolbar>
@@ -78,10 +78,12 @@ const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
-        color: '#cfcfcf'
+        color: '#cfcfcf',
     },
     appBar: {
         backgroundColor: '#24292e',
+        height: 74,
+        paddingTop: 6,
         transition: theme.transitions.create(['margin', 'width'], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,

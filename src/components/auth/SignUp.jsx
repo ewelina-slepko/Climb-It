@@ -6,7 +6,6 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-
 import { signUp } from '../../store/actions/authActions'
 
 const SignUp = (props) => {
